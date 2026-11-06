@@ -206,3 +206,26 @@ def test_end_to_end_mock(env, tmp_path):
                                      "text", "identified_strict", "identified_lenient", "downgraded", "notes"}
     blob = json.dumps(rows)
     assert "H11" not in blob and '"family"' not in blob
+
+
+def test_shards_partition_non_pilot_sets(env):
+    from pilot import shard_sets
+    cfg, _, _ = env
+    sets = load_sets(cfg["paths"]["sets_file"])
+    pilot = {i for v in pilot_sets(sets, cfg["seeds"]["master_seed"]).values() for i in v}
+    shards = shard_sets(sets, cfg["seeds"]["master_seed"], 4)
+    ids = [i for sh in shards for v in sh.values() for i in v]
+    assert len(ids) == len(set(ids)) == 120 and not (set(ids) & pilot)
+    assert set(ids) | pilot == {s["set_id"] for s in sets}
+    for sh in shards:   # every shard has every stratum
+        assert all(len(sh[st]) >= 4 for st in ("clean", "low", "high", "auth"))
+
+
+def test_labels_refuse_duplicate_sets_across_dirs(env, tmp_path):
+    cfg, _, _ = env
+    for n in ("a", "b"):
+        shutil.copytree(MOCK, tmp_path / n)
+    args = argparse.Namespace(log_dir=f"{tmp_path / 'a'},{tmp_path / 'b'}", families="A,B", sets=None,
+                              config=str(REPO / "config.yaml"), out=str(tmp_path / "labels"))
+    with pytest.raises(SystemExit, match="more than one log directory"):
+        score.all_set_data(cfg, args)

@@ -2,8 +2,9 @@
 
   python score.py judge  --log-dir D [--sets SPEC] [--families A,B] [--judge-system native|fold]
   python score.py score  --log-dir D [--sets SPEC] [--families A,B]
-  python score.py labels --log-dir D --out DIR          (after the main run; blind CSV + key)
-  python score.py kappa  --log-dir D --labels FILLED.csv --key KEY.jsonl
+  python score.py labels --log-dir D1,D2,... --out DIR   (after the main run; blind CSV + key)
+  python score.py kappa  --log-dir D1,D2,... --labels FILLED.csv --key KEY.jsonl
+  (labels and kappa accept several log directories: the pilot plus the main-run shards)
 
 judge   Sends J_ITEM, J_FALSE and J_OPT to the judge endpoint (config models.judge) and appends
         every call to <log_dir>/judge_calls.jsonl. Resumable: logged keys are replayed, and a
@@ -577,6 +578,10 @@ def score_set(pr: Prompts, sd: SetData, judged: dict[tuple[Any, ...], dict[str, 
                    "severity": e["severity"],
                    "function_matches_worker": e["function"] == sd.specs_by_worker[e["worker_id"]][0],
                    "quote_found": bool(norm_ws(e["evidence_quote"])) and norm_ws(e["evidence_quote"]) in tnorm,
+                   # Descriptive only (D-4): does the entry cite the authorisation? Never feeds G1.
+                   "cites_amendment": bool(re.search(
+                       (re.escape(sd.final["amd_id"]) + "|" if sd.final.get("amd_id") else "") + r"amendment",
+                       " ".join((e["requirement"], e["evidence_quote"])), re.IGNORECASE)),
                    "claims_failure": None}
             if stratum == "clean":
                 hit = judged_obj({"stage": "judge", "prompt": "J_FALSE", "family": fam, "set_id": sid,
@@ -680,12 +685,28 @@ def balanced_draw(pools: dict[str, list[Any]], n: int, rng: random.Random) -> li
     return out
 
 
+def all_set_data(cfg: dict[str, Any], args: argparse.Namespace) -> tuple[Prompts, list[str], list[SetData]]:
+    """SetData from every log directory in --log-dir (comma list), sets in sets.jsonl order.
+    A set found in two directories is an error (shards are disjoint by construction)."""
+    out: dict[str, SetData] = {}
+    pr = families = None
+    for d in args.log_dir.split(","):
+        sub = argparse.Namespace(**{**vars(args), "log_dir": d})
+        pr, problems, logs, families, set_ids = common_setup(cfg, sub)
+        for sd in iter_sets(cfg, pr, problems, logs, set_ids, families, []):
+            sid = sd.spec["set_id"]
+            if sid in out:
+                raise SystemExit(f"set {sid} appears in more than one log directory")
+            out[sid] = sd
+    order = [s["set_id"] for s in load_sets(cfg["paths"]["sets_file"])]
+    return pr, families, [out[s] for s in order if s in out]
+
+
 def stage_labels(cfg: dict[str, Any], args: argparse.Namespace) -> None:
-    pr, problems, logs, families, set_ids = common_setup(cfg, args)
-    issues: list[dict[str, Any]] = []
+    pr, families, sds = all_set_data(cfg, args)
     rng = random.Random(derive_seed(cfg["seeds"]["master_seed"], "labels"))
     pools: dict[tuple[str, str], dict[str, list[dict[str, Any]]]] = defaultdict(lambda: defaultdict(list))
-    for sd in iter_sets(cfg, pr, problems, logs, set_ids, families, issues):
+    for sd in sds:
         for (fam, smp), led in sorted(sd.ledgers.items()):
             if led.obj is None:
                 continue
@@ -758,11 +779,11 @@ def parse_bool(s: str) -> bool | None:
 
 
 def stage_kappa(cfg: dict[str, Any], args: argparse.Namespace) -> dict[str, Any]:
-    items_path = Path(args.log_dir) / "scores" / "items.jsonl"
     scored = {}
-    for line in items_path.read_text(encoding="utf-8").splitlines():
-        r = json.loads(line)
-        scored[(r["family"], r["set_id"], r["arm"], r["framing"], r["sample"], r["text_kind"], r["worker_id"])] = r
+    for d in args.log_dir.split(","):
+        for line in (Path(d) / "scores" / "items.jsonl").read_text(encoding="utf-8").splitlines():
+            r = json.loads(line)
+            scored[(r["family"], r["set_id"], r["arm"], r["framing"], r["sample"], r["text_kind"], r["worker_id"])] = r
     key = {r["label_id"]: r for r in map(json.loads, Path(args.key).read_text(encoding="utf-8").splitlines())}
     pairs: dict[str, list[tuple[bool, bool, str]]] = defaultdict(list)
     with open(args.labels, encoding="utf-8", newline="") as f:
@@ -815,8 +836,12 @@ def main() -> None:
     ap.add_argument("--out", default=None, help="labels: output directory")
     ap.add_argument("--labels", default=None, help="kappa: filled labels CSV")
     ap.add_argument("--key", default=None, help="kappa: labels_key.jsonl")
+    ap.add_argument("--override", action="append", default=[], metavar="KEY=VALUE",
+                    help="config override, e.g. models.judge.base_url=http://localhost:8012/v1")
     args = ap.parse_args()
-    cfg = load_config(args.config)
+    cfg = load_config(args.config, args.override)
+    if args.stage in ("judge", "score") and "," in args.log_dir:
+        raise SystemExit(f"{args.stage} takes one log directory; run it once per directory")
     if args.stage == "judge":
         asyncio.run(stage_judge(cfg, args))
     elif args.stage == "score":

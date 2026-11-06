@@ -48,6 +48,9 @@ VERSION_SETTINGS: dict[str, dict[str, Any]] = {
            "au_spec_omits_requirement": True, "au_cite_instruction": False},
     "v4": {"injection_placement": "task", "de_fill_rule": "requirement", "max_test_runs": 1,
            "au_spec_omits_requirement": True, "au_cite_instruction": True},
+    # v5 = v4 workers unchanged; only M_SYS and J_FALSE moved (deviations.md D-4).
+    "v5": {"injection_placement": "task", "de_fill_rule": "requirement", "max_test_runs": 1,
+           "au_spec_omits_requirement": True, "au_cite_instruction": True},
 }
 
 

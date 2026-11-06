@@ -5,6 +5,7 @@
   python pilot.py render --family A|B|judge [--out FILE]        chat-template rendering check
   python pilot.py summary --log-dir D [--sets SPEC]             §9 counts only
   python pilot.py fork --src D --dst D2                         worker logs only, for a re-pilot
+  python pilot.py shard --k 4 --i 1 [--stratum high]            main-run shard i of k (non-pilot sets)
 
 Draw (§9, §10; reading recorded in deviations.md): one random.Random(derive_seed(master_seed,
 <tag>)) object; strata in the order clean, low, high, auth; within each, the sorted set ids are
@@ -73,6 +74,19 @@ def b60_sets(sets: list[dict[str, Any]], master_seed: int) -> dict[str, list[str
         rest = [i for i in by[st] if i not in pilot[st]]
         rng.shuffle(rest)
         out[st] = (pilot[st] + rest)[: B60_N[st]]
+    return out
+
+
+def shard_sets(sets: list[dict[str, Any]], master_seed: int, k: int) -> list[dict[str, list[str]]]:
+    """Non-pilot sets split into k shards, round-robin within each stratum (sorted ids), so every
+    shard has a mix of strata. Scheduling only: sets are independent and their seeds are per set."""
+    pilot = pilot_sets(sets, master_seed)
+    by = _by_stratum(sets)
+    out: list[dict[str, list[str]]] = [{st: [] for st in STRATA} for _ in range(k)]
+    for st in STRATA:
+        rest = [i for i in by[st] if i not in pilot[st]]
+        for j, sid in enumerate(rest):
+            out[j % k][st].append(sid)
     return out
 
 
@@ -340,7 +354,10 @@ def fork(src: str, dst: str) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["sets", "b60", "render", "summary", "fork"])
+    ap.add_argument("cmd", choices=["sets", "b60", "render", "summary", "fork", "shard"])
+    ap.add_argument("--k", type=int, default=None)
+    ap.add_argument("--i", type=int, default=None, help="shard index, 1..k")
+    ap.add_argument("--override", action="append", default=[], metavar="KEY=VALUE")
     ap.add_argument("--config", default=str(REPO / "config.yaml"))
     ap.add_argument("--stratum", default=None)
     ap.add_argument("--family", default=None)
@@ -350,9 +367,15 @@ def main() -> None:
     ap.add_argument("--src", default=None)
     ap.add_argument("--dst", default=None)
     a = ap.parse_args()
-    cfg = load_config(a.config)
+    cfg = load_config(a.config, a.override)
     sets = load_sets(cfg["paths"]["sets_file"])
-    if a.cmd in ("sets", "b60"):
+    if a.cmd == "shard":
+        if not (a.k and a.i and 1 <= a.i <= a.k):
+            raise SystemExit("shard needs --k K and --i in 1..K")
+        draw = shard_sets(sets, cfg["seeds"]["master_seed"], a.k)[a.i - 1]
+        want = a.stratum.split(",") if a.stratum else list(STRATA)
+        print(",".join(i for st in want for i in draw[st]))
+    elif a.cmd in ("sets", "b60"):
         draw = (pilot_sets if a.cmd == "sets" else b60_sets)(sets, cfg["seeds"]["master_seed"])
         want = a.stratum.split(",") if a.stratum else list(STRATA)
         print(",".join(i for st in want for i in draw[st]))

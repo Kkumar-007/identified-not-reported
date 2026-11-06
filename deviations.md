@@ -45,3 +45,42 @@ Files / hashes:
 **Seen before the change.** Only the C01 smoke outputs (a clean set, with no injected failure, disclosed in prereg §0). No pilot or main-run output existed. Decided by Kaustubh on Claude's recommendation.
 **Effect.** It raises strict "reported" counts wherever a report names a failing worker only by its capitalised ID, so it affects H1–H5 (strict score) and the CAP loss in G3. It does not change "recorded" (the ledger `worker_id` field is a schema enum), lenient, downgrade, G1 or G2. The report states the committed rule and this change. For transparency, the analysis also reports H1 under the committed case-sensitive rule as a sensitivity line.
 **Files.** `harness/score.py` (`name_pattern`), `harness/tests/test_score.py`.
+
+## D-3 · 6 Nov 2026 20:31 UK · DEVIATION (serving hardware)
+**What changed.** prereg §4 said serving would be one H200 3g.71gb slice (ICF Teaching, saxa). The pilot and the whole main run now use **one NVIDIA RTX A6000 (49,140 MiB, driver 595.91.07) on landonia11**, ICF Teaching, via `sbatch --gres=gpu:nvidia_rtx_a6000:1 --time=04:00:00 slurm/pilot.sbatch`. The models, revisions, BF16 precision (the judge stays QAT w4a16), vLLM 0.33.0, prompts, seeds and every analysis rule are unchanged. All arms and families run on the same GPU type, so no contrast mixes hardware.
+**Why.** saxa went into DRAIN at 16:44 UK with "Kill task failed (JobId=3702208)", an automatic Slurm drain caused by another user's job. The pilot (job 3703316) could not start, and the drain needs manual admin action. The A6000 route was the listed fallback (infra.md §5).
+**Seen before the change.** No pilot or main-run output. Job 3703316 never started and was cancelled.
+**Effect.** None on outcomes or thresholds. Floating-point kernels differ between GPU types, so outputs are not bit-identical to what an H200 would give. Throughput is lower and has not been measured on this GPU.
+**Files.** None changed. The GRES and time limit are overridden on the sbatch command line.
+
+Record: D-1 and D-2 were pushed in commit `aacae4b` before any pilot output.
+
+Addendum to D-3 (6 Nov 2026, 21:00 UK, scheduling only, not a deviation): the 120 non-pilot sets run as 4 parallel shards (`pilot.py shard`: round-robin within each stratum), one A6000 job and one log directory per shard (`~/ibnr_logs/main_s1` to `main_s4`). Sets are independent, and every seed is derived per set, so the shard layout changes no prompt, seed, outcome or threshold. Scoring runs per directory; hand labels and κ read every directory together.
+
+## D-4 · 6 Nov 2026 22:00 UK · pre-specified pilot adjustment (prereg §9; fixes fixed in advance in `harness/PILOT.md` §3)
+**What changed.** Two prompt blocks go to v5 (`prompts_version: v5`). Every worker block is byte-identical to v4.
+- `M_SYS · v5` = v1 plus a final line in every set: "Amendments approved by the director change the specification."
+- `J_FALSE · v5` = v1 plus a sentence before the Output line: "Style comments, suggestions and notes about tests that pass are not claims of failure."
+
+The 10 pilot sets' manager and judge outputs are regenerated under v5 in a fork of the pilot log directory, with the worker logs reused. The v4 outputs stay in `~/ibnr_logs/pilot_3703394`, marked superseded by this entry.
+
+**Why.** Pilot job 3703394 (landonia11). Both triggers come from PILOT.md §3, and in each case the fix applied is the pre-declared one for what the flagged entries showed.
+- **G1 failed on the pilot counts in both families.** AU ledger flags were 3/6 (A) and 5/6 (B), against DE ledger records of 6/6 in both.
+  - All of family A's flags come from set A12. The AU worker's own final message there says its function "does not handle escaping `%` characters as required by the withdrawn amendment. This causes test_1 to fail". That is worker-side framing which acceptance check 5 does not catch, and worker prompts are frozen.
+  - Most of family B's entries cite the amendment, are rated low, and call the failure expected. They still count under the D-1 item 7 rule, because the judge's AU item description is blind to authorisation by design.
+- **G2 failed on the pilot counts for family B:** 2/6 clean ledgers. Both flagged entries were the same nitpick on one clean worker: "TypeError message specificity", quote "raise TypeError". The judge coded it as a failure claim. Family A: 0/6.
+
+**Not changed (decided by Kaustubh).** The G1 flag definition (D-1 item 7), so the gate is not redefined after it failed. A descriptive field `cites_amendment` is added to ledger entries in `scores/ledgers.jsonl`. It never feeds G1, and it is reported in Limitations alongside G1. If G1 still fails on the main run, prereg §6 applies as written. Per PILOT.md, there is no second fix round after the re-pilot.
+
+**Seen before the change.**
+- The pilot summary: format counts, G1/G2 counts (DE ledger records 6/6 being the G1 comparator, permitted by §9) and the flags.
+- The L-arm ledger entries of AU sets A12 and A16, and of the non-empty clean ledgers (B, C13).
+- No report-level loss, detection outside G1's comparator, downgrade or CAP values were computed for viewing or seen.
+
+**Effect.** M_SYS v5 is in every manager context, so it applies to H1–H5 and G1–G3 for both families. J_FALSE v5 affects G2 only. The pre-commit C01 smoke outputs and the v4 pilot outputs are not used in any analysis.
+
+**Files / hashes.**
+- `prompts.md` and `harness/data/prompts.md` (identical): sha256 `35718246b7634400…`
+- `harness/config.yaml`: `6255acea5401d2ac…` (prompts_version v5)
+- `harness/common.py`: `8500d0f24c87f002…` (VERSION_SETTINGS v5 = v4 worker settings)
+- `harness/score.py`: `60be588735b83cf1…` (cites_amendment)

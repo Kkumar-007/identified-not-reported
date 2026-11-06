@@ -2,7 +2,7 @@
 # Values marked [sugg] are harness choices not yet in prereg.md; fix them there before the prereg commit.
 # Environment variables in path strings ($VAR / ${VAR}) are expanded at load time.
 
-prompts_version: v4          # FROZEN (Chat 6): W_SYS v3, W_INJ_DEV v2, W_INJ_AU v4, rest v1
+prompts_version: v5          # v4 workers (W_SYS v3, W_INJ_DEV v2, W_INJ_AU v4) + M_SYS v5, J_FALSE v5 (deviations.md D-4)
 
 paths:
   prompts_md: data/prompts.md                 # blocks extracted to prompts/<prompts_version>/

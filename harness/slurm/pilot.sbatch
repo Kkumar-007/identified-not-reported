@@ -31,6 +31,8 @@ if [ ! -x "$VENV/bin/vllm" ]; then
   python3 -m venv "$VENV"; "$VENV/bin/pip" install -q vllm==0.33.0 openai
 fi
 source "$VENV/bin/activate"
+if ! command -v nvcc > /dev/null; then export CUDA_HOME=/opt/cuda-13.2.1; export PATH="$CUDA_HOME/bin:$PATH"; fi
+command -v nvcc > /dev/null || { echo "nvcc missing"; exit 1; }; echo "nvcc: $(command -v nvcc)"
 pip install -q -r "$REPO/requirements.txt"
 python -c "import sys, vllm; print('vllm', vllm.__version__, '| python', sys.version.split()[0])"
 
