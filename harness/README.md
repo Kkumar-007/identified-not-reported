@@ -19,6 +19,8 @@ after the sprint started. See the root `README.md`.
 | `llm.py` | vLLM OpenAI-compatible client with call replay |
 | `sandbox.py`, `sandbox_runner.py` | subprocess test runner (timeouts, rlimits, no network) |
 | `run.py` | CLI |
+| `score.py` | judge calls (J_ITEM / J_FALSE / J_OPT), item scores, hand-label export, kappa (prereg §5–§8) |
+| `pilot.py` | pilot and B60 set draws, chat-template render check, §9 summary, re-pilot fork; see `PILOT.md` |
 | `dev/mock_server.py` | scripted endpoint for plumbing tests only (rows say `MOCK::`) |
 
 ## Run
@@ -31,4 +33,4 @@ python run.py --stage workers  --sets H11
 python run.py --stage managers --sets H11 --family A --arms L,S
 python dev/show_logs.py $IBNR_LOG_DIR
 ```
-On saxa: `sbatch slurm/smoke_one_set.sbatch`.
+On saxa: `sbatch slurm/smoke_one_set.sbatch`; pilot: `sbatch slurm/pilot.sbatch` (see `PILOT.md`).

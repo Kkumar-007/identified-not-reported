@@ -389,3 +389,31 @@ Next chat's first step:
 **Open issues:** the Project copies of `prereg.md` (§12 wording) and `handoff_log.md` are behind the folder; the folder and the repo are authoritative.
 
 **Next chat's first step:** build the judge and scoring (J_ITEM / J_FALSE / J_OPT; strict and lenient; gates G1–G3) and test them against the mock. Then select the pilot sets per prereg §9 and run the 10-set pilot, printing only format and gate counts.
+
+## Chat 7: scoring, pilot tooling, proposal diff
+**Decisions made:**
+- prereg.md was already binding (`dff73e2`), so the chat plan was mapped onto it instead of redrafting it:
+  - the pilot runs per §9, **both families**;
+  - it prints **no ledger detection** (§9 forbids it; "failures explicit" is checked worker-side);
+  - prereg.md is not edited.
+- **D-1 (clarification, logged before any pilot output):** the readings score.py and pilot.py need where prereg is silent. The pilot draw is read as one RNG across strata, giving **C13 C06 L04 L01 L20 H03 H33 H25 A12 A16**. D-1 also fixes truncation, ledger re-validation, the judge's input format and retries, the G1 flag rule, κ-fallback details, the hand-label draw and the judge system-role rule.
+- **D-2 (DEVIATION, decided by Kaustubh):** in the strict report match, the worker ID now matches case-insensitively; function names stay case-sensitive. Reason: the C01 smoke reports write "Worker_8" (family A 6/6). The committed rule is kept as a sensitivity field (`name_match_committed`).
+- Gate fixes for the pilot are pre-declared in `harness/PILOT.md` §3, with exact v5 sentences for `J_FALSE`, `L_LEDGER` and `M_SYS`, one round only. `AMENDMENT` can't change, because workers see it.
+
+**Files produced:**
+- `harness/score.py` (judge / score / labels / kappa);
+- `harness/pilot.py` (sets / b60 / render / summary / fork);
+- `harness/slurm/pilot.sbatch`, `harness/PILOT.md`, `harness/tests/test_score.py` (53 tests pass);
+- `harness/README.md` (layout rows), `deviations.md` (D-1, D-2), `proposal_diff.md` (44 pre-commit differences plus the post-commit table).
+
+Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all match prereg §11.
+
+**Open issues:**
+- **No pilot has run.** This workspace has no GPU.
+- The judge model has never been served. Risks: whether vLLM 0.33 serves Gemma 4 QAT with these flags; whether xgrammar accepts the `anyOf` null type in the J_ITEM schema; and whether `/tokenize` with messages works under `--tokenizer-mode mistral` (if not, the B render check fails and needs a manual look at a rendered prompt).
+- Clean, DC, DE and AU worker regeneration will very likely exceed 20%. That flag is report-only, because worker prompts are frozen.
+- `analysis.py` is not built: bootstrap, H1–H5, G3, Holm, and the D-2 sensitivity line.
+- Commit and push the Chat 7 files before the pilot, so the D-1 and D-2 timestamps precede any pilot output.
+- The Project copies of handoff_log.md and prereg.md are behind the folder.
+
+**Next chat's first step:** commit and push, then `sbatch slurm/pilot.sbatch`. Paste `pilot_summary.txt`, the three `---- rendered ----` blocks and any vLLM error tail. Then decide flags against PILOT.md §3, and build analysis.py while the main run goes.
