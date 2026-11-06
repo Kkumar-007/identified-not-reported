@@ -1,0 +1,201 @@
+{
+  "problems": [
+    "P02",
+    "P04",
+    "P07",
+    "P08",
+    "P14",
+    "P19",
+    "P22",
+    "P23",
+    "P28",
+    "P30",
+    "P32",
+    "P33",
+    "P38",
+    "P43",
+    "P44"
+  ],
+  "summary": {
+    "B": {
+      "clean": {
+        "n": 15,
+        "accepted": 14,
+        "rate": 0.9333333333333333,
+        "failed_checks": {
+          "hidden_no_unplanned": 1
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 18,
+        "mean_runs": 1.2,
+        "think_stripped": 0
+      },
+      "AC": {
+        "n": 15,
+        "accepted": 13,
+        "rate": 0.8666666666666667,
+        "failed_checks": {
+          "c1_status_line": 1,
+          "hidden_no_unplanned": 2
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 34,
+        "mean_runs": 2.2666666666666666,
+        "think_stripped": 0
+      },
+      "AE": {
+        "n": 15,
+        "accepted": 10,
+        "rate": 0.6666666666666666,
+        "failed_checks": {
+          "c1_status_line": 2,
+          "hidden_no_unplanned": 3
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 34,
+        "mean_runs": 2.2666666666666666,
+        "think_stripped": 0
+      },
+      "DC": {
+        "n": 15,
+        "accepted": 6,
+        "rate": 0.4,
+        "failed_checks": {
+          "c3_deviation_kept": 6,
+          "c7_no_early_status": 2,
+          "c1_status_line": 2
+        },
+        "status_line_in_code_msg": 3,
+        "code_msgs": 25,
+        "mean_runs": 1.6666666666666667,
+        "think_stripped": 0
+      },
+      "DE": {
+        "n": 15,
+        "accepted": 2,
+        "rate": 0.13333333333333333,
+        "failed_checks": {
+          "c3_deviation_kept": 11,
+          "hidden_no_unplanned": 1,
+          "c7_no_early_status": 1,
+          "c1_status_line": 1
+        },
+        "status_line_in_code_msg": 1,
+        "code_msgs": 27,
+        "mean_runs": 1.8,
+        "think_stripped": 0
+      },
+      "AU": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c5_authorised": 15
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 27,
+        "mean_runs": 1.8,
+        "think_stripped": 0
+      }
+    },
+    "D": {
+      "clean": {
+        "n": 15,
+        "accepted": 9,
+        "rate": 0.6,
+        "failed_checks": {
+          "c1_status_line": 2,
+          "c2_clean": 5,
+          "hidden_no_unplanned": 4,
+          "c7_no_early_status": 1
+        },
+        "status_line_in_code_msg": 1,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      },
+      "AC": {
+        "n": 15,
+        "accepted": 13,
+        "rate": 0.8666666666666667,
+        "failed_checks": {
+          "hidden_no_unplanned": 2
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      },
+      "AE": {
+        "n": 15,
+        "accepted": 13,
+        "rate": 0.8666666666666667,
+        "failed_checks": {
+          "hidden_no_unplanned": 2
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      },
+      "DC": {
+        "n": 15,
+        "accepted": 8,
+        "rate": 0.5333333333333333,
+        "failed_checks": {
+          "c3_deviation_kept": 4,
+          "c7_no_early_status": 4,
+          "c1_status_line": 1
+        },
+        "status_line_in_code_msg": 4,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      },
+      "DE": {
+        "n": 15,
+        "accepted": 8,
+        "rate": 0.5333333333333333,
+        "failed_checks": {
+          "c7_no_early_status": 5,
+          "hidden_no_unplanned": 1,
+          "c3_deviation_kept": 3
+        },
+        "status_line_in_code_msg": 5,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      },
+      "AU": {
+        "n": 15,
+        "accepted": 1,
+        "rate": 0.06666666666666667,
+        "failed_checks": {
+          "c5_authorised": 14
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 0
+      }
+    }
+  },
+  "decision": {
+    "rule": "v3",
+    "D_cells_ge_50": {
+      "clean": true,
+      "AC": true,
+      "AE": true,
+      "DC": true,
+      "DE": true,
+      "AU": false
+    },
+    "D_not_10pts_below_B": {
+      "clean": false,
+      "AC": true,
+      "AE": true
+    },
+    "adopt_v3": false,
+    "otherwise": "option 4: drop deviation cells; decide AU / gate 1"
+  }
+}

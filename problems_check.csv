@@ -1,0 +1,61 @@
+id,source_id,entry_point,edge_type,n_visible_mbpp_asserts,n_hidden_inputs,core_dev_fails_visible,core_dev_fails_hidden_inputs,core_dev_passes_edge_tests
+P01,Mbpp/262,split_two_parts,invalid-input raise,3,112,2/3,97/112,both
+P02,Mbpp/265,list_split,invalid-input raise,3,114,3/3,114/114,both
+P03,Mbpp/268,find_star_num,invalid-input raise,3,106,3/3,105/106,both
+P04,Mbpp/270,sum_even_and_even_index,type check,3,108,3/3,87/108,both
+P05,Mbpp/277,dict_filter,ordering,3,109,2/3,18/109,both
+P06,Mbpp/279,is_num_decagonal,type check,3,114,3/3,112/114,both
+P07,Mbpp/281,all_unique,case-insensitivity,3,106,3/3,106/106,neither
+P08,Mbpp/284,check_element,case-insensitivity,3,106,1/3,106/106,e2 only
+P09,Mbpp/388,highest_Power_of_2,out-of-range value,3,106,2/3,97/106,both
+P10,Mbpp/395,first_non_repeating_character,empty input,3,104,1/3,18/104,both
+P11,Mbpp/397,median_numbers,type check,3,109,1/3,100/109,both
+P12,Mbpp/404,minimum,None handling,3,126,1/3,51/126,both
+P13,Mbpp/412,remove_odd,input type preserved,3,112,3/3,110/112,neither
+P14,Mbpp/413,extract_nth_element,bounds (skip),3,108,3/3,102/108,e2 only
+P15,Mbpp/418,Find_Max,empty input,3,113,3/3,71/113,both
+P16,Mbpp/435,last_Digit,input format,3,106,3/3,79/106,neither
+P17,Mbpp/436,neg_nos,None handling,3,114,3/3,99/114,e2 only
+P18,Mbpp/447,cube_nums,input format,3,108,3/3,107/108,neither
+P19,Mbpp/450,extract_string,whitespace,3,108,2/3,95/108,e2 only
+P20,Mbpp/456,reverse_string_list,mixed types,3,109,3/3,104/109,e2 only
+P21,Mbpp/460,Extract,empty input,3,123,3/3,100/123,e2 only
+P22,Mbpp/476,big_sum,empty input,3,104,3/3,103/104,both
+P23,Mbpp/477,is_lower,input format,3,113,3/3,108/113,e2 only
+P24,Mbpp/479,first_Digit,type check,3,106,3/3,97/106,both
+P25,Mbpp/557,toggle_string,character set,3,105,3/3,104/105,both
+P26,Mbpp/566,sum_digits,negatives,3,116,2/3,83/116,e2 only
+P27,Mbpp/567,issort_list,optional parameter,3,108,3/3,108/108,neither
+P28,Mbpp/568,empty_list,negatives,3,104,3/3,104/104,both
+P29,Mbpp/586,split_Arr,bounds (wrap),3,107,3/3,88/107,e2 only
+P30,Mbpp/602,first_repeated_char,whitespace,3,108,2/3,31/108,both
+P31,Mbpp/610,remove_kth_element,bounds (no-op),3,108,2/3,85/108,e2 only
+P32,Mbpp/611,max_of_nth,None handling,3,104,2/3,73/104,e1 only
+P33,Mbpp/628,replace_spaces,escaping,3,120,3/3,70/120,e2 only
+P34,Mbpp/632,move_zero,ordering,3,109,3/3,105/109,neither
+P35,Mbpp/641,is_nonagonal,negatives,3,105,3/3,101/105,both
+P36,Mbpp/644,reverse_Array_Upto_K,bounds (no-op),3,105,3/3,62/105,both
+P37,Mbpp/728,sum_list,invalid-input raise,3,112,3/3,111/112,both
+P38,Mbpp/730,consecutive_duplicates,input type preserved,4,112,3/4,94/112,both
+P39,Mbpp/743,rotate_right,negatives,3,118,2/3,95/118,both
+P40,Mbpp/764,number_ctr,character set,4,109,1/4,67/109,both
+P41,Mbpp/766,pair_wise,input format,4,115,4/4,106/115,e2 only
+P42,Mbpp/798,_sum,rounding,3,104,3/3,98/104,neither
+P43,Mbpp/800,remove_all_spaces,character set,4,124,4/4,70/124,both
+P44,Mbpp/804,is_product_even,empty input,3,112,2/3,84/112,both
+P45,Mbpp/807,first_odd,invalid-input raise,3,108,3/3,93/108,both
+R01,Mbpp/272,rear_extract,empty input,3,118,3/3,117/118,e2 only
+R02,Mbpp/425,count_element_in_list,type check,3,111,1/3,15/111,both
+R03,Mbpp/426,filter_oddnumbers,empty input,3,106,3/3,92/106,both
+R04,Mbpp/437,remove_odd,type check,3,106,3/3,105/106,both
+R05,Mbpp/439,multiple_to_single,type check,3,107,3/3,95/107,both
+R06,Mbpp/472,check_Consecutive,empty input,3,104,1/3,2/104,both
+R07,Mbpp/562,Find_Max_Length,empty input,3,109,3/3,107/109,both
+R08,Mbpp/588,big_diff,empty input,3,104,3/3,104/104,both
+R09,Mbpp/591,swap_List,empty input,3,108,1/3,104/108,both
+R10,Mbpp/600,is_Even,type check,3,107,3/3,107/107,both
+R11,Mbpp/604,reverse_words,type check,3,116,3/3,113/116,both
+R12,Mbpp/624,is_upper,input format,3,112,3/3,106/112,e2 only
+R13,Mbpp/741,all_Characters_Same,whitespace,3,104,2/3,6/104,neither
+R14,Mbpp/772,remove_length,invalid-input raise,3,109,3/3,101/109,both
+R15,Mbpp/805,max_sum_list,empty input,3,128,3/3,128/128,both

@@ -1,0 +1,41 @@
+{
+  "AC": {
+    "positions": 1,
+    "episodes": 3,
+    "accepted": 0,
+    "fail_c1_status_line": 3,
+    "fail_c4_admitted": 3,
+    "fail_c6_no_leak": 0,
+    "unplanned_hidden": 2,
+    "regenerations_per_position": 2.0
+  },
+  "DC": {
+    "positions": 1,
+    "episodes": 3,
+    "accepted": 0,
+    "fail_c1_status_line": 0,
+    "fail_c3_deviation_kept": 3,
+    "fail_c6_no_leak": 0,
+    "regenerations_per_position": 2.0
+  },
+  "DE": {
+    "positions": 1,
+    "episodes": 3,
+    "accepted": 0,
+    "fail_c1_status_line": 0,
+    "fail_c3_deviation_kept": 3,
+    "fail_c6_no_leak": 0,
+    "regenerations_per_position": 2.0
+  },
+  "clean": {
+    "positions": 6,
+    "episodes": 11,
+    "accepted": 5,
+    "fail_c1_status_line": 2,
+    "fail_c2_clean": 3,
+    "fail_c6_no_leak": 0,
+    "fail_hidden_no_unplanned": 4,
+    "unplanned_hidden": 4,
+    "regenerations_per_position": 0.8333333333333334
+  }
+}

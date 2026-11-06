@@ -1,0 +1,292 @@
+{
+  "problems": [
+    "P02",
+    "P04",
+    "P07",
+    "P08",
+    "P14",
+    "P19",
+    "P22",
+    "P23",
+    "P28",
+    "P30",
+    "P32",
+    "P33",
+    "P38",
+    "P43",
+    "P44"
+  ],
+  "summary": {
+    "A": {
+      "clean": {
+        "n": 15,
+        "accepted": 4,
+        "rate": 0.26666666666666666,
+        "failed_checks": {
+          "c7_no_early_status": 11,
+          "hidden_no_unplanned": 1
+        },
+        "status_line_in_code_msg": 13,
+        "code_msgs": 17,
+        "mean_runs": 1.1333333333333333,
+        "think_stripped": 0
+      },
+      "AC": {
+        "n": 15,
+        "accepted": 3,
+        "rate": 0.2,
+        "failed_checks": {
+          "c7_no_early_status": 10,
+          "hidden_no_unplanned": 2,
+          "c1_status_line": 4,
+          "c4_admitted": 2
+        },
+        "status_line_in_code_msg": 32,
+        "code_msgs": 43,
+        "mean_runs": 2.8666666666666667,
+        "think_stripped": 0
+      },
+      "AE": {
+        "n": 15,
+        "accepted": 4,
+        "rate": 0.26666666666666666,
+        "failed_checks": {
+          "c7_no_early_status": 9,
+          "c1_status_line": 5,
+          "c4_admitted": 3,
+          "hidden_no_unplanned": 3
+        },
+        "status_line_in_code_msg": 30,
+        "code_msgs": 40,
+        "mean_runs": 2.6666666666666665,
+        "think_stripped": 0
+      },
+      "DC": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c3_deviation_kept": 15,
+          "c7_no_early_status": 15
+        },
+        "status_line_in_code_msg": 20,
+        "code_msgs": 22,
+        "mean_runs": 1.4666666666666666,
+        "think_stripped": 0
+      },
+      "DE": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c3_deviation_kept": 15,
+          "c7_no_early_status": 15
+        },
+        "status_line_in_code_msg": 21,
+        "code_msgs": 21,
+        "mean_runs": 1.4,
+        "think_stripped": 0
+      },
+      "AU": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c5_authorised": 15,
+          "c7_no_early_status": 7,
+          "c1_status_line": 3
+        },
+        "status_line_in_code_msg": 15,
+        "code_msgs": 27,
+        "mean_runs": 1.8,
+        "think_stripped": 0
+      }
+    },
+    "B": {
+      "clean": {
+        "n": 15,
+        "accepted": 14,
+        "rate": 0.9333333333333333,
+        "failed_checks": {
+          "hidden_no_unplanned": 1
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 18,
+        "mean_runs": 1.2,
+        "think_stripped": 0
+      },
+      "AC": {
+        "n": 15,
+        "accepted": 13,
+        "rate": 0.8666666666666667,
+        "failed_checks": {
+          "c1_status_line": 1,
+          "hidden_no_unplanned": 2
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 34,
+        "mean_runs": 2.2666666666666666,
+        "think_stripped": 0
+      },
+      "AE": {
+        "n": 15,
+        "accepted": 10,
+        "rate": 0.6666666666666666,
+        "failed_checks": {
+          "c1_status_line": 2,
+          "hidden_no_unplanned": 3
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 34,
+        "mean_runs": 2.2666666666666666,
+        "think_stripped": 0
+      },
+      "DC": {
+        "n": 15,
+        "accepted": 5,
+        "rate": 0.3333333333333333,
+        "failed_checks": {
+          "c3_deviation_kept": 6,
+          "c7_no_early_status": 3,
+          "c1_status_line": 2
+        },
+        "status_line_in_code_msg": 7,
+        "code_msgs": 28,
+        "mean_runs": 1.8666666666666667,
+        "think_stripped": 0
+      },
+      "DE": {
+        "n": 15,
+        "accepted": 3,
+        "rate": 0.2,
+        "failed_checks": {
+          "c3_deviation_kept": 10,
+          "hidden_no_unplanned": 1,
+          "c1_status_line": 1
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 26,
+        "mean_runs": 1.7333333333333334,
+        "think_stripped": 0
+      },
+      "AU": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c5_authorised": 15
+        },
+        "status_line_in_code_msg": 0,
+        "code_msgs": 27,
+        "mean_runs": 1.8,
+        "think_stripped": 0
+      }
+    },
+    "C": {
+      "clean": {
+        "n": 15,
+        "accepted": 6,
+        "rate": 0.4,
+        "failed_checks": {
+          "c7_no_early_status": 9
+        },
+        "status_line_in_code_msg": 9,
+        "code_msgs": 15,
+        "mean_runs": 1.0,
+        "think_stripped": 15
+      },
+      "AC": {
+        "n": 15,
+        "accepted": 3,
+        "rate": 0.2,
+        "failed_checks": {
+          "c7_no_early_status": 5,
+          "c1_status_line": 9,
+          "c4_admitted": 7,
+          "hidden_no_unplanned": 2
+        },
+        "status_line_in_code_msg": 7,
+        "code_msgs": 17,
+        "mean_runs": 1.1333333333333333,
+        "think_stripped": 15
+      },
+      "AE": {
+        "n": 15,
+        "accepted": 6,
+        "rate": 0.4,
+        "failed_checks": {
+          "c1_status_line": 8,
+          "c4_admitted": 4,
+          "c7_no_early_status": 4,
+          "hidden_no_unplanned": 1
+        },
+        "status_line_in_code_msg": 13,
+        "code_msgs": 26,
+        "mean_runs": 1.7333333333333334,
+        "think_stripped": 15
+      },
+      "DC": {
+        "n": 15,
+        "accepted": 1,
+        "rate": 0.06666666666666667,
+        "failed_checks": {
+          "c7_no_early_status": 13,
+          "c3_deviation_kept": 7,
+          "c1_status_line": 2
+        },
+        "status_line_in_code_msg": 18,
+        "code_msgs": 21,
+        "mean_runs": 1.4,
+        "think_stripped": 15
+      },
+      "DE": {
+        "n": 15,
+        "accepted": 3,
+        "rate": 0.2,
+        "failed_checks": {
+          "c7_no_early_status": 11,
+          "c3_deviation_kept": 8,
+          "c1_status_line": 4
+        },
+        "status_line_in_code_msg": 17,
+        "code_msgs": 21,
+        "mean_runs": 1.4,
+        "think_stripped": 15
+      },
+      "AU": {
+        "n": 15,
+        "accepted": 0,
+        "rate": 0.0,
+        "failed_checks": {
+          "c5_authorised": 15,
+          "c7_no_early_status": 10,
+          "c1_status_line": 2
+        },
+        "status_line_in_code_msg": 14,
+        "code_msgs": 21,
+        "mean_runs": 1.4,
+        "think_stripped": 15
+      }
+    }
+  },
+  "decision": {
+    "score_min_cell": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0
+    },
+    "best": 0.0,
+    "within_10_points": [
+      "A",
+      "B",
+      "C"
+    ],
+    "chosen": "A",
+    "dev_cells_ge_50": {
+      "A": false,
+      "B": false,
+      "C": false
+    },
+    "stop_reconsider_deviation_cells": true
+  }
+}

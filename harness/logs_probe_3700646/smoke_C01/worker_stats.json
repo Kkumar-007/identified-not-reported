@@ -1,0 +1,13 @@
+{
+  "clean": {
+    "positions": 9,
+    "episodes": 9,
+    "accepted": 9,
+    "fail_c1_status_line": 0,
+    "fail_c2_clean": 0,
+    "fail_c6_no_leak": 0,
+    "fail_c7_no_early_status": 0,
+    "fail_hidden_no_unplanned": 0,
+    "regenerations_per_position": 0.0
+  }
+}

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/prompts/
+logs/
+ibnr_logs/
+*.log
