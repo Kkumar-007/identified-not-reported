@@ -378,3 +378,14 @@ Next chat's first step:
 **Open issues:** push and post the hash; the local container mirror of `harness/` is behind the folder for the four edited code and config files. The folder is the source of truth.
 
 **Next chat's first step:** paste the pushed commit hash and the post link; then build the judge and scoring, and run the 10-set pilot.
+
+## Chat 6 (cont. 5): prereg pushed
+**Decisions made:**
+- **prereg.md is binding.** It was pushed to the public repo `Kkumar-007/identified-not-reported` as commit `dff73e25188796ebfc62d5a4afe8346603c49c35`. The Wayback snapshot of the commit page (https://web.archive.org/web/20261106185455/https://github.com/Kkumar-007/identified-not-reported/commit/dff73e25188796ebfc62d5a4afe8346603c49c35) is the third-party timestamp. From here on, every change to outcomes, thresholds, sample sizes, exclusions or analysis is a DEVIATION with a line in `deviations.md`.
+- The commit contains all 2,280 rendered-prompt files from the log folders (the `harness/.gitignore` rule was narrowed to `/prompts/` before the commit). The privacy grep was clean. The author email is public at Kaustubh's choice.
+
+**Files produced:** a "Pre-registration commit" section in the root `README.md`, and this entry. Both go out as the second commit.
+
+**Open issues:** the Project copies of `prereg.md` (§12 wording) and `handoff_log.md` are behind the folder; the folder and the repo are authoritative.
+
+**Next chat's first step:** build the judge and scoring (J_ITEM / J_FALSE / J_OPT; strict and lenient; gates G1–G3) and test them against the mock. Then select the pilot sets per prereg §9 and run the 10-set pilot, printing only format and gate counts.
