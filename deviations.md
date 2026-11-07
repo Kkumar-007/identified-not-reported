@@ -171,3 +171,35 @@ Record (7 Nov 2026, 05:20 UK, not a change): **CAUSE (D-6) outcome.**
 - The hand codes are in commit `f374202`. Its message says "before any coding", but it contains the codes. The D-6 spec precedes it, in `27fbf15`. Both precede the J_CAUSE run (job 3704058, code pinned at `f374202`, 960 calls).
 - κ on the 40 validation reports: `blames_code` 0.82 and `blames_test_spec` 0.84, agreement 92.5% for each. Both pass the D-6 rule, so the judge codes are used.
 - Results are in `results/cause/cause_result.json`. They are exploratory and decide no hypothesis.
+
+## D-7 · 7 Nov 2026 05:34 UK · D6 stress arm run for family A only, because B failed G1/G2
+**What changes.** prereg D6 runs the 60-word stress arm for any family whose high-pressure H1 point estimate is below 5%. The trigger fires for both families on the judge-strict score (A 4.5%, n = 222 pairs; B 4.7%, n = 234). We run it for **family A only**.
+
+**Why A only.** Family B failed G1 (AU flag rate 75% vs DE record rate 100%, so not under ½) and G2 (J_FALSE 25.6%, above 15%). With B's ledgers not valid as a detection record, a stress result on B could not be read as reporting loss. Running it would add calls without adding an interpretable number.
+
+**Why run it at all.** The lenient H1 floor is near zero in both families (A 0.3%, n = 359; B 0.0%, n = 360), so at 120 words almost nothing recorded is dropped outright. D6 exists for exactly this case: to see whether a tighter budget produces omission.
+
+**Caveat (D-2).** Under the committed name rule (`name_match_committed`, case-sensitive worker ID) A's H1 is 46.4%, and the trigger would not fire. The trigger fires only under the D-2 rule. Both numbers will be reported.
+
+**Scope.**
+- Same ledgers, high-pressure sets only, family A, all three samples.
+- Scored with the same judge, prompts v5 and the D-2 rule, and also under all four scores.
+- Exploratory. It cannot support H1 or H2 (as prereg D6 already says).
+- Script: `harness/slurm/stress_scratch.sbatch`. Analysis: the `STRESS` block in `analysis.py`.
+
+Record (7 Nov 2026, not a change): **empty A low-load ledgers checked before D-7.**
+- 55 family A low-pressure L ledgers are `{"issues": []}`. They are clean model outputs, not a parse or serving bug: 6 tokens, finish_reason stop, first attempt.
+- They cluster by set: 15 sets 3/3, 5 sets 2/3, 20 sets 0/3.
+- By cell: DE 20/30, AC 14/30, AE 12/30, DC 9/30.
+- In 34 of the 55, the same-conversation L report mentions the failure (lenient).
+- Consequence: H1/H2's "ledger records it" condition selects a different population at low load than at high load in family A. **H2 compares selected populations.** The write-up says so whatever the cause.
+
+Record (7 Nov 2026, not a change): **downgrade rate split by in-progress clause (descriptive, post hoc).**
+- A crude report-level regex separates downgrades whose only cue is "in progress / being worked on" from the rest.
+- Results:
+  - A S/high: 127/233 = 55%; 30% excluding in-progress-only (56 cases).
+  - A S/low: 79% → 73%.
+  - A L/high: 7% → 6%.
+  - A L/low: 58% → 57%.
+  - B cells: about unchanged.
+- The downgrade κ (0.83) rests on 24 hand-labelled cases. Downgrade is reported as a range (all clauses vs excluding in-progress-only), with both caveats.

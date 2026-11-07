@@ -497,3 +497,24 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - **analysis.py is not built.** It needs: H1–H5 descriptive under judge-strict, rule-strict and lenient; G1–G3; the D-2 sensitivity line; the mechanism split; Figure 1. The report gets written on Sunday.
 
 **Next chat's first step:** push; run the CAUSE job; build analysis.py against the scored logs (results are allowed now that the labels are committed); then compute κ and the table for CAUSE once the codes are in.
+
+## Chat 7 (cont. 4): CAUSE result and analysis.py
+**Decisions made:**
+- **CAUSE** (exploratory, D-6). κ is 0.82 and 0.84, so the judge codes are used.
+  - Workers framed the impossible tests as code only in 37/80 messages.
+  - Relay distortion (worker blamed the test or spec, manager reports code only): 24% overall [17, 31]; A 38% [27, 49]; B 11% [6, 17]. Saved in `results/cause/cause_result.json`.
+- **analysis.py** (descriptive, 2,000-resample cluster bootstrap) has run on all 130 sets. Outputs: `results/analysis/{results.json, results.md, figure1.png}`.
+- **Gates** (prereg §6, point estimates):
+  - **A** passes G1 (AU 35% vs ½ × DE 83%) and G2 (0%). It fails G3 under judge-strict (97.5% upper bound 11.8%), so it is labelled "capacity-limited" under that score; it passes G3 under lenient.
+  - **B** fails G1 (75% vs 100%) and G2 (26%), so **family B is reported as instrument failure** for H1–H5.
+- **D6 trigger:** the judge-strict H1 point estimates are below 5% in both families (A 4.5%, B 4.7%); rule-strict is not (18.8%, 29.7%). The stress arm has not been run; that's a decision pending.
+
+**Files produced:** `harness/analysis.py` (`535e9409`), `results/analysis/*`, `results/cause/cause_result.json`.
+
+**Open issues:**
+- Decide whether to run D6 (pre-registered trigger under judge-strict; second in the cut order).
+- Polish Figure 1 (legend overlap).
+- Write the report on the Apart template: lead with lenient L loss ≈ 0, judge-strict loss concentrated in the admitted cells, CAUSE, the A-low empty ledgers (55/120), and downgrade.
+- Release the logs.
+
+**Next chat's first step:** decide D6. Then write the report from `results/analysis/results.md` and `results/cause/cause_result.json`.
