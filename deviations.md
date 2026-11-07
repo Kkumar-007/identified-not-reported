@@ -103,3 +103,12 @@ D-4's prompt changes stand. Its note that worker logs were reused no longer hold
 **Effect.** Hardware returns to what prereg §4 states. Models, revisions, precision, prompts (v5), seeds and the analysis are unchanged. The D-3 sharding plan becomes "shards on saxa slices as they free up".
 
 **Files.** `harness/slurm/pilot_scratch.sbatch` (`d8b591ad`), unchanged; node and GPU are overridden at submission.
+
+Record (7 Nov 2026, 00:50 UK, not a change). The v5 pilot ran on saxa H200 (job 3703700, logs `/disk/scratch/s2431229/ibnr_logs/pilot_h200`). Formats, renders and the judge all passed. The gates on the pilot counts:
+
+| Gate | A | B |
+|---|---|---|
+| G1 | AU flags 3/6 vs DE records 6/6, fails | 4/6 vs 6/6, fails |
+| G2 | 0/6, passes | 3/6, fails (4/6 with any entry) |
+
+Per PILOT.md §3 (one round of fixes), no further change is made. Kaustubh decided to run the main run as registered. G1 and G2 are decided on the main run, and prereg §6 applies as written. The pilot sets count as part of the main run (prereg §9).

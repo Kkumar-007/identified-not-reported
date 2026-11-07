@@ -443,3 +443,21 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - After the re-pilot, no second fix round: G1 and G2 are decided on the main run.
 
 **Next chat's first step:** read the v5 pilot summary (`srun --jobid … cat …/pilot_h200/pilot_summary.txt` while the job holds the node, or by a short srun on saxa afterwards). If the formats pass, convert `main.sbatch` to scratch mode on saxa and submit the shards.
+
+## Chat 7 (cont. 2): v5 pilot and main run complete
+**Decisions made:**
+- **v5 pilot** (job 3703700, saxa H200, scratch): clean on formats, renders and judge. G1 fails on the pilot counts in A and B, and G2 in B. Per PILOT.md there is no second fix round. Kaustubh chose to run the main run as registered (recorded in deviations.md).
+- **Main run complete:** 4 shards (jobs 3703714–3703717), all `done` by 01:05 on 7 Nov, 0 excluded sets, `issues: {}` in every shard. Logs are on saxa scratch: `/disk/scratch/s2431229/ibnr_logs/{pilot_h200,main_s1..s4}`.
+- **80 hand-label pairs exported** (20 ledgers, 60 reports; `label_seed = derive_seed(master_seed, "labels")`).
+
+**Files produced:**
+- `results/s2431229_ibnr_results.tgz` (full backup, 7.7 MB, 10,473 files). **Unopened until the labels are done.**
+- `results/s2431229_labels_pack.tgz`, unpacked to `results/labels/` (`labels_blind.csv`, `codebook.md`).
+- The key (`labels_key.jsonl`) is only inside the backup and on saxa.
+
+**Open issues:**
+- Kaustubh labels the 80 pairs and saves them as `results/labels/labels_filled.csv` (CSV UTF-8). **Commit and push the filled CSV before κ is computed**, so its timestamp precedes any result.
+- `analysis.py` is not built: cluster bootstrap, H1–H5, G1–G3, Holm, the D-2 sensitivity line, the descriptives and Figure 1.
+- The home filesystem may still be stalling. Use the bare shell and scratch-mode jobs; report the outage.
+
+**Next chat's first step:** if the labels are done, push them, then compute κ. Otherwise build analysis.py against the mock while Kaustubh labels.
