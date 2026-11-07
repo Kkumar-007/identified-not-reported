@@ -25,6 +25,8 @@ Ledgers valid: 390/390
 | S loss, recoverable, high | 12.6% [6.1, 19.8] (n=222) | 58.6% [46.6, 70.4] (n=222) | 22.7% [15.8, 29.6] (n=264) | 5.0% [2.5, 8.3] (n=360) |
 | G3 CAP loss, high (97.5% CI) | 5.9% [1.1, 11.8] (n=222) | 5.9% [1.1, 11.8] (n=222) | 22.7% [14.6, 31.6] (n=260) | 0.6% [0.0, 2.2] (n=359) |
 | H5 responsible − placebo (S, recov.) | -0.4 pts [-7.7, +7.1] | +1.6 pts [-5.6, +8.6] | -2.0 pts [-7.6, +3.5] | -0.7 pts [-4.3, +2.6] |
+| D6 stress (60-word) L loss, high — exploratory | 10.4% [4.9, 16.4] (n=222) | 36.9% [24.4, 49.8] (n=222) | 10.0% [5.1, 15.5] (n=260) | 0.3% [0.0, 0.8] (n=359) |
+| D6 stress − L (60 vs 120 words), high | +5.9 pts [+1.8, +10.2] | -9.5 pts [-25.6, +5.7] | -8.8 pts [-15.6, -1.7] | +0.0 pts [+0.0, +0.0] |
 
 | Cell (high, L loss) | judge-strict (D-2 match) | judge-strict (committed case-sensitive match) | rule-strict (κ fallback) | lenient |
 |---|---|---|---|---|
@@ -36,9 +38,9 @@ Ledgers valid: 390/390
 - G1: AU ledger flag rate 35.0% [18.3, 53.3] (n=60) vs DE record rate 83.3% [74.6, 92.5] (n=120); inequality holds on point estimates: True. AU entries citing the amendment: 19/21 (descriptive, D-4).
 - G2: clean-ledger false alarms 0.0% [0.0, 0.0] (n=90); any entry 0.0% [0.0, 0.0] (n=90); point < 15%: True.
 - G3 (judge-strict) passes (97.5% upper < 10%): False; lenient: True.
-- D6 stress arm trigger (H1 point < 5%): {'judge': True, 'rule': False} (not run).
+- D6 stress arm trigger (H1 point < 5%): {'judge': True, 'rule': False} (run, exploratory (D-7)).
 - Downgrade among judge-strict-reported: L/low 58.2% [43.0, 73.8] (n=79); L/high 7.4% [3.3, 12.1] (n=229); S/low 79.4% [68.3, 89.6] (n=97); S/high 54.5% [44.4, 64.1] (n=233); high/core 32.4% [25.9, 39.4] (n=247); high/edge 29.8% [23.0, 36.3] (n=215)
-- Median report words: {'CAP/neutral': 72.0, 'L/neutral': 59.0, 'S/neutral': 57.0, 'S/placebo': 57.0, 'S/responsible': 58.0}; truncated at cap: {'CAP/neutral': 0, 'L/neutral': 0, 'S/neutral': 0, 'S/placebo': 0, 'S/responsible': 0}
+- Median report words: {'CAP/neutral': 72.0, 'L/neutral': 59.0, 'S/neutral': 57.0, 'S/placebo': 57.0, 'S/responsible': 58.0, 'STRESS/neutral': 35.0}; truncated at cap: {'CAP/neutral': 0, 'L/neutral': 0, 'S/neutral': 0, 'S/placebo': 0, 'S/responsible': 0, 'STRESS/neutral': 0}
 
 ## Family B
 

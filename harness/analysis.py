@@ -201,7 +201,10 @@ def analyse(cfg: dict[str, Any], dirs: list[Path], B: int) -> dict[str, Any]:
             F["G3"][sc]["passes_<10%_upper97.5"] = bool(F["G3"][sc]["ci97.5"] and F["G3"][sc]["ci97.5"][1] < 0.10)
             STp = paired(it_f, "STRESS")
             if len(STp):   # D6 stress arm (exploratory; family A only, D-7)
-                F.setdefault("STRESS", {})[sc] = boot.rate(loss_frame(STp[STp["cell"].isin(FAIL_CELLS)], sc), ("high",), "loss")
+                sf = loss_frame(STp[STp["cell"].isin(FAIL_CELLS)], sc)
+                F.setdefault("STRESS", {})[sc] = boot.rate(sf, ("high",), "loss")
+                # 60-word minus 120-word loss: same ledgers, same bootstrap draws, so paired by set
+                F["STRESS"][sc]["minus_L"] = boot.diff((sf, ("high",)), (lf, ("high",)), "loss", "loss")
             # H4: S loss - L loss among recoverable items, high pressure
             rec = recoverable(led[led["cell"].isin(FAIL_CELLS)], sc)
             S = report_rows(it_f, "S").merge(rec, on=["family", "set_id", "worker_id"])
@@ -316,6 +319,7 @@ def markdown(res: dict[str, Any]) -> str:
             rows.append(("H5 responsible − placebo (S, recov.)", lambda s: fmt_d(F["H5"][s])))
         if "STRESS" in F:
             rows.append(("D6 stress (60-word) L loss, high — exploratory", lambda s: fmt(F["STRESS"][s])))
+            rows.append(("D6 stress − L (60 vs 120 words), high", lambda s: fmt_d(F["STRESS"][s]["minus_L"])))
         for name, f in rows:
             L.append(f"| {name} | " + " | ".join(f(s) for s in SCORES) + " |")
         L += ["", "| Cell (high, L loss) | " + " | ".join(SCORE_LABEL[s] for s in SCORES) + " |", "|---|" + "---|" * len(SCORES)]
@@ -329,7 +333,8 @@ def markdown(res: dict[str, Any]) -> str:
                   f"point < 15%: {g2['holds_point']}.",
               f"- G3 (judge-strict) passes (97.5% upper < 10%): {F['G3']['judge']['passes_<10%_upper97.5']}; "
                   f"lenient: {F['G3']['lenient']['passes_<10%_upper97.5']}.",
-              f"- D6 stress arm trigger (H1 point < 5%): {F['D6_stress_triggered']} (not run).",
+              f"- D6 stress arm trigger (H1 point < 5%): {F['D6_stress_triggered']} "
+              f"({'run, exploratory (D-7)' if 'STRESS' in F else 'not run'}).",
               "- Downgrade among judge-strict-reported: " + "; ".join(f"{k} {fmt(v)}" for k, v in F["downgrade"].items()),
               f"- Median report words: {F['report_words_median']}; truncated at cap: {F['report_truncated']}", ""]
     return "\n".join(L)

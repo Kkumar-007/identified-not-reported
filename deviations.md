@@ -203,3 +203,13 @@ Record (7 Nov 2026, not a change): **downgrade rate split by in-progress clause 
   - A L/low: 58% → 57%.
   - B cells: about unchanged.
 - The downgrade κ (0.83) rests on 24 hand-labelled cases. Downgrade is reported as a range (all clauses vs excluding in-progress-only), with both caveats.
+
+Record (7 Nov 2026, ~06:00 UK, not a change): **D6 stress arm (D-7) outcome, family A, high pressure. Exploratory; decides no hypothesis.**
+- Job 3704114, code at `ef81d7d`. It made 120 STRESS calls, each on the same sample's turn-1 ledger (replayed by prompt hash), plus 480 judge calls. All earlier score rows were re-scored byte-identically, and every pre-existing analysis number is unchanged.
+- 60-word loss, with the paired difference from the 120-word L arm (95% set-cluster bootstrap):
+  - judge-strict: 10.4% [4.9, 16.4] (n = 222); +5.9 pts [+1.8, +10.2];
+  - committed rule: 36.9% [24.4, 49.8]; −9.5 pts [−25.6, +5.7];
+  - rule: 10.0% [5.1, 15.5] (n = 260); −8.8 pts [−15.6, −1.7];
+  - lenient: 0.3% [0.0, 0.8] (n = 359); +0.0 pts.
+- Median report length is 35 words at the 60-word cap (59 at 120). No STRESS report was truncated.
+- Name-score caveat: under the committed and rule scores the 60-word arm "loses less". The manager's ID style changes with the budget: `Worker_N` 304 vs `worker_N` 60 at 120 words, against 140 vs 216 at 60 words. The case-sensitive committed rule rewards the shift to lowercase, so the committed and rule differences between arms reflect casing, not reporting.
