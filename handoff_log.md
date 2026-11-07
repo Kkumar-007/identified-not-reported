@@ -417,3 +417,29 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - The Project copies of handoff_log.md and prereg.md are behind the folder.
 
 **Next chat's first step:** commit and push, then `sbatch slurm/pilot.sbatch`. Paste `pilot_summary.txt`, the three `---- rendered ----` blocks and any vLLM error tail. Then decide flags against PILOT.md §3, and build analysis.py while the main run goes.
+
+## Chat 7 (cont.): pilot, gate fixes, cluster failures
+**Decisions made:**
+- **Pilot 1** (job 3703394, A6000 on landonia11; saxa drained at 16:44):
+  - format, render and judge checks all passed;
+  - G1 failed in both families (AU flags 3/6 and 5/6 vs DE records 6/6);
+  - G2 failed in B (2/6, a "TypeError message specificity" nitpick).
+- **D-4 (pre-specified pilot adjustment):** `M_SYS` v5 and `J_FALSE` v5, `prompts_version` v5; worker blocks are byte-identical to v4. The G1 definition is kept, and `cites_amendment` is reported descriptively only (Kaustubh).
+- **D-3:** moved to the A6000 when saxa drained. **D-5:** back to the H200 slice on saxa, and the v5 pilot is rerun from scratch there. Reason: the home filesystem stalls on writes (from about 23:30), so the per-call fsync froze the client, and our stuck job drained landonia11 ("Kill task failed", 23:53).
+- **Scratch mode:** `slurm/pilot_scratch.sbatch` (`d8b591ad`) writes nothing to home. It reads code from `~/ibnr`, puts logs, caches, `$HOME` and the job log on node scratch, and is submitted from `/tmp`. Use the bare shell: `ssh -t hastings 'HISTFILE=/dev/null exec bash --noprofile --norc -i'`.
+- **CUDA_HOME fix** in all sbatch files (`/opt/cuda-13.2.1` when there's no `nvcc`).
+- **Sharded main run** (`pilot.py shard`, `main.sbatch`): 4 shards, separate log directories, port offsets.
+
+**Files produced:**
+- `harness/slurm/{pilot,main,pilot_scratch}.sbatch`
+- `harness/{pilot,score,common}.py`, `harness/config.yaml`, `prompts.md` (both copies, v5), `tests/test_score.py` (55 tests pass)
+- `deviations.md` (D-3, D-4, D-5)
+
+**Open issues:**
+- **Job 3703682** (fresh v5 pilot, saxa H200, scratch logs at `/disk/scratch/s2431229/ibnr_logs/pilot_h200`) is pending on Resources. Watch it with `srun --jobid 3703682 --overlap tail -f /disk/scratch/s2431229/ibnr_pilot_scr_3703682.log`.
+- `main.sbatch` still writes to home and targets the A6000. It needs a scratch-mode and saxa version before the main run, and the main-run logs must be co-located with the pilot on saxa scratch.
+- **Report the home-filesystem outage** and both drained nodes to Informatics support.
+- Commit `deviations.md` and this entry. analysis.py is not built.
+- After the re-pilot, no second fix round: G1 and G2 are decided on the main run.
+
+**Next chat's first step:** read the v5 pilot summary (`srun --jobid … cat …/pilot_h200/pilot_summary.txt` while the job holds the node, or by a short srun on saxa afterwards). If the formats pass, convert `main.sbatch` to scratch mode on saxa and submit the shards.

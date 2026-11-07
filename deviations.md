@@ -84,3 +84,22 @@ The 10 pilot sets' manager and judge outputs are regenerated under v5 in a fork 
 - `harness/config.yaml`: `6255acea5401d2ac…` (prompts_version v5)
 - `harness/common.py`: `8500d0f24c87f002…` (VERSION_SETTINGS v5 = v4 worker settings)
 - `harness/score.py`: `60be588735b83cf1…` (cites_amendment)
+
+## D-5 · 7 Nov 2026 00:15 UK · DEVIATION (serving hardware: back to the prereg H200 slice; supersedes D-3)
+**What changed.** The v5 pilot is rerun **from scratch on saxa's H200 3g.71gb slice**, as prereg §4 specifies: workers, managers and judge, on the same pilot sets and seeds. The main run follows on the same hardware. Every write goes to saxa's local `/disk/scratch` (`slurm/pilot_scratch.sbatch`, with `-w saxa --gres=gpu:h200_3g.71gb:1` given on the command line). All A6000 outputs are superseded and are not used in any analysis:
+- v4 pilot job 3703394;
+- the partial v5 re-pilot, job 3703455;
+- job 3703651, which never ran.
+
+D-4's prompt changes stand. Its note that worker logs were reused no longer holds: the pilot's worker episodes are regenerated, on the frozen v4 worker prompts. The D-4 diagnosis refers to the superseded A6000 transcripts and stays on record.
+
+**Why.**
+- The cluster home filesystem stalled on writes from about 23:30. The harness's per-call fsync to `~/ibnr_logs` froze the client (manager calls took up to 1,987 s), and a test write from hastings hung too.
+- Cancelling the stalled job left its process stuck in a home write. Slurm drained landonia11 at 23:53 with "Kill task failed (JobId=3703455)", the same cause as saxa's drain at 16:44.
+- saxa is back in service, and landonia11 is not.
+
+**Seen before the change.** Nothing new beyond D-4. No v5 summary was produced.
+
+**Effect.** Hardware returns to what prereg §4 states. Models, revisions, precision, prompts (v5), seeds and the analysis are unchanged. The D-3 sharding plan becomes "shards on saxa slices as they free up".
+
+**Files.** `harness/slurm/pilot_scratch.sbatch` (`d8b591ad`), unchanged; node and GPU are overridden at submission.
