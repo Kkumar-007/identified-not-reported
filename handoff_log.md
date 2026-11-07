@@ -518,3 +518,39 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - Release the logs.
 
 **Next chat's first step:** decide D6. Then write the report from `results/analysis/results.md` and `results/cause/cause_result.json`.
+
+## Chat 7 (cont. 5): D6 stress arm, Figure 1 and §4 draft · 7 Nov 2026
+**Decisions made:**
+- **D6 run for family A only** (D-7: B failed G1/G2). Job 3704114, code `ef81d7d`. 120 STRESS calls reused the same ledgers (replay); 480 judge calls. All earlier score rows came back byte-identical and every earlier analysis number is unchanged.
+  - Lenient 60-word loss: 0.3% (no change).
+  - Judge-strict: 10.4% (+5.9 pts). That score is unvalidated (κ 0.09), so it is not read as "description dropped".
+  - The committed and rule scores move the other way. This is an ID-casing artefact (`Worker_N`/`worker_N`: 304/60 at 120 words vs 140/216 at 60 words), which is independent support for D-2.
+- **Empty ledgers checked:** real behaviour (55/120, clustered by set; 34/55 reports still mention the failure). H2 therefore compares selected populations.
+- **Downgrade split** (post hoc): A S/high 55% → 30% excluding in-progress-only; other cells barely move. Report it as a range.
+- **Headline is failure laundering:** omission ≈ 0, softening is large, cause flipping is 38% (A) and 11% (B). Figure 1 has been redesigned around this.
+- **Family B is left out of every ledger-conditioned number,** in the figure, the abstract and §4 (prereg §6: instrument failure, not interpreted). B's reports still appear in the softening and cause-flipped results.
+- "Faithful at this pressure" is only described: lenient meets the band, but lenient was not the primary score, so no decision is made.
+
+**Files produced:**
+- `harness/slurm/stress_scratch.sbatch` (`027d930a`)
+- `harness/analysis.py` (`778fe862`; adds STRESS and the paired 60-vs-120 difference)
+- `harness/figure1.py`
+- `results/analysis/{results.*, figure1_laundering.png}`
+- `abstract_v3.md` (v3.1, 244 words)
+- `report_results_v1.md` (§4 draft)
+- `deviations.md` (D-7, plus records for the empty ledgers, the downgrade split and the D6 outcome)
+- `results/s2431229_stress_results.tgz` (8.55 MB, sha256 `87b98056…`). This is the good full-log backup. `s2431229_ibnr_results.tgz` may be corrupt: an srun ran two tasks and doubled the stream. Use `srun -n 1` in future.
+
+**Open issues:**
+- §4 is about 1.9 pages against a 1.5-page budget; trim at the [trim] marks.
+- Write the Figure 1 caption. It must say: B is omitted from the Dropped panel; Softened uses judge-strict-reported items as its denominator; Cause flipped pools both loads and both arms.
+- Title (suggested: "Named, Not Told: Failure Laundering in LLM Reporting Hierarchies").
+- Revise §1 and §2 for the new headline.
+- §3 Methods prose.
+- §5 Discussion.
+- Appendix A (Limitations and Dual-Use), Appendix E (B's numbers, the unvalidated scores, J_OPT).
+- LLM usage statement.
+- Release the logs.
+- Move the work onto the Apart template.
+
+**Next chat's first step:** commit `abstract_v3.md`, `report_results_v1.md`, `figure1.py` and `figure1_laundering.png`. Then write the Figure 1 caption and §5, and move §1–§5 onto the Apart template.
