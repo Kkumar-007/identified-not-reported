@@ -166,3 +166,8 @@ Both may be true. Hedged wording counts ("likely a test typo" sets `blames_test_
 - 95% intervals come from a cluster bootstrap over transcript sets (2,000 resamples), because each worker message sits under up to 12 reports.
 
 **Status.** Exploratory and post hoc. It decides no hypothesis. The labeller is blind to the judge's codes but not to the hypothesis, and has read many of these reports; this goes in Limitations, together with "single labeller who is also the designer".
+
+Record (7 Nov 2026, 05:20 UK, not a change): **CAUSE (D-6) outcome.**
+- The hand codes are in commit `f374202`. Its message says "before any coding", but it contains the codes. The D-6 spec precedes it, in `27fbf15`. Both precede the J_CAUSE run (job 3704058, code pinned at `f374202`, 960 calls).
+- κ on the 40 validation reports: `blames_code` 0.82 and `blames_test_spec` 0.84, agreement 92.5% for each. Both pass the D-6 rule, so the judge codes are used.
+- Results are in `results/cause/cause_result.json`. They are exploratory and decide no hypothesis.

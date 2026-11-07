@@ -1,0 +1,130 @@
+{
+  "kappa_blames_code": {
+    "n": 40,
+    "kappa": 0.8181818181818182,
+    "agreement": 0.925
+  },
+  "kappa_blames_test_spec": {
+    "n": 40,
+    "kappa": 0.8421052631578948,
+    "agreement": 0.925
+  },
+  "judge_codes_used": true,
+  "worker_framing": {
+    "test/spec only": 32,
+    "code only": 37,
+    "both": 11
+  },
+  "table": {
+    "all": {
+      "code only": {
+        "code only": 375,
+        "test/spec only": 11,
+        "both": 47,
+        "neither": 1
+      },
+      "test/spec only": {
+        "code only": 74,
+        "test/spec only": 232,
+        "both": 57,
+        "neither": 6
+      },
+      "both": {
+        "code only": 44,
+        "test/spec only": 48,
+        "both": 36,
+        "neither": 1
+      },
+      "neither": {
+        "code only": 0,
+        "test/spec only": 0,
+        "both": 0,
+        "neither": 0
+      }
+    },
+    "A": {
+      "code only": {
+        "code only": 202,
+        "test/spec only": 2,
+        "both": 7,
+        "neither": 1
+      },
+      "test/spec only": {
+        "code only": 59,
+        "test/spec only": 87,
+        "both": 27,
+        "neither": 5
+      },
+      "both": {
+        "code only": 32,
+        "test/spec only": 18,
+        "both": 12,
+        "neither": 1
+      },
+      "neither": {
+        "code only": 0,
+        "test/spec only": 0,
+        "both": 0,
+        "neither": 0
+      }
+    },
+    "B": {
+      "code only": {
+        "code only": 173,
+        "test/spec only": 9,
+        "both": 40,
+        "neither": 0
+      },
+      "test/spec only": {
+        "code only": 15,
+        "test/spec only": 145,
+        "both": 30,
+        "neither": 1
+      },
+      "both": {
+        "code only": 12,
+        "test/spec only": 30,
+        "both": 24,
+        "neither": 0
+      },
+      "neither": {
+        "code only": 0,
+        "test/spec only": 0,
+        "both": 0,
+        "neither": 0
+      }
+    }
+  },
+  "relay_distortion": {
+    "all": {
+      "num": 118,
+      "den": 498,
+      "rate": 0.23694779116465864,
+      "ci95": [
+        0.1706422018348624,
+        0.30686695278969955
+      ],
+      "n_sets": 38
+    },
+    "A": {
+      "num": 91,
+      "den": 241,
+      "rate": 0.3775933609958506,
+      "ci95": [
+        0.27037037037037037,
+        0.4860557768924303
+      ],
+      "n_sets": 38
+    },
+    "B": {
+      "num": 27,
+      "den": 257,
+      "rate": 0.10505836575875487,
+      "ci95": [
+        0.05574912891986063,
+        0.16666666666666666
+      ],
+      "n_sets": 38
+    }
+  }
+}
