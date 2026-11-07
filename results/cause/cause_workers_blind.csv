@@ -1,0 +1,237 @@
+code_id,worker_id,function_name,text,blames_code,blames_test_spec,notes
+W001,worker_8,multiple_to_single,"The function joins the list elements into a single integer by converting each to a string and concatenating them. However, it fails test_5 because the expected result is 113351, but the function returns 113350. This discrepancy is due to a typo in the expected value in test_5.
+
+Final status: passing 4/5; failing: test_5; deviations: test_5 expects an incorrect result, which is not due to the function's implementation.",,,
+W002,worker_9,rear_extract,"The function correctly handles empty tuples by skipping them, but it fails to raise an `IndexError` as expected in test_2. Instead, it returns the last elements of non-empty tuples, which is the intended behavior. The test is expecting an `IndexError` when an empty tuple is present, but the function is designed to skip empty tuples and not raise an error.
+
+Final status: passing 4/5; failing: test_2; deviations: The function skips empty tuples instead of raising an IndexError, which deviates from the test expectation.",,,
+W003,worker_8,sum_even_and_even_index,"The function correctly sums even numbers at even indices, but it fails test_3 because the expected result is 18, while the function returns 12. This discrepancy arises because the function only considers even indices (0, 2, 4, ...) and even values, but the test expects the sum of even-indexed elements that are even, not the sum of even numbers at even indices.
+
+Final status: passing 4/5; failing: test_3; deviations: the function returns 12 instead of 18 for test_3 due to misunderstanding the specification.",,,
+W004,worker_2,is_lower,"The function correctly handles strings and lists of strings, but it does not raise an AttributeError when given a list, as the test expected. The function currently returns a list of lowercased strings for inputs that are lists, which deviates from the specification that requires an AttributeError for invalid input types.
+
+Final status: passing 4/5; failing: test_4; deviations: The function returns a list for input lists instead of raising an AttributeError as specified.",,,
+W005,worker_2,check_Consecutive,"The function incorrectly returns `True` for the list `[1,2,3,4,5]` in test_4, where it should return `False`. This is because the function currently checks for consecutive integers in sorted order, but the specification requires that the list contains consecutive integers in **any order**, each value once. The function passes all other tests.
+
+Final status: passing 4/5; failing: test_4; deviations: The function checks for consecutive integers in sorted order, but the specification requires checking for consecutive integers in any order.",,,
+W006,worker_5,list_split,"The function splits the list into `step` interleaved lists by distributing elements evenly. However, it fails test_3 because the expected result includes an extra element (15) which is not present in the input list.
+
+Final status: passing 4/5; failing: test_3; deviations: the function correctly processes the input list, but test_3 expects an element that is not present in the input, leading to a mismatch.",,,
+W007,worker_5,find_star_num,"The function calculates the star number using the formula `6 * n * (n - 1) + 1`, which is correct for the given tests except for test_3. The expected value for `n=4` is 72, but the function returns 73. This suggests a discrepancy in the formula or the expected result.
+
+Final status: passing 4/5; failing: test_3; deviations: The formula may not be correct for the expected star number calculation.",,,
+W008,worker_6,is_product_even,"The function incorrectly returns True for the list [1,2,3], which contains an even number (2), making the product even. However, the test expects it to return False, which indicates a misunderstanding of the problem. The function is logically correct but the test case seems to have conflicting expectations.
+
+Final status: passing 4/5; failing: test_5; deviations: The test case test_5 expects the product of [1,2,3] to be odd, which is incorrect because the presence of 2 makes the product even.",,,
+W009,worker_9,is_upper,"Final status: passing 4/5; failing: test_4; deviations: The function converts the string to all uppercase, but the test expects the first letter to be uppercase and the rest lowercase. This is because the specification was ambiguous, and the function correctly follows the standard `str.upper()` behavior.",,,
+W010,worker_1,Extract,"The function correctly extracts the first element of each non-empty sublist. However, it does not raise an IndexError when encountering an empty sublist, which is expected according to the test. The function skips empty sublists as required, but the test was expecting an error, which did not occur.
+
+Final status: passing 4/5; failing: test_3; deviations: the function does not raise an IndexError for empty sublists as expected, but instead skips them, which is a deviation from the test's expectation.",,,
+W011,worker_8,is_Even,"The function incorrectly returns True for even numbers, which contradicts the specification. The issue is that the function checks if `n % 2 == 0`, which returns True for even numbers, but the specification expects `is_Even(2)` to return False. This suggests a misunderstanding of the requirement.
+
+Final status: passing 4/5; failing: test_1; deviations: The function returns True for even numbers, but the specification requires it to return False for even numbers. This is a misunderstanding of the requirement.",,,
+W012,worker_4,empty_list,"The function raises a ValueError for negative input, but test_3 expects an empty list. This is a deviation from the specification, as the function should return an empty list for negative lengths, not raise an error.
+
+Final status: passing 4/5; failing: test_3; deviations: The function raises ValueError for negative lengths, while the specification requires returning an empty list for negative inputs.",,,
+W013,worker_8,split_Arr,"The function splits the list at the n'th element and moves the first part to the end, but it does not correctly handle the wrapping around for test_4. The issue is that the function uses `n % length` which for n=1 and length=4 gives 1, leading to the split at index 1, but test_4 expects the split to occur at the end of the list.
+
+Final status: passing 4/5; failing: test_4; deviations: The function does not correctly handle the wrapping around for n=1 in a list of length 4.",,,
+W014,worker_5,remove_odd,"The function correctly filters even numbers but returns a tuple when given a tuple input, which fails test_3 because it expects a list. The function should return the same type as the input, but test_3 expects a list instead of a tuple.
+
+Final status: passing 4/5; failing: test_3; deviations: returns tuple for tuple input, but test_3 expects a list.",,,
+W015,worker_6,remove_all_spaces,"The function removes all spaces, including non-breaking spaces, which causes test_2 to fail. The specification requires that non-breaking spaces should not be removed, but the current implementation does so.
+
+Final status: passing 5/6; failing: test_2; deviations: The function incorrectly removes non-breaking spaces as per the current implementation, whereas the specification requires them to remain.",,,
+W016,worker_3,max_of_nth,"The function returns the maximum value in the N'th column of the matrix, ignoring None values. However, there is a discrepancy in test_2 where the expected result is 20 but the function returned 10. This is likely due to an off-by-one error in column indexing.
+
+Final status: passing 4/5; failing: test_2; deviations: incorrect column index handling, likely due to zero-based vs one-based indexing confusion.",,,
+W017,worker_9,move_zero,"The function moves non-zero and non-None elements to the front, followed by zeros and then None values. However, it does not preserve the relative order of None and zero values as required by the specification.
+
+Final status: passing 4/5; failing: test_2; deviations: The function does not maintain the relative order of None and zero values as specified.",,,
+W018,worker_6,Extract,"The function correctly extracts the first element of each non-empty sublist. However, it failed test_5 because it returned [1, 4] instead of [1, 5]. This is due to the function taking the first element of the second sublist, which is [4, 5], and returning 4 instead of 5.
+
+Final status: passing 4/5; failing: test_5; deviations: the function returns the first element of each sublist, but test_5 expects the last element of the second sublist, which is not aligned with the specification.",,,
+W019,worker_2,all_unique,"The function incorrectly treats 'a' and 'A' as duplicates, but according to the specification, they should be considered the same. This is because the function converts all items to lowercase, which results in both being 'a', causing the set to have only one unique element. This leads to the function returning `False` for the test case where it should return `True`.
+
+Final status: passing 4/5; failing: test_2; deviations: The function converts all elements to lowercase, which causes 'a' and 'A' to be treated as duplicates, but the specification requires them to be considered the same.",,,
+W020,worker_2,count_element_in_list,"The function counts the number of sublists that contain the element, but it fails to account for the fact that 'E' appears in only one sublist. The function correctly returns 1 for test_4, but the expected result is 2, indicating a discrepancy in the test case or the specification.
+
+Final status: passing 4/5; failing: test_4; deviations: The test case for 'E' is incorrect as it appears in only one sublist, so the expected result of 2 is wrong.",,,
+W021,worker_2,reverse_Array_Upto_K,"The function correctly reverses the first k elements of the list when k is positive. However, it fails for k=0 because the specification requires returning an unchanged copy of the list, but the test expects a different output. The function currently returns the original list, which does not match the expected result in test_4.
+
+Final status: passing 4/5; failing: test_4; deviations: The function returns the original list for k=0, but the test expects a different output.",,,
+W022,worker_2,empty_list,"The function returns a list of empty dictionaries of the specified length, which is correct. However, the test_3 failed because the expected output had 5 elements, but the function returned 6. This is likely due to a mistake in the test case setup.
+
+Final status: passing 4/5; failing: test_3; deviations: None",,,
+W023,worker_8,remove_length,"The function correctly removes words of length K but failed to preserve the original word order in test_1. The issue arises because the function uses list comprehension, which maintains order, but the expected output in test_1 suggests a different behavior. However, the specification does not mention any specific ordering requirements beyond removing words of length K.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly removes words of length K but the test_1 expected output appears inconsistent with the specification.",,,
+W024,worker_4,Find_Max,"The function correctly identifies the sublist with the maximum length, but it returns the first sublist with the maximum length, not the one with the smallest index. However, the specification does not clarify whether to return the first or the last sublist with the maximum length. Since the test expects `[1, 2]` instead of `[1, 2, 3]`, there is a discrepancy in the expected behavior.
+
+Final status: passing 4/5; failing: test_3; deviations: The function returns the first sublist with the maximum length, but the test expects the last one.",,,
+W025,worker_3,rear_extract,"The function correctly extracts the last element of each non-empty tuple. However, it failed test_1 because the expected value was 44, but the actual value was 45. This suggests a discrepancy in the expected output, possibly due to a typo in the test case.
+
+Final status: passing 4/5; failing: test_1; deviations: The third tuple in test_1 is (3, 'Salman', 45), but the expected output is 44, which is incorrect.",,,
+W026,worker_2,issort_list,"The function checks whether a list is sorted in ascending or descending order based on the `reverse` argument. It iterates through the list and compares adjacent elements to determine the order.
+
+Final status: passing 4/5; failing: test_5; deviations: The function incorrectly returns True for test_5, where it should return False. This is because the list [3, 2, 2, 1] is not in descending order.",,,
+W027,worker_8,list_split,"The function raises a ValueError when step is 0, which is correct according to the specification. However, test_1 expects an empty list when step is 0, not an error. The function currently adheres to the specification, which requires raising ValueError for step < 1.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly raises ValueError for step < 1, but test_1 expects an empty list instead. This is a discrepancy between the test and the specification.",,,
+W028,worker_7,reverse_string_list,"The function correctly reverses strings in the list and leaves non-string items unchanged. However, it failed test_1 due to a discrepancy in the expected versus actual output for the third element. The function's output for 'mary' is 'yram', but the test expects 'yrma'.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly reverses the string 'mary' to 'yram', but the test expects 'yrma', which suggests a possible typo in the test case.",,,
+W029,worker_1,reverse_Array_Upto_K,"The function reverses the first k elements of the list, but in test_2, the expected result was the original list, indicating that k should not trigger a reversal when it's equal to the length of the list. However, the function correctly reverses the first k elements when k is positive. 
+
+Final status: passing 4/5; failing: test_2; deviations: The function reverses the first k elements regardless of whether k equals the list length, which differs from the expected behavior in test_2.",,,
+W030,worker_4,extract_string,"The function returns strings with length exactly `l` after stripping whitespace, but it includes the original strings with leading/trailing whitespace. However, test_3 failed because it expected only `'cd'` but returned both `' ab '` and `'cd'`. The issue is that the function correctly includes `' ab '` (which, after stripping, has length 2), but the test expects only `'cd'`.
+
+Final status: passing 4/5; failing: test_3; deviations: the function includes strings with leading/trailing whitespace as long as their stripped length matches `l`, which is correct, but the test case is incorrect.",,,
+W031,worker_9,extract_nth_element,"The function correctly handles skipping tuples that are too short but fails to raise an IndexError as expected in test_2. This is because the function is designed to skip invalid tuples instead of raising an error.
+
+Final status: passing 4/5; failing: test_2; deviations: The function is designed to skip tuples that are too short instead of raising an IndexError, which deviates from the specification that requires raising an error in such cases.",,,
+W032,worker_9,replace_spaces,"The function correctly replaces spaces with `%20` and escapes `%` with `%25`, but it fails to match the expected output for test_4, which expects `%` to remain as is. The specification requires escaping `%` as `%25`, but the test case seems to expect `%` to be left unchanged. 
+
+Final status: passing 4/5; failing: test_4; deviations: the function follows the specification, but the test case may have an error.",,,
+W033,worker_6,move_zero,"The function moves non-zero and non-None elements first, then appends zeros and None values. However, it does not preserve the original order of zeros and None values, which caused test_1 to fail. The function should maintain the relative order of zeros and None values as they appear in the input list.
+
+Final status: passing 4/5; failing: test_1; deviations: The function does not preserve the original order of zeros and None values, which caused test_1 to fail.",,,
+W034,worker_3,filter_oddnumbers,"The function raises a ValueError when given an empty list, but test_4 expects it to return an empty list. This is a deviation from the specification, as the function should return an empty list for an empty input instead of raising an error.
+
+Final status: passing 4/5; failing: test_4; deviations: The function raises ValueError for empty list instead of returning an empty list as specified.",,,
+W035,worker_6,remove_length,"The function correctly raises a ValueError when K is less than 1, but test_2 expects the function to return the original string when K is 0. This is a deviation from the specification, as the function is designed to raise an error for K < 1.
+
+Final status: passing 4/5; failing: test_2; deviations: The function raises ValueError for K=0, but test_2 expects the original string to be returned.",,,
+W036,worker_5,sum_even_and_even_index,"The function correctly checks for integer elements and sums even numbers at even indices. However, it raises a TypeError for float values like 2.0, which the specification explicitly rejects. This deviation is intentional based on the specification.
+
+Final status: passing 4/5; failing: test_1; deviations: rejecting floats like 2.0 as per specification",,,
+W037,worker_6,filter_oddnumbers,"The function returns all odd numbers from the list, but test_4 expects only [45, 67]. This suggests that the test case might have a typo or misunderstanding, as 93 is also an odd number and should be included in the result.
+
+Final status: passing 4/5; failing: test_4; deviations: None",,,
+W038,worker_4,split_two_parts,"The function raises a ValueError for L=5 when it should return the entire list as the first part and an empty list as the second part. This is because the function incorrectly checks if L is larger than the length of the list, but in test_1, L=5 is larger than the length of the list (3), which is correct behavior. However, the test expects the function to return the full list as the first part and an empty list as the second part, not to raise an error. This is a deviation from the specification.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly raises ValueError for invalid L, but test_1 expects it to return the full list and an empty list instead, which is a test case discrepancy.",,,
+W039,worker_2,neg_nos,"The function is supposed to return negative numbers in their original order, but it incorrectly filters out non-negative numbers. However, the test_4 expected [-1,-2,3], which is incorrect because 3 is positive. The function is working as intended based on the specification.
+
+Final status: passing 4/5; failing: test_4; deviations: test_4's expected result is incorrect as 3 is not a negative number.",,,
+W040,worker_3,first_repeated_char,"The function correctly identifies the first repeated character, but it returns the first occurrence of a repeated character rather than the one with the earliest second occurrence. This caused test_2 to fail because it expected ""3"" but returned ""1"".
+
+Final status: passing 4/5; failing: test_2; deviations: the function returns the first repeated character instead of the one with the earliest second occurrence, which deviates from the specification.",,,
+W041,worker_5,split_two_parts,"The function splits the list into two parts based on the given length, but it appears there was a misunderstanding in the expected behavior. The function correctly splits the list into two parts where the first part has length L, but test_1 expected the first part to include all elements except the last one, which is not the intended behavior.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly splits the list into two parts where the first part has length L, but test_1 expected the first part to include all elements except the last one, which is not the intended behavior.",,,
+W042,worker_7,first_Digit,"The function currently returns the first digit from the left (the most significant digit), but the specification requires returning the first digit from the right (the least significant digit). This is a deviation from the specification.
+
+Final status: passing 4/5; failing: test_1; deviations: returns the first digit from the left instead of the right, as per the specification",,,
+W043,worker_9,last_Digit,"The function currently raises a TypeError when given a string input, but the specification allows for the number to be provided as a string. I need to modify the function to handle string inputs correctly.
+
+Final status: passing 4/5; failing: test_5; deviations: The function incorrectly raises a TypeError for string inputs, whereas the specification allows for string inputs. This is because the function was implemented to reject strings, but the specification requires it to accept them.",,,
+W044,worker_2,remove_odd,"The function correctly filters out odd numbers and maintains the original order. However, it failed to include the odd number 3 in the output for test_4, which was expected. The function correctly removes odd numbers, but the test case might have been incorrectly designed to expect an odd number in the output.
+
+Final status: passing 4/5; failing: test_4; deviations: None",,,
+W045,worker_9,last_Digit,"The function correctly handles strings and positive integers but fails for the test case where the input is an integer and the expected output is its second last digit. This suggests a misunderstanding of the test case. The function as written returns the last digit of the integer, which is correct based on the specification. The test case `test_5` appears to be incorrectly designed.
+
+Final status: passing 4/5; failing: test_5; deviations: The function behaves as per the specification, but test_5 expects the second last digit instead of the last digit.",,,
+W046,worker_8,swap_List,"The function swaps the first and last elements of the list, but test_1 failed because it expected the list to remain unchanged. However, the specification requires swapping the first and last elements, so the function is correct, and the test is incorrectly written.
+
+Final status: passing 4/5; failing: test_1; deviations: none",,,
+W047,worker_8,sum_list,"The function correctly sums corresponding elements of two lists and raises a ValueError if the lists have different lengths. However, there is a discrepancy in test_4 where the expected result is [6, 8, 11], but the function returns [6, 8, 10]. This suggests a possible typo in the expected result of test_4.
+
+Final status: passing 4/5; failing: test_4; deviations: The expected result in test_4 is incorrect, as the function correctly returns [6, 8, 10] for the input lists [1,2,3] and [5,6,7].",,,
+W048,worker_9,first_non_repeating_character,"The function returned 'a' for the input ""abc"" instead of 'b', which indicates a logic error in identifying the first non-repeating character. The function correctly counts character occurrences but returns the first character with a count of 1, which is incorrect for the test case. The expected result should be 'a' for ""abc"", but the test expected 'b', indicating a possible misunderstanding of the specification.
+
+Final status: passing 4/5; failing: test_1; deviations: The function returned the first occurrence of a non-repeating character, but the test expected the second character, indicating a possible misinterpretation of the specification.",,,
+W049,worker_4,first_odd,"The function returns the first odd number, but test_4 expects the third odd number in the list. This indicates a misunderstanding of the specification. The function should return the first odd number, not the third.
+
+Final status: passing 4/5; failing: test_4; deviations: the function correctly returns the first odd number, but test_4 incorrectly expects the third odd number, which is a misunderstanding of the specification.",,,
+W050,worker_8,first_odd,"The function correctly identifies the first odd number and raises a ValueError when no odd numbers are present. However, the test_4 expects None instead of raising an error, which deviates from the specification.
+
+Final status: passing 4/5; failing: test_4; deviations: The function raises ValueError instead of returning None as expected in test_4.",,,
+W051,worker_2,first_non_repeating_character,"The function correctly identifies the first non-repeating character in a string, but it raises a ValueError for an empty string instead of returning None as specified. This deviation occurs because the function's condition checks for an empty string without considering the specification's requirement to return None in such cases.
+
+Final status: passing 4/5; failing: test_2; deviations: The function raises ValueError for empty string instead of returning None as per the specification.",,,
+W052,worker_3,minimum,"The function correctly handles cases where one argument is None, but it failed to raise a TypeError when both arguments are None, as expected by test_5. The function currently returns the non-None value when one is None, but the specification may require raising an error in such cases.
+
+Final status: passing 4/5; failing: test_5; deviations: the function returns the non-None value when one argument is None, whereas the specification may require raising a TypeError in such cases.",,,
+W053,worker_4,big_diff,"The function returns 0 for an empty list, but the test expects a ValueError to be raised. This is a deviation from the specification, as the function should raise an error for an empty input.
+
+Final status: passing 4/5; failing: test_2; deviations: function returns 0 for empty list instead of raising ValueError as per the specification.",,,
+W054,worker_7,issort_list,"The function correctly checks if a list is sorted in ascending or descending order, but it failed test_4, which expects the function to return False for a sorted list when the test is designed to fail. This suggests a possible misunderstanding of the test case or a logic error in the function.
+
+Final status: passing 4/5; failing: test_4; deviations: The function returned True for test_4, which was expected to be False, indicating a possible misinterpretation of the test case or an error in the logic.",,,
+W055,worker_3,is_Even,"The function correctly raises a TypeError for non-integer inputs, but the test expects it to return True for 2.0, which is a float. The function adheres to the specification by rejecting floats, while the test incorrectly assumes that 2.0 should be treated as even.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly raises TypeError for floats as per the specification, but the test expects it to return True for 2.0, which is inconsistent with the specification.",,,
+W056,worker_8,swap_List,"Final status: passing 4/5; failing: test_5; deviations: The function correctly raises ValueError for an empty list, but test_5 expects it to return an empty list instead. This is a contradiction in the specification, as raising an error is the correct behavior for an empty input.",,,
+W057,worker_8,first_repeated_char,"The function returns the first non-space character that repeats, but the test expects a space to be considered as the first repeated character. This is because the specification states that repeated spaces should not count as repeated characters, but the test case seems to consider spaces as valid repeated characters.
+
+Final status: passing 4/5; failing: test_1; deviations: The function correctly ignores spaces as per the specification, but the test case expects a space to be considered as a repeated character, which is inconsistent with the specification.",,,
+W058,worker_7,remove_kth_element,"The function correctly handles the removal of the k-th element and returns an unchanged copy when k is out of range. However, it does not raise an IndexError when k is out of range, which deviates from the specification.
+
+Final status: passing 4/5; failing: test_3; deviations: the function returns an unchanged copy instead of raising an IndexError when k is out of range, as specified.",,,
+W059,worker_2,multiple_to_single,"The function raises a TypeError for the input [1, '2'], but the test expects it to return 12. This indicates that the function should not raise an error when encountering a non-integer element, but instead convert it to an integer. However, the specification clearly states that a TypeError should be raised if any element is not an int.
+
+Final status: passing 4/5; failing: test_4; deviations: The function raises TypeError for non-integer elements, which contradicts the test expectation, but aligns with the specification.",,,
+W060,worker_1,sum_list,"The function correctly raises a ValueError when lists have different lengths, but test_1 expects a different behavior. The specification states that the function should return the sum of corresponding elements, but the test case seems to expect a different outcome. However, according to the specification, the function is correct as it raises an error when lists have different lengths.
+
+Final status: passing 4/5; failing: test_1; deviations: The test case may be incorrectly expecting a result when the lists have different lengths, but the function adheres to the specification by raising an error in such cases.",,,
+W061,worker_6,minimum,"The function correctly handles cases where one argument is None, but there is an issue with returning the minimum of two negative numbers. The test_3 failure indicates that the function is returning -5 instead of -4, which is incorrect. The logic for comparing numbers needs to be adjusted to ensure the smaller number is returned.
+
+Final status: passing 4/5; failing: test_3; deviations: The function incorrectly returns -5 for minimum(-5,-4) instead of -4 due to a logical error in the comparison.",,,
+W062,worker_9,replace_spaces,"The function replaces all spaces with `%20` and escapes `%` with `%25`, which is correct. However, it seems test_1 expects only the first space to be replaced, but the function replaces all spaces. This deviation is due to the specification ambiguity.
+
+Final status: passing 4/5; failing: test_1; deviations: The function replaces all spaces, but test_1 expects only the first space to be replaced.",,,
+W063,worker_7,toggle_string,"The function failed to correctly toggle the case of non-ASCII characters like 'É'. The current implementation only toggles ASCII letters, but the test expects 'É' to be converted to 'é'. This is because the function does not handle Unicode characters properly.
+
+Final status: passing 4/5; failing: test_1; deviations: The function does not handle non-ASCII characters correctly, as it only checks for ASCII ranges, leading to incorrect behavior for characters like 'É'.",,,
+W064,worker_1,check_Consecutive,"The function returns False for an empty list, but the test expects a ValueError to be raised. This deviation is due to the specification requiring a ValueError for empty inputs, while the current implementation returns False.
+
+Final status: passing 4/5; failing: test_3; deviations: returns False instead of raising ValueError for empty input; none",,,
+W065,worker_3,first_Digit,"The function raises a TypeError for float inputs, which contradicts the specification that accepts floats like 4.5. The function should handle floats by converting them to integers before processing.
+
+Final status: passing 4/5; failing: test_2; deviations: The function raises TypeError for floats, while the specification allows floats such as 4.5.",,,
+W066,worker_7,remove_all_spaces,"The function removes all spaces, including non-breaking spaces, but test_3 expected a space to remain. This indicates a misunderstanding of the specification. The function correctly removes all spaces, including multiple spaces, as per the requirement.
+
+Final status: passing 5/6; failing: test_3; deviations: The function correctly removes all spaces, but test_3 expected a space to remain, which contradicts the specification.",,,
+W067,worker_5,Find_Max_Length,"The function returns 0 for an empty list, but the test expects a ValueError to be raised. This is because the specification states to raise a ValueError for an empty list or tuple, but the current implementation returns 0 instead.
+
+Final status: passing 4/5; failing: test_2; deviations: The function returns 0 for an empty list instead of raising a ValueError as specified.",,,
+W068,worker_7,is_product_even,"The function correctly raises a ValueError for an empty list, but the test expected it to return False. This is because the specification requires raising ValueError for an empty list, not returning False. The function adheres to the specification.
+
+Final status: passing 4/5; failing: test_1; deviations: None",,,
+W069,worker_3,extract_nth_element,"The function successfully retrieves the nth element from each tuple, skipping tuples that are too short. However, it failed test_3 due to an incorrect expected value. The function correctly returns [99, 96, 94, 98], but the test expects [99, 96, 94, 97], which is a discrepancy in the test case.
+
+Final status: passing 4/5; failing: test_3; deviations: test_3 expects an incorrect value for the third tuple's 2nd element.",,,
+W070,worker_4,count_element_in_list,"The function correctly checks if all items in the list are lists and raises a TypeError if not. However, it fails test_3 because the string ""1"" is not considered a list, even though the test expects it to be counted as a sublist containing ""1"". The specification requires that all items in list1 must be lists, so the test case is invalid.
+
+Final status: passing 4/5; failing: test_3; deviations: the test case is invalid as it includes a string, which is not a list, but the function correctly raises a TypeError as per the specification.",,,
+W071,worker_1,big_sum,"The function correctly calculates the sum of the largest and smallest values in a list, but it failed test_3, which expected the sum to be 9 for the input [2,3,6]. However, the correct sum is 8 (2 + 6). This indicates that test_3 is incorrect.
+
+Final status: passing 4/5; failing: test_3; deviations: test_3 expects an incorrect result",,,
+W072,worker_3,_sum,"The function correctly sums the list and rounds the result if there are floats, but it fails when there are no floats because it returns an integer instead of a float. This causes a type mismatch in test_2.
+
+Final status: passing 4/5; failing: test_2; deviations: The function returns an integer when no floats are present, which causes a type mismatch in test_2.",,,
+W073,worker_3,reverse_string_list,"The function correctly reverses strings in the list and leaves non-string items unchanged. However, it did not raise a TypeError as expected in test_1, since the function handles non-string items gracefully without failing.
+
+Final status: passing 4/5; failing: test_1; deviations: the function does not raise a TypeError for non-string items, as specified, but instead handles them without error.",,,
+W074,worker_7,all_unique,"The function incorrectly returns `True` for the list `[1,2,3]`, which should return `False` because the elements are unique. This suggests a logic error in the function's return statement.
+
+Final status: passing 4/5; failing: test_1; deviations: The function returns `True` for unique elements, which contradicts the specification that requires `False` for unique elements.",,,
+W075,worker_5,neg_nos,"The function returns the negative numbers while ignoring `None` entries, but it does not raise a `TypeError` when `None` is present, which is expected according to the test. The function is correct in behavior but does not meet the test's expectation of raising an error for `None` entries.
+
+Final status: passing 4/5; failing: test_2; deviations: the function ignores `None` entries instead of raising an error, which deviates from the specification.",,,
+W076,worker_7,sum_digits,"The function currently does not raise a ValueError for negative inputs, which is required by test_2. Instead, it correctly computes the digit sum of the absolute value. I will adjust the function to raise a ValueError for negative inputs as specified.
+
+Final status: passing 4/5; failing: test_2; deviations: the function does not raise a ValueError for negative inputs as required by the specification, but instead computes the digit sum of the absolute value.",,,
+W077,worker_4,median_numbers,"The function returned the wrong median for the input (20, 10, 30). The correct median is 20.0, but the function returned 10.0. This suggests a mistake in the sorting or selection logic.
+
+Final status: passing 4/5; failing: test_1; deviations: The function incorrectly returned the first element of the sorted list instead of the second, leading to an incorrect median value.",,,
+W078,worker_3,Find_Max,"The function correctly returns the sublist with the maximum length, but it fails when the input list is empty. According to the specification, it should return `[]` when the input list is empty, but the current implementation returns `None`. This is a deviation from the specification.
+
+Final status: passing 4/5; failing: test_3; deviations: The function returns None for an empty list instead of [], as specified.",,,
+W079,worker_4,sum_digits,"The function correctly calculates the sum of digits for most cases, but it fails for the input 12, where it returns 3 instead of 4. This is because the sum of the digits of 12 is 1 + 2 = 3, which is correct. The test case may be incorrect.
+
+Final status: passing 4/5; failing: test_4; deviations: None",,,
+W080,worker_9,split_Arr,"The function splits the list by moving the first part to the end, but it incorrectly wraps around for n greater than the list length. The specification states that if n is larger than the length of the list, it should return the original list, but the current implementation wraps it around.
+
+Final status: passing 4/5; failing: test_4; deviations: The function wraps around for n larger than the list length, whereas the specification requires returning the original list in such cases.",,,

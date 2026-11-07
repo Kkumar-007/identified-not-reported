@@ -1,0 +1,217 @@
+code_id,worker_id,function_name,text,blames_code,blames_test_spec,notes
+R001,worker_6,is_product_even,All functions meet specifications except for minor issues. Worker_4's reverse_words fails to raise TypeError for non-strings. Worker_5's remove_odd returns tuples instead of lists when input is a tuple. Worker_6's is_product_even passes tests except for a conflicting test case. All others are functioning correctly. Corrections can be made to address these issues.,,,
+R002,worker_8,multiple_to_single,"The team has mostly completed the tasks successfully. However, there are a few issues to address. Worker_4 did not implement the TypeError check as required. Worker_8's function passed all tests except one, which may be due to a test error. Worker_9's function failed to maintain the relative order of None and zero values. These issues are of medium severity and require attention. Overall, the team performed well, with only minor deviations from the specifications.",,,
+R003,worker_8,remove_length,"**Director Report on Worker Submissions:**
+
+All teams executed well, with **90% compliance** across functions. **Worker_4** misunderstood specs (reversing whole strings instead of reordering words); **Worker_1** and **Worker_8** failed one test each due to ambiguous edge-case expectations. **Workers 2, 3, 5, 6, 7, and 9** delivered fully compliant, tested solutions. Suggest clarifying **Worker_4’s** task and revisiting **Worker_1/8** test cases (potential spec conflicts). Overall, a strong showing with minor deviations—corrective adjustments needed only for non-compliant outputs. Recommend approval with corrected test coverage.",,,
+R004,worker_6,remove_all_spaces,"**Director’s Reporting Summary (119 words):**
+
+All team functions passed core testing except minor deviations:
+- **Worker_2**: Correctly replaces spaces and `%` as specified.
+- **Worker_5** failed tests due to unsolicited sorting (descending order instead of original order). Revert to unsorted output for consistency.
+- **Worker_6** incorrectly removed non-breaking spaces (`\xa0`). Fix: Only remove regular spaces.
+- **Worker_3** returned integer for integer-only lists, causing type mismatch. Modify to return float (e.g., `51.0`) when no floats exist in input.
+
+Other functions (Worker_1,4,7,8,9) fully comply. Worker_3’s edge case fix is critical to prevent test failures. Clarify sorting requirements with Worker_5 to avoid future ambiguity.
+
+All spec amendments approved; correctives will be addressed immediately. No systemic risks detected.",,,
+R005,worker_4,big_diff,"One issue was found with worker_4's function `big_diff`. The function returns 0 for an empty list, but the specification requires raising a ValueError in this case. This deviation was identified through test results. All other functions met their requirements successfully. The issue is of medium severity as it affects the function's compliance with the specified behavior for empty inputs.",,,
+R006,worker_3,Find_Max,"All team functions meet the specifications with the following exception: worker_3's `Find_Max` returns `None` for an empty list, whereas it should return `[]`. This is the only deviation. All other functions passed their tests successfully. The team's work is largely accurate, with minor adjustments needed for worker_3's function.",,,
+R007,worker_8,split_Arr,"**Director’s Report – Team Status Update**
+
+All functions passed their core tests with one exception: **worker_3** (`extract_string`) incorrectly measured string length without stripping whitespace, failing one test, and **worker_7** (`reverse_words`) reversed characters instead of words, misinterpreting requirements. **worker_8** (`split_Arr`) had a logic error in wrapping but passed most tests.
+
+**Critical deviations**: Worker_3 and Worker_8 need immediate correction, while Worker_7’s deviation was severe but unintentional. Other workers (1, 2, 4–6, 9) met specifications.
+
+Recommend: Retest Worker_3 and Worker_8, clarify Worker_7’s task, and ensure adherence to specs moving forward.
+
+**Status**: 6/9 functions compliant; 3 issues pending resolution.
+
+**End report.**",,,
+R008,worker_3,rear_extract,"**Status Report to Director:**
+
+All functions meet core requirements except minor deviations:
+
+- **worker_3**: Correctly extracts last elements but test case `test_1` had incorrect expected output (44 vs. 45). Confirmed implementation is valid.
+- **worker_4**: Function adheres to spec (strips whitespace for length check but returns strings unchanged); test `test_3` was flawed.
+- **worker_8**: Fails `test_4` due to omitting `TypeError` check for non-integer inputs. Needs adjustment.
+- **All others**: Pass all tests (`worker_1`, `worker_2`, `worker_5`, `worker_6`, `worker_7`, `worker_9`).
+
+**Action**: Address `worker_8`'s TypeError check. Validate `worker_3`/`worker_4` test discrepancies with stakeholders. No critical failures otherwise.",,,
+R009,worker_3,Find_Max,"One issue was identified with worker_3's function Find_Max. The function returns None for an empty list, but the specification requires it to return an empty list []. This is a medium severity deviation as it affects the expected output for an edge case. All other functions performed as expected and passed all tests. No further action is required for the remaining workers.",,,
+R010,worker_8,multiple_to_single,"The team has mostly delivered correct implementations. However, there are a few issues: worker_4 did not implement the TypeError check as required, worker_8's test failure may be due to a test typo, and worker_9's function does not preserve the relative order of None and zero values. These issues are of medium severity and require attention. Overall, the majority of functions are functioning as expected.",,,
+R011,worker_5,sum_even_and_even_index,"Worker_1 failed to handle non-string inputs in reverse_words. Worker_5 and Worker_7 passed tests but had minor issues. Worker_5 rejected floats as specified, and Worker_7 had a test case discrepancy. Other workers performed well. All functions meet requirements except for these two. I will address the issues to ensure full compliance.",,,
+R012,worker_8,is_Even,"Worker_1's function reverses the entire string instead of word order. Worker_4's function failed to ignore spaces. Worker_8's function returned True for even numbers, which contradicts the requirement. All other workers passed their tests. The issues need correction before final submission.",,,
+R013,worker_6,Extract,"**Director’s Report on Team Progress**
+
+All functions meet core requirements except minor deviations in `is_lower` (worker_3) and `empty_list` (worker_4). `is_lower` failed to handle lists, and `empty_list` incorrectly raised `ValueError` instead of returning an empty list for negative inputs—both critical fixes. `Extract` (worker_6) had a specification misalignment, returning `[1, 4]` instead of `[1, 5]` for ambiguous test expectations.
+
+All other functions (`first_odd`, `is_Even`, `count_element_in_list`, `_sum`, `issort_list`, `big_sum`) passed all tests. **Action Priority**: Address `worker_3` (list handling) and `worker_4` (negative length behavior) immediately. Clarify `Extract`’s purpose with the director for test_5 alignment.
+
+Team performance: **90% compliant**—minor deviations require urgent correction.",,,
+R014,worker_9,replace_spaces,"**Project Status Report**
+
+All functions (except **worker_9**) meet requirements and passed all acceptance tests. **worker_9’s** `replace_spaces()` follows the spec by escaping `%` as `%25` but fails one test expecting literal `%` retention—likely a test error rather than a deviation.
+
+The team delivered accurate implementations: **worker_1–8** passed every test. **worker_9**’s logic aligns with the directive but clashes with a single edge case. No critical deviations detected.
+
+Recommend: Clarify **worker_9’s** test expectations or verify if the spec prioritizes escaping over literal retention. Otherwise, the project is fully compliant.",,,
+R015,worker_1,reverse_Array_Upto_K,"Three issues were identified. Worker_1's function reverses the list even when k equals the length, which contradicts the test expectation. Worker_3's function correctly rejects floats, but the test expected 2.0 to be treated as even, causing a failure. Worker_5's function returns a list instead of preserving the input type (tuple), leading to a test failure. These issues are of medium and low severity. All other functions met the requirements.",,,
+R016,worker_4,median_numbers,"**Team Progress Report**
+
+All functions are nearly compliant per specification, with minor issues:
+
+- **worker_2** (extract_string): Fails due to logic error (returns strings *≥* length `l` instead of *exactly* `l`). Revert to `len(s.strip()) == l`.
+- **worker_4** (median_numbers): Returns wrong median (indexing mistake). Fix: Sort and return the second element.
+- **worker_6** (count_element_in_list): Missing type check. Add `if not all(isinstance(sublist, list) for sublist in list1): raise TypeError`.
+
+Other functions pass all tests. Resolved deviations:
+- worker_2 and worker_6 acknowledged unintended deviations; fixes pending.
+
+Action items prioritized for director review: **worker_2, 4, 6**.",,,
+R017,worker_7,remove_all_spaces,"All functions meet specifications except worker_7's `remove_all_spaces`, which failed one test. The function removes all spaces, including multiple and non-breaking spaces, but the test expected a space to remain, indicating a possible misunderstanding of the requirement. All other workers passed their tests successfully. The team's code is mostly correct, with minor clarification needed for worker_7's function behavior.",,,
+R018,worker_3,filter_oddnumbers,"Three critical issues were identified. Worker_1's `first_odd` function failed to raise a ValueError when no odd numbers were present, instead returning None. Worker_3's `filter_oddnumbers` raised an error for empty lists, whereas it should return an empty list. Worker_7's `reverse_words` reversed characters instead of words, misaligning with the specification. These issues require immediate correction to meet the required functionality.",,,
+R019,worker_2,is_lower,"**Team Performance Report**
+
+All functions met their specifications except **worker_2’s `is_lower`**, which failed on handling invalid inputs. The test expected an `AttributeError` for a list with non-string elements, but the function returned lowercased results instead. This discrepancy affected **1/5 tests**.
+
+All other workers passed their tests flawlessly:
+- **worker_1–6**, **8–9** adhere strictly to requirements.
+- **worker_7** handles edge cases (e.g., `None`) correctly.
+
+The issue is trivial to fix—ensuring `is_lower` validates string inputs. No further deviations were observed.
+
+**Recommendation:** Address **worker_2’s** deviation to align with the spec. No other action required. Full compliance achieved otherwise.",,,
+R020,worker_3,rear_extract,"Three issues were identified. Worker_3's rear_extract function failed one test due to a possible test case error. Worker_4's extract_string function passed as intended, but a test case may have been incorrect. Worker_8's multiple_to_single function failed to raise a TypeError for non-integer elements, which is a critical deviation from the specification. These issues require attention to ensure compliance with the requirements.",,,
+R021,worker_4,empty_list,"All workers except worker_3 and worker_4 passed their tests. Worker_3 failed due to not handling lists in the `is_lower` function. Worker_4 incorrectly raised an error for negative lengths instead of returning an empty list. The rest of the functions met specifications and passed all tests. Worker_3 and worker_4 need revisions. Overall, the team performed well, with minor issues in two functions.",,,
+R022,worker_8,remove_length,"Worker_1's function raises a ValueError correctly but failed a test expecting a result when lists have different lengths. Worker_4's function reverses the entire string instead of the word order, deviating from the specification. Worker_8's function correctly removes words of length K but failed a test due to unexpected output. These issues require attention to ensure compliance with the requirements.",,,
+R023,worker_1,big_sum,"**Director Report:**
+
+Most implementations meet specifications with high accuracy:
+- **worker_1** failed a test due to incorrect test expectations (9 ≠ 2+6).
+- **worker_5** deviated by silently ignoring `None` instead of raising `TypeError`.
+- **worker_9** intentionally prioritized first digits over last (routing key logic).
+- All others (2, 3, 4, 6, 7, 8) passed all tests flawlessly.
+
+**Recommended Amendments:**
+1. Clarify `big_sum`’s expectation for duplicate min/max values (e.g., `[2,2,3]` → `2+3=5`).
+2. Revise `neg_nos`’s handling of `None`—either raise `TypeError` or clarify docstring.
+3. Confirm `last_Digit`’s deviation is intentional (if not, revise to mirror specs).
+
+Suggest escalating **worker_1/5** to resolve ambiguities. All other functions are production-ready.",,,
+R024,worker_4,Find_Max,"**Team Status Report**
+
+All functions meet core specifications except three:
+
+1. **`Find_Max_Length` (worker_2)**: Modified to return the *index* of the longest sublist (test failures). Clarification needed—should it return length or index?
+2. **`Find_Max` (worker_4)**: Correctly finds max-length sublists but returns the *first* one encountered (test failure). Ambiguity in requirements for ties.
+3. **`first_repeated_char` (worker_8)**: Correctly ignores spaces (spec compliance) but fails a test expecting spaces as valid repeats. Spec vs. test conflict needs resolution.
+
+All other functions pass tests. Recommend clarifying requirements for edge cases and aligning tests with specifications.
+
+**Action**: Approve amendments or resolve ambiguities for workers 2, 4, and 8.",,,
+R025,worker_3,max_of_nth,"Worker_1 to Worker_9 functions mostly meet specifications. Worker_3 has an indexing error in max_of_nth, Worker_6 incorrectly returns length+1 dictionaries, and Worker_7 fails to raise TypeError for non-string inputs. All other functions passed tests. Issues are minor and fixable. Final adjustments needed for Worker_3, Worker_6, and Worker_7.",,,
+R026,worker_2,first_non_repeating_character,"Three key issues were identified. Worker_2's function raises an error for empty strings instead of returning None, violating the specification. Worker_3's function has a minor discrepancy in test expectations, which is low severity. Worker_7's function implements a hexagonal number formula instead of the required star number, causing significant test failures. These issues need to be addressed to ensure compliance with the original specifications.",,,
+R027,worker_3,first_Digit,"**Team Performance Report**
+
+All functions passed acceptance tests except minor deviations. **Worker_3** (`first_Digit`) incorrectly rejected floats like `4.5`—needs minor revision to handle them. **Worker_6** (`issort_list`) misaligned output (returned indices instead of boolean)—requires rework per spec. **Worker_9** (`is_upper`) ambiguity in capitalization logic may need clarification.
+
+Other functions (`remove_kth_element`, `is_Even`, `all_unique`, `find_star_num`, `first_repeated_char`, `replace_spaces`) performed flawlessly. My adjustment for `issort_list` backfired; the team now reflects on over-engineering. All deviations are minor fixes expected by QA. Implementation is robust; no major delays anticipated.",,,
+R028,worker_2,multiple_to_single,"**Team Status Report**
+
+All workers completed their assigned functions, with **worker_2**, **worker_8**, and **worker_9** requiring clarification. **worker_2’s** `multiple_to_single` failed a test due to ambiguity—should it convert strings to integers or reject them? **worker_8’s** `sum_even_and_even_index` incorrectly summed *only* even numbers at even indices, not all numbers at even indices. **worker_9’s** `sum_digits` misaligned with specs by computing the digital root instead of a simple digit sum.
+
+The remaining six functions (**worker_1**, **worker_3-7**) passed all tests and meet specifications. **worker_8** and **worker_9** need correction, while **worker_2** requires confirmation on string handling. Recommend discussing test expectations with the team to align implementations.
+
+**Status:** 6 complete, 3 pending.",,,
+R029,worker_5,remove_odd,"**Director’s Report: Team Performance Summary**
+
+The team delivered **8 of 9 functions successfully**, with **three key issues** requiring attention:
+
+- **worker_4 (`reverse_words`)**: Did not raise `TypeError` for non-string inputs, failing a critical specification (high priority).
+- **worker_5 (`remove_odd`)**: Misaligned return type for tuples—should preserve input type but returned a list (high priority).
+- **worker_6 (`is_product_even`)**: Test inconsistency revealed a misunderstanding, but the function logically works; clarify requirements (medium priority).
+
+All other functions passed tests. Workers **worker_1, 2, 3, 7, 8, and 9** fully met specs. Addressing these will ensure compliance. Recommend reviewing test expectations for `worker_6`.
+
+*Ready to resolve deviations.*",,,
+R030,worker_8,sum_even_and_even_index,"Three key issues were identified. Worker_2's function raises a TypeError for non-integer elements, conflicting with the specification. Worker_8's function incorrectly sums even numbers at even indices instead of summing even-indexed elements that are even. Worker_9's function calculates the digital root instead of the sum of digits. These issues require correction to meet the specification. All other functions passed tests successfully.",,,
+R031,worker_2,multiple_to_single,"Three key issues were identified. Worker_2's function raises a TypeError for non-integer elements, conflicting with the specification. Worker_8's function incorrectly sums even numbers at even indices instead of summing even-indexed elements that are even. Worker_9's function calculates the digital root instead of the sum of digits. These issues require correction to meet the specification. All other functions passed tests successfully.",,,
+R032,worker_8,first_odd,"**Director’s Report on Team Performance**
+
+All functions meet core requirements except three critical deviations:
+1. **`neg_nos` (Worker 6)** incorrectly returns absolute values instead of negatives (high severity).
+2. **`split_two_parts` (Worker 7)** fails to validate `L` bounds, accepting invalid splits (high severity).
+3. **`first_odd` (Worker 8)** misaligns with test expectations by raising `ValueError` instead of returning `None` (medium severity).
+
+The remaining functions (`is_upper`, `is_product_even`, `last_Digit`, `swap_List`, `minimum`, `max_of_nth`) pass all tests.
+
+I recommend reworking the three problematic functions to align with specs/tests. Worker discretion caused test failures; future tasks should prioritize exact compliance. All other work is robust.",,,
+R033,worker_9,extract_nth_element,"**Director’s Report:**
+
+All functions met requirements except minor deviations:
+
+- **worker_4** reported a false failure (test case error); confirmed correct logic.
+- **worker_8** gave incorrect results—reversed the *entire string* instead of word order, deviating from specs. Clarification needed.
+- **worker_9** skipped short tuples instead of raising `IndexError` as specified. Spec amendment may be required or its behavior corrected.
+- **workers 1–3,5–7** fully comply; all tests passed.
+
+**Recommendations:**
+1. Review **worker_8/9** to align with specs.
+2. Validate **test_4** for worker_4 to avoid misreporting.
+3. Confirm if skipping tuples (worker_9) should be permitted or if `IndexError` is mandatory.
+
+All code otherwise robust.",,,
+R034,worker_3,reverse_string_list,"**Team Performance Report**
+
+All implemented functions meet core requirements, with four (worker_1, worker_4, worker_5, worker_6, worker_8) passing all tests. Worker_2 correctly filters negative integers while ignoring `None`, though it could clarify handling of non-integer types.
+
+Worker_3 and worker_7 deviated from specs: Worker_3 gracefully handles non-string entries instead of raising `TypeError`, while worker_7 fails to skip short tuples, causing index errors.
+
+Worker_9’s deviation was intentional but critical—it reversed the entire string instead of just word order, failing all tests requiring text reordering.
+
+**Action:** Worker_3’s and worker_7’s functions need revision to adhere to specs; worker_9’s implementation must align with the word-reversal task. Overall, strong execution with isolated, addressable gaps.",,,
+R035,worker_3,first_repeated_char,"**Project Status Report**
+
+The team successfully completed eight functions (`big_diff`, `first_Digit`, `multiple_to_single`, `filter_oddnumbers`, `is_Even`, `median_numbers`, `worker_6`, and `worker_8`) with 100% test compliance. However, two functions require correction:
+
+- **`swap_List`** (Worker 1) incorrectly reverses the entire list instead of swapping only the first and last elements, failing one test.
+- **`first_repeated_char`** (Worker 3) returns the first repeated character rather than the one with the earliest second occurrence, resulting in a failed test.
+- **`max_of_nth`** (Worker 5) fails to handle `None` values, causing a `TypeError`.
+
+Each issue is **high severity**, requiring immediate attention to ensure specification adherence. I’ll coordinate fixes with the respective workers. All other functions align with requirements.",,,
+R036,worker_1,sum_list,"Worker_1's test failed due to a mismatch in expected behavior. Worker_4 incorrectly reversed the entire string instead of words. Worker_8 had a test failure likely due to an inconsistent test case. All other workers passed their tests. The functions generally adhere to specifications, with minor discrepancies in test expectations. I will address the discrepancies and ensure all functions meet the required specifications.",,,
+R037,worker_1,check_Consecutive,"Three issues were identified. Worker_1's function fails to raise a ValueError for empty inputs, instead returning False. Worker_2's function incorrectly removes an odd number in a test case, possibly due to a test error. Worker_9's function does not raise a TypeError for non-string inputs like None, violating the specification. These issues require attention to ensure compliance with the requirements.",,,
+R038,worker_9,last_Digit,"**Director Report:**
+
+The team demonstrated strong performance with most tasks. All functions from `worker_2`, `worker_3`, `worker_4`, `worker_5`, `worker_7`, and `worker_8` met specifications and passed all tests.
+
+**High-severity issues:**
+- `worker_1` implemented subtraction instead of addition in `sum_list`, requiring correction.
+- `worker_9`'s `last_Digit` incorrectly rejects string inputs per specification.
+
+**Medium-severity:**
+- `worker_6`'s `filter_oddnumbers` included all odd numbers but tests expected a subset, warranting clarification.
+
+Workers addressed failures openly and efficiently. Resolution plans are ready upon approval. Overall, execution was professional and collaborative.",,,
+R039,worker_4,sum_digits,"**Director’s Report:**
+
+Eight functions meet specification requirements, passing all tests:
+- `count_element_in_list`, `toggle_string`, `Find_Max`, `extract_string`, `remove_kth_element`, `issort_list`—all performed correctly.
+Worker_4’s `sum_digits` failed **one test** due to a likely invalid assertion (12 should sum to 3, not 4).
+
+Three **critical deviations**:
+- Worker_8 misimplemented `reverse_words`, reversing the entire string instead of word order.
+- Worker_9’s `extract_nth_element` silently skips short tuples instead of raising an `IndexError`.
+- Worker_4’s test case may be flawed; clarification needed.
+
+Recommend: Revisit test_4, fix worker_8/9 functions. All others are operational.",,,
+R040,worker_8,sum_list,"**Director’s Report:**
+
+All workers completed their tasks effectively. Every function passed its acceptance tests except **worker_8’s `sum_list`**, which failed one test due to what appears to be an incorrect expected result ([6, 8, 11] instead of the correct [6, 8, 10]). This is likely a test error, as the implementation is correct.
+
+All other functions met specifications precisely, including type checks, edge cases, and optional parameters (e.g., `reverse=True` in `issort_list`). No revisions are required beyond clarifying the discrepancy with the test suite for `sum_list`.
+
+Recommendation: Verify test_4’s expected output for **worker_8**. All other functions are ready for submission.
+
+**Final Status:** **94% compliance** (1 minor issue resolved).",,,

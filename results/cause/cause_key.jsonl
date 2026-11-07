@@ -1,0 +1,120 @@
+{"cell": "AC", "code_id": "W001", "dir": "main_s1", "kind": "worker", "set_id": "H40", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W002", "dir": "main_s1", "kind": "worker", "set_id": "H10", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W003", "dir": "pilot_h200", "kind": "worker", "set_id": "H33", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W004", "dir": "main_s4", "kind": "worker", "set_id": "L14", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W005", "dir": "main_s4", "kind": "worker", "set_id": "H13", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W006", "dir": "main_s3", "kind": "worker", "set_id": "H16", "worker_id": "worker_5"}
+{"cell": "AC", "code_id": "W007", "dir": "pilot_h200", "kind": "worker", "set_id": "H25", "worker_id": "worker_5"}
+{"cell": "AC", "code_id": "W008", "dir": "main_s1", "kind": "worker", "set_id": "H06", "worker_id": "worker_6"}
+{"cell": "AC", "code_id": "W009", "dir": "main_s1", "kind": "worker", "set_id": "H01", "worker_id": "worker_9"}
+{"cell": "AE", "code_id": "W010", "dir": "main_s2", "kind": "worker", "set_id": "H32", "worker_id": "worker_1"}
+{"cell": "AC", "code_id": "W011", "dir": "main_s3", "kind": "worker", "set_id": "H04", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W012", "dir": "main_s2", "kind": "worker", "set_id": "H15", "worker_id": "worker_4"}
+{"cell": "AC", "code_id": "W013", "dir": "main_s2", "kind": "worker", "set_id": "H11", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W014", "dir": "main_s1", "kind": "worker", "set_id": "H06", "worker_id": "worker_5"}
+{"cell": "AE", "code_id": "W015", "dir": "main_s4", "kind": "worker", "set_id": "H30", "worker_id": "worker_6"}
+{"cell": "AC", "code_id": "W016", "dir": "main_s1", "kind": "worker", "set_id": "H31", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W017", "dir": "main_s1", "kind": "worker", "set_id": "H40", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W018", "dir": "main_s2", "kind": "worker", "set_id": "H15", "worker_id": "worker_6"}
+{"cell": "AE", "code_id": "W019", "dir": "main_s2", "kind": "worker", "set_id": "L21", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W020", "dir": "main_s4", "kind": "worker", "set_id": "H26", "worker_id": "worker_2"}
+{"cell": "AE", "code_id": "W021", "dir": "pilot_h200", "kind": "worker", "set_id": "L20", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W022", "dir": "main_s3", "kind": "worker", "set_id": "H20", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W023", "dir": "main_s1", "kind": "worker", "set_id": "H18", "worker_id": "worker_8"}
+{"cell": "AC", "code_id": "W024", "dir": "main_s4", "kind": "worker", "set_id": "H35", "worker_id": "worker_4"}
+{"cell": "AC", "code_id": "W025", "dir": "pilot_h200", "kind": "worker", "set_id": "H03", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W026", "dir": "main_s3", "kind": "worker", "set_id": "H12", "worker_id": "worker_2"}
+{"cell": "AE", "code_id": "W027", "dir": "main_s4", "kind": "worker", "set_id": "H21", "worker_id": "worker_8"}
+{"cell": "AC", "code_id": "W028", "dir": "main_s2", "kind": "worker", "set_id": "H02", "worker_id": "worker_7"}
+{"cell": "AC", "code_id": "W029", "dir": "main_s1", "kind": "worker", "set_id": "H14", "worker_id": "worker_1"}
+{"cell": "AE", "code_id": "W030", "dir": "pilot_h200", "kind": "worker", "set_id": "H03", "worker_id": "worker_4"}
+{"cell": "AE", "code_id": "W031", "dir": "main_s1", "kind": "worker", "set_id": "H36", "worker_id": "worker_9"}
+{"cell": "AE", "code_id": "W032", "dir": "main_s2", "kind": "worker", "set_id": "L03", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W033", "dir": "main_s2", "kind": "worker", "set_id": "H28", "worker_id": "worker_6"}
+{"cell": "AE", "code_id": "W034", "dir": "main_s1", "kind": "worker", "set_id": "H27", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W035", "dir": "main_s3", "kind": "worker", "set_id": "H29", "worker_id": "worker_6"}
+{"cell": "AE", "code_id": "W036", "dir": "main_s2", "kind": "worker", "set_id": "H02", "worker_id": "worker_5"}
+{"cell": "AC", "code_id": "W037", "dir": "main_s2", "kind": "worker", "set_id": "H19", "worker_id": "worker_6"}
+{"cell": "AE", "code_id": "W038", "dir": "main_s2", "kind": "worker", "set_id": "L37", "worker_id": "worker_4"}
+{"cell": "AC", "code_id": "W039", "dir": "main_s4", "kind": "worker", "set_id": "L35", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W040", "dir": "main_s4", "kind": "worker", "set_id": "H39", "worker_id": "worker_3"}
+{"cell": "AC", "code_id": "W041", "dir": "main_s4", "kind": "worker", "set_id": "L18", "worker_id": "worker_5"}
+{"cell": "AC", "code_id": "W042", "dir": "main_s4", "kind": "worker", "set_id": "H21", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W043", "dir": "main_s2", "kind": "worker", "set_id": "H19", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W044", "dir": "main_s2", "kind": "worker", "set_id": "H23", "worker_id": "worker_2"}
+{"cell": "AC", "code_id": "W045", "dir": "main_s2", "kind": "worker", "set_id": "L33", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W046", "dir": "main_s4", "kind": "worker", "set_id": "L23", "worker_id": "worker_8"}
+{"cell": "AC", "code_id": "W047", "dir": "main_s2", "kind": "worker", "set_id": "L29", "worker_id": "worker_8"}
+{"cell": "AC", "code_id": "W048", "dir": "main_s1", "kind": "worker", "set_id": "L24", "worker_id": "worker_9"}
+{"cell": "AC", "code_id": "W049", "dir": "pilot_h200", "kind": "worker", "set_id": "L04", "worker_id": "worker_4"}
+{"cell": "AE", "code_id": "W050", "dir": "main_s4", "kind": "worker", "set_id": "H05", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W051", "dir": "main_s2", "kind": "worker", "set_id": "H37", "worker_id": "worker_2"}
+{"cell": "AE", "code_id": "W052", "dir": "main_s3", "kind": "worker", "set_id": "L22", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W053", "dir": "main_s4", "kind": "worker", "set_id": "L31", "worker_id": "worker_4"}
+{"cell": "AC", "code_id": "W054", "dir": "main_s3", "kind": "worker", "set_id": "H24", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W055", "dir": "main_s1", "kind": "worker", "set_id": "H14", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W056", "dir": "main_s4", "kind": "worker", "set_id": "L10", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W057", "dir": "main_s4", "kind": "worker", "set_id": "H35", "worker_id": "worker_8"}
+{"cell": "AE", "code_id": "W058", "dir": "main_s3", "kind": "worker", "set_id": "L34", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W059", "dir": "pilot_h200", "kind": "worker", "set_id": "H33", "worker_id": "worker_2"}
+{"cell": "AE", "code_id": "W060", "dir": "main_s1", "kind": "worker", "set_id": "H18", "worker_id": "worker_1"}
+{"cell": "AC", "code_id": "W061", "dir": "main_s3", "kind": "worker", "set_id": "H12", "worker_id": "worker_6"}
+{"cell": "AC", "code_id": "W062", "dir": "pilot_h200", "kind": "worker", "set_id": "L01", "worker_id": "worker_9"}
+{"cell": "AE", "code_id": "W063", "dir": "main_s3", "kind": "worker", "set_id": "H34", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W064", "dir": "main_s2", "kind": "worker", "set_id": "H23", "worker_id": "worker_1"}
+{"cell": "AE", "code_id": "W065", "dir": "main_s1", "kind": "worker", "set_id": "H01", "worker_id": "worker_3"}
+{"cell": "AC", "code_id": "W066", "dir": "main_s3", "kind": "worker", "set_id": "L09", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W067", "dir": "main_s4", "kind": "worker", "set_id": "H13", "worker_id": "worker_5"}
+{"cell": "AE", "code_id": "W068", "dir": "main_s2", "kind": "worker", "set_id": "H28", "worker_id": "worker_7"}
+{"cell": "AC", "code_id": "W069", "dir": "main_s2", "kind": "worker", "set_id": "H37", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W070", "dir": "main_s4", "kind": "worker", "set_id": "H09", "worker_id": "worker_4"}
+{"cell": "AC", "code_id": "W071", "dir": "main_s1", "kind": "worker", "set_id": "H22", "worker_id": "worker_1"}
+{"cell": "AC", "code_id": "W072", "dir": "main_s4", "kind": "worker", "set_id": "H30", "worker_id": "worker_3"}
+{"cell": "AE", "code_id": "W073", "dir": "main_s2", "kind": "worker", "set_id": "H07", "worker_id": "worker_3"}
+{"cell": "AC", "code_id": "W074", "dir": "main_s3", "kind": "worker", "set_id": "L38", "worker_id": "worker_7"}
+{"cell": "AE", "code_id": "W075", "dir": "main_s1", "kind": "worker", "set_id": "H22", "worker_id": "worker_5"}
+{"cell": "AE", "code_id": "W076", "dir": "main_s3", "kind": "worker", "set_id": "H38", "worker_id": "worker_7"}
+{"cell": "AC", "code_id": "W077", "dir": "main_s4", "kind": "worker", "set_id": "H17", "worker_id": "worker_4"}
+{"cell": "AE", "code_id": "W078", "dir": "main_s1", "kind": "worker", "set_id": "L19", "worker_id": "worker_3"}
+{"cell": "AC", "code_id": "W079", "dir": "main_s1", "kind": "worker", "set_id": "H36", "worker_id": "worker_4"}
+{"cell": "AE", "code_id": "W080", "dir": "main_s3", "kind": "worker", "set_id": "H08", "worker_id": "worker_9"}
+{"arm": "S", "cell": "AC", "code_id": "R001", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H06", "worker_id": "worker_6"}
+{"arm": "L", "cell": "AC", "code_id": "R002", "dir": "main_s1", "family": "A", "kind": "report", "sample": 1, "set_id": "H40", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AC", "code_id": "R003", "dir": "main_s1", "family": "B", "kind": "report", "sample": 0, "set_id": "H18", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AE", "code_id": "R004", "dir": "main_s4", "family": "B", "kind": "report", "sample": 0, "set_id": "H30", "worker_id": "worker_6"}
+{"arm": "L", "cell": "AE", "code_id": "R005", "dir": "main_s4", "family": "A", "kind": "report", "sample": 2, "set_id": "L31", "worker_id": "worker_4"}
+{"arm": "S", "cell": "AE", "code_id": "R006", "dir": "main_s1", "family": "A", "kind": "report", "sample": 2, "set_id": "L19", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AC", "code_id": "R007", "dir": "main_s2", "family": "B", "kind": "report", "sample": 1, "set_id": "H11", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AC", "code_id": "R008", "dir": "pilot_h200", "family": "B", "kind": "report", "sample": 0, "set_id": "H03", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AE", "code_id": "R009", "dir": "main_s1", "family": "A", "kind": "report", "sample": 2, "set_id": "L19", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AC", "code_id": "R010", "dir": "main_s1", "family": "A", "kind": "report", "sample": 2, "set_id": "H40", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AE", "code_id": "R011", "dir": "main_s2", "family": "A", "kind": "report", "sample": 1, "set_id": "H02", "worker_id": "worker_5"}
+{"arm": "S", "cell": "AC", "code_id": "R012", "dir": "main_s3", "family": "A", "kind": "report", "sample": 2, "set_id": "H04", "worker_id": "worker_8"}
+{"arm": "L", "cell": "AC", "code_id": "R013", "dir": "main_s2", "family": "B", "kind": "report", "sample": 2, "set_id": "H15", "worker_id": "worker_6"}
+{"arm": "L", "cell": "AE", "code_id": "R014", "dir": "main_s2", "family": "B", "kind": "report", "sample": 1, "set_id": "L03", "worker_id": "worker_9"}
+{"arm": "L", "cell": "AC", "code_id": "R015", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H14", "worker_id": "worker_1"}
+{"arm": "S", "cell": "AC", "code_id": "R016", "dir": "main_s4", "family": "B", "kind": "report", "sample": 2, "set_id": "H17", "worker_id": "worker_4"}
+{"arm": "S", "cell": "AC", "code_id": "R017", "dir": "main_s3", "family": "A", "kind": "report", "sample": 0, "set_id": "L09", "worker_id": "worker_7"}
+{"arm": "L", "cell": "AE", "code_id": "R018", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H27", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AE", "code_id": "R019", "dir": "main_s4", "family": "B", "kind": "report", "sample": 2, "set_id": "L14", "worker_id": "worker_2"}
+{"arm": "L", "cell": "AC", "code_id": "R020", "dir": "pilot_h200", "family": "A", "kind": "report", "sample": 0, "set_id": "H03", "worker_id": "worker_3"}
+{"arm": "S", "cell": "AE", "code_id": "R021", "dir": "main_s2", "family": "A", "kind": "report", "sample": 1, "set_id": "H15", "worker_id": "worker_4"}
+{"arm": "L", "cell": "AC", "code_id": "R022", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H18", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AC", "code_id": "R023", "dir": "main_s1", "family": "B", "kind": "report", "sample": 0, "set_id": "H22", "worker_id": "worker_1"}
+{"arm": "L", "cell": "AC", "code_id": "R024", "dir": "main_s4", "family": "B", "kind": "report", "sample": 2, "set_id": "H35", "worker_id": "worker_4"}
+{"arm": "S", "cell": "AC", "code_id": "R025", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H31", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AE", "code_id": "R026", "dir": "main_s2", "family": "A", "kind": "report", "sample": 2, "set_id": "H37", "worker_id": "worker_2"}
+{"arm": "L", "cell": "AE", "code_id": "R027", "dir": "main_s1", "family": "B", "kind": "report", "sample": 2, "set_id": "H01", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AE", "code_id": "R028", "dir": "pilot_h200", "family": "B", "kind": "report", "sample": 0, "set_id": "H33", "worker_id": "worker_2"}
+{"arm": "L", "cell": "AE", "code_id": "R029", "dir": "main_s1", "family": "B", "kind": "report", "sample": 1, "set_id": "H06", "worker_id": "worker_5"}
+{"arm": "L", "cell": "AC", "code_id": "R030", "dir": "pilot_h200", "family": "A", "kind": "report", "sample": 0, "set_id": "H33", "worker_id": "worker_8"}
+{"arm": "L", "cell": "AE", "code_id": "R031", "dir": "pilot_h200", "family": "A", "kind": "report", "sample": 0, "set_id": "H33", "worker_id": "worker_2"}
+{"arm": "L", "cell": "AE", "code_id": "R032", "dir": "main_s4", "family": "B", "kind": "report", "sample": 0, "set_id": "H05", "worker_id": "worker_8"}
+{"arm": "S", "cell": "AE", "code_id": "R033", "dir": "main_s1", "family": "B", "kind": "report", "sample": 2, "set_id": "H36", "worker_id": "worker_9"}
+{"arm": "L", "cell": "AE", "code_id": "R034", "dir": "main_s2", "family": "B", "kind": "report", "sample": 2, "set_id": "H07", "worker_id": "worker_3"}
+{"arm": "L", "cell": "AC", "code_id": "R035", "dir": "main_s4", "family": "B", "kind": "report", "sample": 1, "set_id": "H39", "worker_id": "worker_3"}
+{"arm": "S", "cell": "AE", "code_id": "R036", "dir": "main_s1", "family": "A", "kind": "report", "sample": 0, "set_id": "H18", "worker_id": "worker_1"}
+{"arm": "L", "cell": "AE", "code_id": "R037", "dir": "main_s2", "family": "A", "kind": "report", "sample": 2, "set_id": "H23", "worker_id": "worker_1"}
+{"arm": "L", "cell": "AE", "code_id": "R038", "dir": "main_s2", "family": "B", "kind": "report", "sample": 2, "set_id": "H19", "worker_id": "worker_9"}
+{"arm": "L", "cell": "AC", "code_id": "R039", "dir": "main_s1", "family": "B", "kind": "report", "sample": 1, "set_id": "H36", "worker_id": "worker_4"}
+{"arm": "L", "cell": "AC", "code_id": "R040", "dir": "main_s2", "family": "B", "kind": "report", "sample": 2, "set_id": "L29", "worker_id": "worker_8"}

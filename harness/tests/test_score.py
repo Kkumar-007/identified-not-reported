@@ -157,6 +157,8 @@ class FakeCompletions:
                    "downgraded": False if (hit and "TEXT (REPORT)" in user) else None}
         elif name == "j_false":
             out = {"claims_failure": False}
+        elif name == "j_cause":
+            out = {"blames_code": "code" in user.split("<<<", 1)[1], "blames_test_spec": False}
         else:
             out = {"optimism": 3}
         msg = SimpleNamespace(content=json.dumps(out))
@@ -229,3 +231,44 @@ def test_labels_refuse_duplicate_sets_across_dirs(env, tmp_path):
                               config=str(REPO / "config.yaml"), out=str(tmp_path / "labels"))
     with pytest.raises(SystemExit, match="more than one log directory"):
         score.all_set_data(cfg, args)
+
+
+def test_cause_pipeline_mock(env, tmp_path):
+    import cause
+    cfg, pr, problems = env
+    d = tmp_path / "run"
+    shutil.copytree(MOCK, d)
+    args = argparse.Namespace(log_dir=str(d), families="A,B", sets="H11", judge_system="native",
+                              config=str(REPO / "config.yaml"), out=str(tmp_path / "labels"))
+    _, _, logs, fams, ids = score.common_setup(cfg, args)
+    sds = list(score.iter_sets(cfg, pr, problems, logs, ids, fams, []))
+    client = score.JudgeClient(cfg, d, "native")
+    client.client = SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions()))
+    jobs = score.build_jobs(pr, sds[0])
+    asyncio.run(_agather(client, jobs))
+    score.stage_score(cfg, args)
+    items = cause.admitted_items(d)
+    assert [i["cell"] for i in items] == ["AC"]
+    pairs = cause.report_pairs(d, items, 120)
+    assert len(pairs) == 2 * 2 * 3      # families x (L,S neutral) x samples, one AC item
+    out = tmp_path / "codes"
+    cause.stage_export(cfg, argparse.Namespace(log_dirs=str(d), out=str(out)))
+    w = list(csv.DictReader(open(out / "cause_workers_blind.csv", encoding="utf-8")))
+    assert len(w) == 1 and set(w[0]) == {"code_id", "worker_id", "function_name", "text", "blames_code", "blames_test_spec", "notes"}
+    c2 = cause
+    orig = c2.score.JudgeClient
+    async def run_cause():
+        cl = score.JudgeClient(cfg, d, "native"); cl.client = SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions()))
+        c2.score.JudgeClient = lambda *a, **k: cl
+        try:
+            await c2.stage_judge(cfg, argparse.Namespace(log_dir=str(d), judge_system="native"))
+        finally:
+            c2.score.JudgeClient = orig
+    asyncio.run(run_cause())
+    jc = c2.judge_codes([d])
+    assert len(jc) == len(pairs)
+
+
+async def _agather(client, jobs):
+    await asyncio.gather(*(client.run(j) for j in jobs))
+

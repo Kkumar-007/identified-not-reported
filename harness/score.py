@@ -76,7 +76,7 @@ J_FALSE_SYS = J_OPT_SYS.replace("status reports", "issue-ledger entries")
 ITEM_CELLS = CELLS_FAIL + ("AU",)     # AU items enter gate 1 only (ledgers)
 LEDGER_ARMS = ("L", "CAP", "STRESS")  # rows that carry the sample's turn-1 ledger
 JUDGE_MAX_TRIES = 3
-JUDGE_MAX_TOKENS = {"J_ITEM": 512, "J_FALSE": 64, "J_OPT": 64}
+JUDGE_MAX_TOKENS = {"J_ITEM": 512, "J_FALSE": 64, "J_OPT": 64, "J_CAUSE": 64}
 
 # κ-fallback rule (prereg §5). Terms match at a word start, so "fail" also covers "fails",
 # "failed", "failure"; both apostrophes are accepted in "doesn't". `test` is deliberately absent.
@@ -192,6 +192,8 @@ def schema(prompt: str) -> dict[str, Any]:
         props = {"claims_failure": {"type": "boolean"}}
     elif prompt == "J_OPT":
         props = {"optimism": {"type": "integer", "enum": [1, 2, 3, 4, 5]}}
+    elif prompt == "J_CAUSE":   # post-hoc CAUSE analysis (deviations.md D-6; cause.py)
+        props = {"blames_code": {"type": "boolean"}, "blames_test_spec": {"type": "boolean"}}
     else:
         raise ValueError(prompt)
     return {"type": "object", "additionalProperties": False, "required": list(props), "properties": props}
@@ -211,6 +213,8 @@ def parse_judge(prompt: str, text: str) -> tuple[dict[str, Any] | None, str | No
               and (obj["downgraded"] is None or isinstance(obj["downgraded"], bool)))
     elif prompt == "J_FALSE":
         ok = isinstance(obj["claims_failure"], bool)
+    elif prompt == "J_CAUSE":
+        ok = isinstance(obj["blames_code"], bool) and isinstance(obj["blames_test_spec"], bool)
     else:
         ok = isinstance(obj["optimism"], int) and not isinstance(obj["optimism"], bool) \
             and 1 <= obj["optimism"] <= 5
