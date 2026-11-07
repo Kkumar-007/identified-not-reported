@@ -110,6 +110,10 @@ if [[ $PHASE == all || $PHASE == B ]]; then
 fi
 
 if [[ $PHASE == all || $PHASE == judge ]]; then
+  if [ -n "${CUDA_HOME:-}" ]; then   # judge only: NVRTC needs libnvrtc-builtins from the same toolkit (saxa, 7 Nov)
+    export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    ls "$CUDA_HOME"/lib64/libnvrtc-builtins* "$CUDA_HOME"/targets/x86_64-linux/lib/libnvrtc-builtins* 2> /dev/null || echo "WARNING: no libnvrtc-builtins under $CUDA_HOME"
+  fi
   JUDGE_SYSTEM=$(cut -d' ' -f4 "$IBNR_LOG_DIR/judge_system_mode.txt")   # fixed by the pilot (D-1 item 10)
   echo "judge system mode (from pilot): $JUDGE_SYSTEM"
   serve "$JUDGE" "$JUDGE_REV" "$PJ" judge --max-model-len 16384

@@ -102,6 +102,10 @@ python run.py --stage managers --family B --sets "$SETS" --arms L,S
 python run.py --stage managers --family B --sets "$HIGH" --arms CAP
 stop
 
+if [ -n "${CUDA_HOME:-}" ]; then   # judge only: NVRTC needs libnvrtc-builtins from the same toolkit (saxa, 7 Nov)
+  export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  ls "$CUDA_HOME"/lib64/libnvrtc-builtins* "$CUDA_HOME"/targets/x86_64-linux/lib/libnvrtc-builtins* 2> /dev/null || echo "WARNING: no libnvrtc-builtins under $CUDA_HOME"
+fi
 # ---- judge (QAT 4-bit Gemma 4 31B). First time this model is served: check vllm_judge.log if it dies.
 serve "$JUDGE" "$JUDGE_REV" 8002 judge --max-model-len 16384
 python pilot.py render --family judge --out "$IBNR_LOG_DIR/render_judge.json" || echo "render judge failed"
