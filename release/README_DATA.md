@@ -1,6 +1,7 @@
-# Data release: "An Issue-Ledger Step Helps a Qwen3-8B Coordinator Report Many Failures but Loses Lone Ones"
+# Data release: "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through"
 
 Kaustubh Kumar, University of Edinburgh. Swarm Alignment Hackathon (Apart Research), November 2026.
+DOI: [10.5281/zenodo.24047673](https://doi.org/10.5281/zenodo.24047673). Cite as: Kumar, K. (2026). Data for "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through" (v1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24047673
 Code, pre-registration and deviations log: https://github.com/Kkumar-007/identified-not-reported (commit `b013f83` or later).
 
 ## Contents

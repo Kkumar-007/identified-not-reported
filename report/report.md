@@ -1,5 +1,5 @@
 ::: {custom-style="Title"}
-An Issue-Ledger Step Helps a Qwen3-8B Coordinator Report Many Failures but Loses Lone Ones[^1]
+The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through[^1]
 :::
 
 [^1]: Research conducted at the Swarm Alignment Hackathon, November 2026.
@@ -131,7 +131,7 @@ A Qwen3-8B coordinator almost never dropped a failure it had written down, but a
 
 # Code and Data {.unnumbered}
 
-Code (harness, pre-registration, deviations log, analysis, hand labels, post hoc checks): <https://github.com/Kkumar-007/identified-not-reported>; the README marks pre-sprint planning material. Data (transcript sets, call logs, score files): [release link]. No info hazards beyond Appendix A.3.
+Code (harness, pre-registration, deviations log, analysis, hand labels, post hoc checks): <https://github.com/Kkumar-007/identified-not-reported>; the README marks pre-sprint planning material. Data (transcript sets, call logs, judge calls, scores, hand-label key; Kumar, 2026): <https://doi.org/10.5281/zenodo.24047673>. No info hazards beyond Appendix A.3.
 
 # Author Contributions {.unnumbered}
 
@@ -158,6 +158,8 @@ Guo, D., Liu, Q., Liu, D., Ren, Q., Shao, S., Qiu, T., Li, H., Fung, Y. R., Ba, 
 Hammond, L. et al. (2025). Multi-Agent Risks from Advanced AI. arXiv:2502.14143.
 
 Kemeklis, J. & Vemuri, N. (2026). Omission Attacks: When Doing Nothing Is the Attack. Apart Research AI Control Hackathon 2026. <https://apartresearch.com/sprints/projects/omission-attacks-when-doing-nothing-is-the-attack-0y1v>
+
+Kumar, K. (2026). Data for "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through" (v1) [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.24047673>
 
 Kwon, W. et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. *SOSP 2023*. arXiv:2309.06180.
 

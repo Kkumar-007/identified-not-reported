@@ -629,3 +629,11 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 
 **Next step:** Zenodo upload, then send the DOI.
 
+## Chat 10 (cont. 3): title · 8 Nov 2026, 16:20 UK
+**Decisions made:** The paper is retitled "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through" (Kaustubh's choice). The model scope (one Qwen3-8B coordinator) stays in the abstract's opening lines, not in the title. The page layout is unchanged: the main text ends on p. 8.
+**Files produced:** `report/report.{md,docx,pdf}` with the new title.
+**Open issues:**
+- `release/README_DATA.md` and the archive still carry the old working title. If Zenodo is not yet published, rebuild the archive; if it is, edit only the Zenodo record title.
+- DOI and sprint start time are still to fill.
+- Template, page recount, links, submission.
+
