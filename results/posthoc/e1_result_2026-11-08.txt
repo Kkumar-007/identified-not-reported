@@ -1,0 +1,22 @@
+Agreement table (judge call, human code, arm, count):
+   ('judge_absent', 'no', 'L', 'low') 20
+   ('judge_absent', 'no', 'S', 'high') 18
+   ('judge_absent', 'no', 'S', 'low') 2
+   ('judge_absent', 'unsure', 'L', 'high') 1
+   ('judge_absent', 'unsure', 'L', 'low') 1
+   ('judge_present', 'unsure', 'S', 'low') 1
+   ('judge_present', 'yes', 'L', 'high') 8
+   ('judge_present', 'yes', 'L', 'low') 8
+   ('judge_present', 'yes', 'S', 'high') 7
+   ('judge_present', 'yes', 'S', 'low') 6
+Judge-absent confirmed by human 'no': 40/42  (yes 0, unsure 2)
+Judge-present confirmed by human yes/unsure: 30/30  (no 0)
+
+A low L: absent 20/120 = 0.167 [0.067, 0.275]
+A low S: absent 2/120 = 0.017 [0.000, 0.050]
+   S - L absent, paired (n=120): -15.0 pts [-25.8, -5.8]
+A high L: absent 0/360 = 0.000 [0.000, 0.000]
+A high S: absent 18/360 = 0.050 [0.022, 0.081]
+   S - L absent, paired (n=360): +5.0 pts [+2.2, +8.1]
+
+D-8 headline rule (one failing worker: L absence > S absence AND paired 95% interval of S - L excludes 0): MET -> headline may claim the ledger step loses lone failures

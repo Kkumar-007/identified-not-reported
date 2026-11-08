@@ -249,3 +249,11 @@ No hand-check code exists yet.
 - All E1–E4 results are labelled post hoc and exploratory in any case.
 
 **Effect.** None on H1–H5, G1–G3 or any registered number. The report adds a post hoc section and the matched-load G1 comparison as a labelled check.
+
+Record (8 Nov 2026, 02:20 UK, not a change): **E1 outcome (D-8).** The hand codes were pushed in `9ba472c` before the key was opened. Script `harness/e1_recompute.py`; output `results/posthoc/e1_result_2026-11-08.txt` and `e1_result.json`.
+- Judge "absent" calls: the human coded 40 of 42 as no, 2 as unsure and 0 as yes. Judge "present" calls: 30 of 30 coded yes or unsure (1 unsure). The one high-load ledger-arm drop was coded unsure, so it counts as a mention.
+- With the hand codes substituted, family A's report absences are:
+  - one failing worker: ledger first (L) 20/120 (16.7% [6.7, 27.5]), no ledger (S) 2/120 (1.7% [0.0, 5.0]); paired S − L −15.0 pts [−25.8, −5.8];
+  - three failing workers: L 0/360, S 18/360 (5.0% [2.2, 8.1]); paired S − L +5.0 pts [+2.2, +8.1].
+- **D-8 headline rule: met.** The title and abstract may state that the ledger step loses lone failures. The result stays post hoc and exploratory, coded by a single coder who is also the designer.
+
