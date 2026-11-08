@@ -2,7 +2,7 @@
 
 Solo entry to Apart Research's Swarm Alignment Hackathon (Track 4, Multi-Agent Oversight and Control). Kaustubh Kumar, University of Edinburgh.
 
-Paper: *The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through* (`report/`). The repository keeps its working name, "Identified but Not Reported".
+Paper: *The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Through* (`report/`). The repository keeps its working name, "Identified but Not Reported".
 
 - `report/`: the submission report (`report.md` source, `report.docx` in the template's styles, `report.pdf` preview, `build.py`). Every number in it comes from `results/analysis/results.json`, `results/cause/cause_result.json` or the dated records in `deviations.md`.
 - `results/`: analysis outputs (`analysis/results.{json,md}`, Figure 1), CAUSE outputs, hand labels and codebooks.

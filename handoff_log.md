@@ -637,3 +637,13 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - DOI and sprint start time are still to fill.
 - Template, page recount, links, submission.
 
+## Chat 10 (cont. 4): final title · 8 Nov 2026, 17:25 UK
+**Decisions made:**
+- **Title:** "The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Through" (Kaustubh's choice). Updated in the report, the dataset citation and the README.
+- **Repo name** stays `identified-not-reported`.
+
+**Open issues:**
+- Zenodo: if not yet published, rebuild the archive with the new title. If already published, edit the record's title and description only.
+- Sprint start time (the Appendix G placeholder).
+- Template, page recount, links, submission.
+
