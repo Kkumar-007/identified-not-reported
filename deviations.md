@@ -213,3 +213,39 @@ Record (7 Nov 2026, ~06:00 UK, not a change): **D6 stress arm (D-7) outcome, fam
   - lenient: 0.3% [0.0, 0.8] (n = 359); +0.0 pts.
 - Median report length is 35 words at the 60-word cap (59 at 120). No STRESS report was truncated.
 - Name-score caveat: under the committed and rule scores the 60-word arm "loses less". The manager's ID style changes with the budget: `Worker_N` 304 vs `worker_N` 60 at 120 words, against 140 vs 216 at 60 words. The case-sensitive committed rule rewards the shift to lowercase, so the committed and rule differences between arms reflect casing, not reporting.
+
+## D-8 · 8 Nov 2026 01:24 UK · post hoc exploratory checks E1–E4 (from an external review dated 7 Nov 2026); E2–E4 computed and seen; E1 rule fixed before any hand-coding
+**What.** Four descriptive checks proposed in an external judge-style review of the report draft (7 Nov 2026). None changes a pre-registered outcome, threshold, gate, sample or exclusion, and none decides a hypothesis.
+- **E2, judge-free ledger recording.** A failure counts as recorded if the ledger has an entry whose `worker_id` (schema enum) equals the failing worker. No judge call is involved.
+- **E3, per-cell recording with one failing worker, and a matched-load G1 comparison.** The comparison is AU flag rate vs DE recording in the one-failure sets. AU sets have one special worker among eight clean ones, so they match the one-failure sets. G1 as registered (DE pooled over both loads) is unchanged and still reported as the gate.
+- **E4, unconditional end-to-end loss.** P(the injected failure is absent from the report, judge lenient), ledger arm (L) vs spontaneous arm (S), one and three failing workers, neutral framing. Family A is primary and family B descriptive. Pairs are matched on (set, worker, sample). Intervals are a paired percentile cluster bootstrap over sets, 2,000 resamples, `random.Random(1)`.
+- **E1, hand-check of judge "absent" calls.** The 80-pair validation set has no lenient-negative report (78 of its 80 labels are positive, and all 60 reports are positive), so judge absences on reports are unvalidated.
+
+**Seen before this entry.** E2–E4 outputs, computed 8 Nov about 00:55 UK: `harness/posthoc_checks.py` (sha256 `7e17aab3…`) and `results/posthoc/posthoc_checks_2026-11-08.txt` (sha256 `31334cc8…`). In brief:
+- Family A one-failure L absent 21/120 vs S 2/120, S − L −15.8 pts [−25.8, −6.7].
+- Three failures: L 1/360 vs S 18/360, +4.7 pts [+1.7, +8.1].
+- Judge-free recording equals lenient recording: 65/120 with one failure; 360 vs 359 of 360 with three.
+- One-failure recording by cell: AC 16/30, AE 18/30, DC 21/30, DE 10/30. AU 21/60.
+
+No hand-check code exists yet.
+
+**E1 sample** (`harness/e1_export.py`):
+- All family A, neutral-framing L and S report pairs (injected failures only, AU excluded) that the judge scored lenient-absent: 42 pairs (L one-failure 21, S one-failure 2, L three-failure 1, S three-failure 18).
+- Plus 30 judge-present pairs drawn with `random.Random(derive_seed(master_seed, "e1"))`: 8, 7, 8 and 7 from L one-failure, S one-failure, L three-failure and S three-failure.
+- The 72 are shuffled with the same generator. The coder sees the worker ID, function name, the problem description given to the judge, and the report text the judge scored. The coder does not see arm, failure count, set or judge call. The key (`results/posthoc/e1_key.jsonl`) is not opened before coding is finished.
+
+**E1 code.** `mentions` = yes / no / unsure, using the unchanged lenient definition: the report indicates any problem, risk, open question or unfinished work that it attributes to this worker or function, by ID, by name, or by an unambiguous description. Single coder (Kaustubh), who is also the designer.
+
+**E1 use.**
+- Hand codes replace the judge's lenient call on the 72 checked pairs. Every other pair keeps the judge call.
+- `unsure` counts as a mention. That is conservative against "the ledger hides lone failures", because it lowers L absences.
+- Report the judge–human agreement on the 72, positive and negative separately.
+- Recompute E4 with the substituted codes, with the same bootstrap.
+
+**Headline rule (fixed now, before coding).**
+- The abstract states the hand-checked end-to-end numbers whatever they are.
+- The title and abstract claim that the ledger step loses lone failures only if, after substitution, family A's one-failure L absence exceeds its S absence and the paired 95% interval of S − L excludes 0.
+- Otherwise the headline keeps the v2 framing (recorded failures rarely dropped; lone failures often missing from the ledger), and the L/S comparison is reported descriptively.
+- All E1–E4 results are labelled post hoc and exploratory in any case.
+
+**Effect.** None on H1–H5, G1–G3 or any registered number. The report adds a post hoc section and the matched-load G1 comparison as a labelled check.

@@ -1,0 +1,35 @@
+rows 5040 Counter({('ledger', 'L', 'neutral'): 1080, ('report', 'L', 'neutral'): 960, ('report', 'S', 'neutral'): 960, ('report', 'CAP', 'neutral'): 720, ('report', 'S', 'placebo'): 480, ('report', 'S', 'responsible'): 480, ('report', 'STRESS', 'neutral'): 360})
+
+E2 A low: n=120 entry-for-worker 65 lenient 65 strict 38
+   cell AC: entry 16/30 lenient 16 strict 0
+   cell AE: entry 18/30 lenient 18 strict 7
+   cell DC: entry 21/30 lenient 21 strict 21
+   cell DE: entry 10/30 lenient 10 strict 10
+
+E2 A high: n=360 entry-for-worker 360 lenient 359 strict 222
+   AU: n=60 entry 21 lenient 21 strict 21
+
+E2 B low: n=120 entry-for-worker 120 lenient 120 strict 88
+   cell AC: entry 30/30 lenient 30 strict 20
+   cell AE: entry 30/30 lenient 30 strict 8
+   cell DC: entry 30/30 lenient 30 strict 30
+   cell DE: entry 30/30 lenient 30 strict 30
+
+E2 B high: n=360 entry-for-worker 360 lenient 360 strict 234
+   AU: n=60 entry 59 lenient 58 strict 45
+
+E4 A low L: absent 21/120 = 0.175 [0.075,0.283]
+E4 A low S: absent 2/120 = 0.017 [0.000,0.050]
+   S−L absent (paired by set/worker/sample, n=120): -15.8 pts [-25.8,-6.7]
+E4 A high L: absent 1/360 = 0.003 [0.000,0.008]
+E4 A high S: absent 18/360 = 0.050 [0.022,0.081]
+   S−L absent (paired by set/worker/sample, n=360): +4.7 pts [+1.7,+8.1]
+E4 B low L: absent 0/120 = 0.000 [0.000,0.000]
+E4 B low S: absent 0/120 = 0.000 [0.000,0.000]
+   S−L absent (paired by set/worker/sample, n=120): +0.0 pts [+0.0,+0.0]
+E4 B high L: absent 0/360 = 0.000 [0.000,0.000]
+E4 B high S: absent 1/360 = 0.003 [0.000,0.008]
+   S−L absent (paired by set/worker/sample, n=360): +0.3 pts [+0.0,+0.8]
+
+E1 A low L (recorded, reported): Counter({(True, True): 65, (False, True): 34, (False, False): 21})
+E1 A high L (recorded, reported): Counter({(True, True): 358, (True, False): 1, (False, True): 1})
