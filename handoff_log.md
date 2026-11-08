@@ -436,7 +436,7 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - `deviations.md` (D-3, D-4, D-5)
 
 **Open issues:**
-- **Job 3703682** (fresh v5 pilot, saxa H200, scratch logs at `/disk/scratch/s2431229/ibnr_logs/pilot_h200`) is pending on Resources. Watch it with `srun --jobid 3703682 --overlap tail -f /disk/scratch/s2431229/ibnr_pilot_scr_3703682.log`.
+- **Job 3703682** (fresh v5 pilot, saxa H200, scratch logs at `/disk/scratch/UUN_REDACTED/ibnr_logs/pilot_h200`) is pending on Resources. Watch it with `srun --jobid 3703682 --overlap tail -f /disk/scratch/UUN_REDACTED/ibnr_pilot_scr_3703682.log`.
 - `main.sbatch` still writes to home and targets the A6000. It needs a scratch-mode and saxa version before the main run, and the main-run logs must be co-located with the pilot on saxa scratch.
 - **Report the home-filesystem outage** and both drained nodes to Informatics support.
 - Commit `deviations.md` and this entry. analysis.py is not built.
@@ -447,12 +447,12 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 ## Chat 7 (cont. 2): v5 pilot and main run complete
 **Decisions made:**
 - **v5 pilot** (job 3703700, saxa H200, scratch): clean on formats, renders and judge. G1 fails on the pilot counts in A and B, and G2 in B. Per PILOT.md there is no second fix round. Kaustubh chose to run the main run as registered (recorded in deviations.md).
-- **Main run complete:** 4 shards (jobs 3703714–3703717), all `done` by 01:05 on 7 Nov, 0 excluded sets, `issues: {}` in every shard. Logs are on saxa scratch: `/disk/scratch/s2431229/ibnr_logs/{pilot_h200,main_s1..s4}`.
+- **Main run complete:** 4 shards (jobs 3703714–3703717), all `done` by 01:05 on 7 Nov, 0 excluded sets, `issues: {}` in every shard. Logs are on saxa scratch: `/disk/scratch/UUN_REDACTED/ibnr_logs/{pilot_h200,main_s1..s4}`.
 - **80 hand-label pairs exported** (20 ledgers, 60 reports; `label_seed = derive_seed(master_seed, "labels")`).
 
 **Files produced:**
-- `results/s2431229_ibnr_results.tgz` (full backup, 7.7 MB, 10,473 files). **Unopened until the labels are done.**
-- `results/s2431229_labels_pack.tgz`, unpacked to `results/labels/` (`labels_blind.csv`, `codebook.md`).
+- `results/UUN_REDACTED_ibnr_results.tgz` (full backup, 7.7 MB, 10,473 files). **Unopened until the labels are done.**
+- `results/UUN_REDACTED_labels_pack.tgz`, unpacked to `results/labels/` (`labels_blind.csv`, `codebook.md`).
 - The key (`labels_key.jsonl`) is only inside the backup and on saxa.
 
 **Open issues:**
@@ -539,7 +539,7 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - `abstract_v3.md` (v3.1, 244 words)
 - `report_results_v1.md` (§4 draft)
 - `deviations.md` (D-7, plus records for the empty ledgers, the downgrade split and the D6 outcome)
-- `results/s2431229_stress_results.tgz` (8.55 MB, sha256 `87b98056…`). This is the good full-log backup. `s2431229_ibnr_results.tgz` may be corrupt: an srun ran two tasks and doubled the stream. Use `srun -n 1` in future.
+- `results/UUN_REDACTED_stress_results.tgz` (8.55 MB, sha256 `87b98056…`). This is the good full-log backup. `UUN_REDACTED_ibnr_results.tgz` may be corrupt: an srun ran two tasks and doubled the stream. Use `srun -n 1` in future.
 
 **Open issues:**
 - §4 is about 1.9 pages against a 1.5-page budget; trim at the [trim] marks.
@@ -554,3 +554,78 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - Move the work onto the Apart template.
 
 **Next chat's first step:** commit `abstract_v3.md`, `report_results_v1.md`, `figure1.py` and `figure1_laundering.png`. Then write the Figure 1 caption and §5, and move §1–§5 onto the Apart template.
+
+## Chat 10: full report on the template · 7 Nov 2026
+**Decisions made:**
+- **Number source.** `results_summary.md` does not exist (not attached, not in the project or the folder). Numbers come from what `report_results_v1.md` already used: `results/analysis/results.json` / `results.md`, `results/cause/cause_result.json`, and the dated records in `deviations.md`. A script checked every number in `report.md` against those files; all matched.
+- **Title states the finding:** "Forwarded, Then Softened: 8B Manager Agents Rarely Drop the Failures They Record, but Often Downgrade or Misattribute Them".
+- **Figure 1 now actually gates family B.** The previous commit said "gated per prereg 6", but `figure1.py` still plotted B in the Dropped panel. B is now removed from every ledger-conditioned row, and the Softened title names its judge-strict denominator.
+- **Abstract rewritten:** 235 words. The "34 of 55" clause was dropped to fit. The "outright loss mostly at detection" sentence was kept, and §4.2 carries the 34/55 qualifier.
+- **Methods follow prereg, not the project description:** workers run the tests once (W_SYS v3), not up to 4 times.
+- **Results open with Figure 1, then follow the prereg order** (gates, H1/H2, H3–H5, descriptives, exploratory).
+- **Deviations:** all seven (D-1 to D-7) are listed in Appendix A.2, and the chronology is in Appendix F.
+- **Not computed and declared in A.2:** fabricated-evidence share, J_OPT, D5 word-budget accounting, omission by self-rated severity, and regeneration/swap rates.
+
+**Files produced:**
+- `report/report.md` (source)
+- `report/report.docx` (Old Standard TT 11 pt, Letter, template margins)
+- `report/report.pdf` (17 pages: main text pp. 1–8, ending about 3/4 down p. 8; references p. 9; appendices pp. 10–17)
+- `report/build.py`, `report/figure1.png`
+- `harness/figure1.py` and `results/analysis/figure1_laundering.png` (B gated)
+- `README.md` (report pointer and prior-work line)
+- None of this is committed yet.
+
+**Open issues:**
+- Move the content onto the official Google Docs template (or upload the .docx to Drive and check it there), then recount pages. Slack before the 8-page cap is only about 0.25 page.
+- Data release link in Code and Data is still `[release link]`.
+- State the confirmed sprint start time in the README. The smoke-run manifest is timestamped 2026-11-05 22:50 UTC, and a screener will see it.
+- Check the Apart and Redwood links in a browser (not reachable from this session). GitHub and the HF model cards are confirmed.
+- Licence line for MBPP/EvalPlus-derived data is not stated.
+- Commit and push.
+
+**Next chat's first step:** open `report/report.docx` in Google Docs on the template, recount pages, fill the release link, then commit, push and submit.
+
+## Chat 10 (cont.): judge review, D-8, E1 and report v3 · 8 Nov 2026, about 02:45 UK
+**Decisions made:**
+- **The external judge report (7 Nov) was largely right.** Verified against the logs:
+  - the lenient validation set has no absent report (78 of 80 labels positive);
+  - G1 fails at matched load (AU 35% vs DE with one failing worker 33%);
+  - my v2 sentence on softening and failure count was wrong.
+- **D-8, post hoc.** Judge-free recording; per-cell recording; matched-load G1; end-to-end L vs S; a blind hand-check of judge absences. The rule was committed in `449d19e`, the hand codes pushed in `9ba472c`, and the recompute committed in `b013f83`.
+- **E1 outcome.** Judge absences confirmed 40/42 (2 unsure); judge presences 30/30. Family A, one failing worker: L 20/120 vs S 2/120, S − L −15.0 pts [−25.8, −5.8]. Three failing workers: L 0/360 vs S 18/360, +5.0 [+2.2, +8.1]. **The D-8 headline rule is met.**
+- **Report v3** is built around the ledger trade-off:
+  - title: "An Issue-Ledger Step Helps a Qwen3-8B Coordinator Report Many Failures but Loses Lone Ones";
+  - results ordered as a funnel (written down → reaches the director → how it is described);
+  - Box 1 with three report excerpts;
+  - all references cited in the text, including MAST, Hammond, the MUM effect and Smith et al. (all four verified);
+  - Table 2's unvalidated rows and the 60-word arm moved to Appendix E7–E8.
+
+**Files produced:**
+- `harness/e1_recompute.py`, `results/posthoc/e1_result*.{txt,json}` (committed)
+- `harness/figure1.py` (v3 panels: needs `--e1`) and `results/analysis/figure1_v3.png` (both uncommitted)
+- `report/` v3: md, docx, pdf (uncommitted). Main text is about 7.8 pages in the LibreOffice render; abstract 242 words.
+
+**Open issues:**
+- **Sprint start time.** The Appendix G timing line has a bracketed placeholder. If the sprint started after 22:50 UTC on 5 Nov, declare the smoke, probe and screen runs as preexisting.
+- **Data release.** Redact the student ID (96 occurrences in the stress archive, including `score_meta.json`), upload to Zenodo or Hugging Face with a DOI, and fill `[release link]`.
+- **Template.** Move v3 onto the Google Docs template, recount pages (slack is about 0.15 page; the first cut would be Box 1 to the appendix), and check links in a private window.
+- **Commit and push** `report/`, `figure1.py`, the README and the handoff log.
+- **LLM usage statement** says "AI-assisted external review". Confirm that this is accurate.
+
+**Next chat's first step:** fill the timing line, then the data release.
+
+## Chat 10 (cont. 2): data release built · 8 Nov 2026, about 04:10 UK
+**Decisions made:**
+- **Release contents:** the full stress-results archive (a superset of the CAUSE archive) plus `labels/labels_key.jsonl` from the earlier backup.
+- **Redaction:** the cluster username was replaced with `UUN_REDACTED` in 25 files (manifests, `score_meta.json`, vLLM logs). After that there are 0 hits in file contents or file names. No tokens or emails were found. The hostname `saxa.inf.ed.ac.uk` is kept, because it is already in the public repo.
+- **Verified:** `analysis.py` on the release reproduces `results.json` and `results.md` byte for byte, and `posthoc_checks.py` and `e1_recompute.py` reproduce their outputs exactly.
+- **Licence:** CC BY 4.0 (MBPP is CC BY 4.0, MBPP+ is Apache-2.0).
+- **Tracked files:** the username was redacted going forward in `deviations.md`, `handoff_log.md` and `report_results_v1.md`. History was not rewritten.
+- **`.gitignore`** now covers `results/*.tgz` and `release/*.tar.gz`.
+
+**Files produced:** `release/ibnr-release-v1.tar.gz` (9.8 MB, sha256 `3fa45300bf61ef93ec66347f3641aee5babdda711bc048da1cd4078f2ce51a9a`, ignored by git), `release/README_DATA.md`, `release/ibnr-release-v1.tar.gz.sha256`, and the updated README (Data and Redaction lines).
+
+**Open issues:** upload to Zenodo and paste the DOI into the README and the report's Code and Data line; fill the sprint start time; move v3 onto the template; commit and push.
+
+**Next step:** Zenodo upload, then send the DOI.
+

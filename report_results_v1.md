@@ -1,6 +1,6 @@
 # §4 Results — draft v1 (7 Nov 2026)
 
-> EDITOR: Every number is from `results/analysis/results.json` (code `analysis.py` 778fe862, logs from the five folders in `s2431229_stress_results.tgz`, sha256 87b98056…) or `results/cause/cause_result.json`. The order follows prereg: gates → H1/H2 → H3–H5 → descriptives → exploratory. ~1,150 words of prose plus three tables: about 1.9 pages against a 1.5-page budget. Trim candidates are marked [trim].
+> EDITOR: Every number is from `results/analysis/results.json` (code `analysis.py` 778fe862, logs from the five folders in `UUN_REDACTED_stress_results.tgz`, sha256 87b98056…) or `results/cause/cause_result.json`. The order follows prereg: gates → H1/H2 → H3–H5 → descriptives → exploratory. ~1,150 words of prose plus three tables: about 1.9 pages against a 1.5-page budget. Trim candidates are marked [trim].
 
 **Reading rule for this section.** Two prereg rules decide how strongly anything here can be stated.
 1. **Scoring.** The judge's strict field agreed with the 80 hand labels at κ = 0.09. The deterministic fallback rule scored κ = 0.13. Both are below the pre-registered 0.7, so H1–H5 are reported descriptively, with no confirmatory decision (prereg §5). The lenient field (κ = 0.79) and the downgrade field (κ = 0.83) passed and are kept.

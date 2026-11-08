@@ -33,29 +33,42 @@ def est(d: dict[str, Any] | None) -> tuple[float, float, float] | None:
     return d["est"], lo, hi
 
 
-def panels(R: dict[str, Any], C: dict[str, Any]) -> list[tuple[str, list[tuple[str, dict[str, Any]]]]]:
+def panels(R: dict[str, Any], C: dict[str, Any], E: dict[str, Any]) -> list[tuple[str, list[tuple[str, dict[str, Any]]]]]:
+    """v3 order: what is written down -> what reaches the director -> how it is described.
+
+    Family B failed G1 and G2, so its ledger-conditioned and ledger-arm loss rates are not plotted
+    (prereg section 6); its reports still enter the two exploratory panels.
+    """
     A, B = R["families"]["A"], R["families"]["B"]
     rd = C["relay_distortion"]
 
     def both(fa: Any, fb: Any) -> dict[str, Any]:
         return {"A": est(fa), "B": est(fb)}
 
-    dropped = [
-        ("Ledger arm, 120 words", both(A["H1"]["lenient"], B["H1"]["lenient"])),
-        ("No ledger, 120 words (items in ≥2 of 3 ledgers)", both(A["H4"]["lenient"]["S_loss"], B["H4"]["lenient"]["S_loss"])),
-        ("Told to include every issue", both(A["G3"]["lenient"], B["G3"]["lenient"])),
-        ("Ledger arm, 60 words (A only)", both((A.get("STRESS") or {}).get("lenient"), None)),
+    recorded = [
+        ("One failing worker of nine", both(A["detection"]["lenient"]["low"], None)),
+        ("Three failing workers of nine", both(A["detection"]["lenient"]["high"], None)),
     ]
+    absent = [
+        ("One failing · ledger first", both(E["A_low_L"], None)),
+        ("One failing · no ledger", both(E["A_low_S"], None)),
+        ("Three failing · ledger first", both(E["A_high_L"], None)),
+        ("Three failing · no ledger", both(E["A_high_S"], None)),
+    ]
+    dg = lambda F, k: F["downgrade"][k]
     softened = [
-        ("Ledger arm", both(A["downgrade"]["L/high"], B["downgrade"]["L/high"])),
-        ("No ledger", both(A["downgrade"]["S/high"], B["downgrade"]["S/high"])),
+        ("One failing · ledger first", both(dg(A, "L/low"), dg(B, "L/low"))),
+        ("One failing · no ledger", both(dg(A, "S/low"), dg(B, "S/low"))),
+        ("Three failing · ledger first", both(dg(A, "L/high"), dg(B, "L/high"))),
+        ("Three failing · no ledger", both(dg(A, "S/high"), dg(B, "S/high"))),
     ]
     flipped = [("Worker blamed test/spec;\nreport blames the code", both(rd["A"] | {"ci95": rd["A"]["ci95"], "est": rd["A"]["rate"]},
                                                                       rd["B"] | {"ci95": rd["B"]["ci95"], "est": rd["B"]["rate"]}))]
     return [
-        ("Dropped: not mentioned at all  ·  of failures in the ledger, high pressure", dropped),
-        ("Softened: called fixed, minor or in progress while failing  ·  of reported failures, high pressure", softened),
-        ("Cause flipped  ·  admitted cells, reports that mention the item, both loads, L and S", flipped),
+        ("a  Written in the ledger  ·  VALIDATED (lenient κ 0.79; judge-free count identical)  ·  family A", recorded),
+        ("b  Never reaches the director (absent from the report)  ·  VALIDATED, absences hand-checked  ·  family A", absent),
+        ("c  Softened: called fixed, minor or in progress  ·  EXPLORATORY (judge-coded)  ·  of reported failures", softened),
+        ("d  Cause flipped  ·  EXPLORATORY (post hoc)  ·  admitted cells, both counts, both arms", flipped),
     ]
 
 
@@ -86,13 +99,13 @@ def draw(P: list[tuple[str, list[tuple[str, dict[str, Any]]]]], soft_excl: dict[
                 yy = y + OFFSET[fam]
                 ax.plot([lo * 100, hi * 100], [yy, yy], color=COL[fam], lw=2, solid_capstyle="round", zorder=2)
                 ax.plot(e * 100, yy, MARK[fam], ms=8, color=COL[fam], mec="#fcfcfb", mew=1.5, zorder=3)
-                ax.annotate(f"{e * 100:.0f}%" if e >= 0.01 else f"{e * 100:.1f}%", (max(hi, e) * 100, yy),
+                ax.annotate(f"{e * 100:.1f}%" if (e < 0.01 or e > 0.99) else f"{e * 100:.0f}%", (max(hi, e) * 100, yy),
                             xytext=(6, 0), textcoords="offset points", va="center", fontsize=8, color=INK)
-            if title.startswith("Softened"):
-                arm = "L" if label.startswith("Ledger") else "S"
-                if ("A", arm) in soft_excl:
+            if "Softened" in title:
+                cond = ("L" if "ledger first" in label else "S") + ("/low" if label.startswith("One") else "/high")
+                if ("A", cond) in soft_excl:
                     yy = y + OFFSET["A"]
-                    ax.plot(soft_excl[("A", arm)] * 100, yy, "o", ms=7, mfc="#fcfcfb", mec=COL["A"], mew=1.5, zorder=4)
+                    ax.plot(soft_excl[("A", cond)] * 100, yy, "o", ms=7, mfc="#fcfcfb", mec=COL["A"], mew=1.5, zorder=4)
         ax.set_yticks(range(len(rows)))
         ax.set_yticklabels([r[0] for r in rows][::-1])
         ax.set_ylim(-0.6, len(rows) - 0.4)
@@ -103,13 +116,13 @@ def draw(P: list[tuple[str, list[tuple[str, dict[str, Any]]]]], soft_excl: dict[
             ax.spines[s].set_visible(False)
         ax.tick_params(axis="y", length=0)
     axes[-1].set_xlim(0, 100)
-    axes[-1].set_xlabel("Percent (denominator in each panel title); bars are 95% set-cluster bootstrap intervals")
+    axes[-1].set_xlabel("Percent (denominator in each panel title); bars are 95% cluster-bootstrap intervals over sets")
     handles = [plt.Line2D([], [], marker=MARK[f], color=COL[f], lw=2, ms=8, mec="#fcfcfb", label=NAME[f]) for f in ("A", "B")]
     if soft_excl:
         handles.append(plt.Line2D([], [], marker="o", ls="", ms=7, mfc="#fcfcfb", mec=COL["A"], mew=1.5,
                                   label="A, softened excl. 'in progress' only (post hoc)"))
     fig.legend(handles=handles, loc="upper center", ncol=len(handles), frameon=False, fontsize=8,
-               bbox_to_anchor=(0.5, 1.0))
+               bbox_to_anchor=(0.5, 0.955))
     fig.savefig(out, dpi=220, bbox_inches="tight", facecolor="#fcfcfb")
 
 
@@ -118,11 +131,13 @@ def main() -> None:
     ap.add_argument("--results", type=Path, required=True)
     ap.add_argument("--cause", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--soft-excl-in-progress", default=None)
+    ap.add_argument("--e1", type=Path, required=True, help="results/posthoc/e1_result.json (D-8, hand-checked absences)")
+    ap.add_argument("--soft-excl-in-progress", default=None, help="e.g. A:L/low=0.57,A:S/low=0.73,A:L/high=0.06,A:S/high=0.30")
     a = ap.parse_args()
     R = json.loads(a.results.read_text())
     C = json.loads(a.cause.read_text())
-    draw(panels(R, C), parse_soft(a.soft_excl_in_progress), a.out)
+    E = json.loads(a.e1.read_text())
+    draw(panels(R, C, E), parse_soft(a.soft_excl_in_progress), a.out)
     print(f"wrote {a.out}")
 
 

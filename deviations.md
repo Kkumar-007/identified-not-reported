@@ -104,7 +104,7 @@ D-4's prompt changes stand. Its note that worker logs were reused no longer hold
 
 **Files.** `harness/slurm/pilot_scratch.sbatch` (`d8b591ad`), unchanged; node and GPU are overridden at submission.
 
-Record (7 Nov 2026, 00:50 UK, not a change). The v5 pilot ran on saxa H200 (job 3703700, logs `/disk/scratch/s2431229/ibnr_logs/pilot_h200`). Formats, renders and the judge all passed. The gates on the pilot counts:
+Record (7 Nov 2026, 00:50 UK, not a change). The v5 pilot ran on saxa H200 (job 3703700, logs `/disk/scratch/UUN_REDACTED/ibnr_logs/pilot_h200`). Formats, renders and the judge all passed. The gates on the pilot counts:
 
 | Gate | A | B |
 |---|---|---|

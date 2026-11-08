@@ -3,3 +3,7 @@ __pycache__/
 .pytest_cache/
 harness/prompts/
 *.log
+
+# Raw run archives contain the cluster username; the redacted copy is published separately (release/README_DATA.md)
+results/*.tgz
+release/*.tar.gz
