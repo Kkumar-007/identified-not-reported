@@ -1,6 +1,6 @@
 # Identified but Not Reported
 
-Entry to Apart Research's Swarm Alignment Hackathon (Track 4, Multi-Agent Oversight and Control). Kaustubh Kumar, University of Edinburgh.
+Entry to Apart Research's Swarm Alignment Hackathon (Track 4, Multi-Agent Oversight and Control). 
 
 Paper: *The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Through* (`report/`). The repository keeps its working name, "Identified but Not Reported".
 
@@ -34,7 +34,6 @@ Paper: *The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Thr
 
 No manager saw a set containing a failure before `dff73e2`. Changes to the planning material during the sprint are marked in its status lines or changelogs.
 
-**Redaction.** The cluster username is replaced by `UUN_REDACTED` in run manifests, in the published data release and, from the commit that adds `release/`, in the tracked documents. A University staff member's name in the planning documents is replaced by their role. Earlier commits still contain the username in log paths: history was not rewritten, so that the push times of the pre-registration, hand-label, D-6 and D-8 commits stay verifiable.
 
 **Data.** All run logs, judge calls, rendered prompts, scores and the hand-label key: [doi:10.5281/zenodo.24047673](https://doi.org/10.5281/zenodo.24047673). See `release/README_DATA.md` for contents, the reproduction commands and the redaction record; `release/ibnr-release-v1.tar.gz.sha256` gives the archive checksum. On this release, `harness/analysis.py` reproduces `results/analysis/results.json` byte for byte.
 
