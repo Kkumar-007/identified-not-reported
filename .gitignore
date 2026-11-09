@@ -7,3 +7,13 @@ harness/prompts/
 # Raw run archives contain the cluster username; the redacted copy is published separately (release/README_DATA.md)
 results/*.tgz
 release/*.tar.gz
+
+# Superseded drafts' built files and scratch folders (sources are tracked)
+report/report.pdf
+report/report.docx
+report/report_v4.pdf
+report/report_v4_oldstandard.pdf
+report/report_v4.docx
+report/v4b/
+Claude outputs/
+_to_delete/

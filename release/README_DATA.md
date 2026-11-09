@@ -1,7 +1,8 @@
-# Data release: "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through"
+# Data release: "The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Through"
 
 Kaustubh Kumar, University of Edinburgh. Swarm Alignment Hackathon (Apart Research), November 2026.
-DOI: [10.5281/zenodo.24047673](https://doi.org/10.5281/zenodo.24047673). Cite as: Kumar, K. (2026). Data for "The Empty Ledger: When Writing Issues Down Lets the Lone Failure Slip Through" (v1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24047673
+DOI: [10.5281/zenodo.24047673](https://doi.org/10.5281/zenodo.24047673). Cite as: Kumar, K. (2026). Data for "The Empty Ledger: When Logging Issues First Lets a Lone Failure Slip Through" (v1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24047673
+(The copy of this file inside `ibnr-release-v1.tar.gz` carries the earlier working title, "When Writing Issues Down Lets the Lone Failure Slip Through"; the data are identical.)
 Code, pre-registration and deviations log: https://github.com/Kkumar-007/identified-not-reported (commit `b013f83` or later).
 
 ## Contents

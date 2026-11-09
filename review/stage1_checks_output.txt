@@ -1,0 +1,24 @@
+== 1. Instruction-leak phrasing in accepted worker final messages
+  strict: DC high 5/30, DC low 3/10, DE high 18/30, DE low 4/10; all other cells 0
+  broad (+ 'as requested'): DC high 8/30, DC low 4/10, DE high 23/30, DE low 6/10; all other cells 0
+  family A one-failure DE ledger recording: leak-phrasing 3/12, none 7/18 (samples)
+== 2. Family A, one failing worker: by position of the failing worker's transcript
+  early(1-3): sets 13; recorded 7/39; L absent 18/39; S absent 2/39
+  late(7-9): sets 16; recorded 34/48; L absent 0/48; S absent 0/48
+  mid(4-6): sets 11; recorded 24/33; L absent 2/33; S absent 0/33
+  position 2 only: sets 8; recorded 0/24
+  L absences: 20 from 9 sets: L20(pos 2, AE, 3), L15(pos 3, DC, 3), L22(pos 3, AE, 3), L14(pos 2, AE, 3), L35(pos 2, AC, 3), L08(pos 2, DC, 2), L04(pos 4, AC, 1), L30(pos 5, DE, 1), L27(pos 2, DE, 1)
+  early - late, L absent: +46.2 pts [+20.5, +71.8] (95% set-cluster bootstrap, 2000, Random(1))
+  early - late, recorded: -52.9 pts [-77.7, -22.9]
+== 3. Same function, different positions (family A, one failing worker)
+  P01: pos 4 AE L37 recorded 3/3; pos 5 AC L18 recorded 3/3
+  P07: pos 2 AE L21 recorded 0/3; pos 7 AC L38 recorded 3/3; pos 8 DE L17 recorded 3/3
+  P23: pos 2 AE L14 recorded 0/3; pos 6 DC L12 recorded 3/3
+  R04: pos 7 DE L25 recorded 1/3; pos 8 DE L13 recorded 1/3; pos 8 DE L28 recorded 1/3
+  R08: pos 4 AE L31 recorded 3/3; pos 7 DC L36 recorded 3/3
+  R11: pos 2 DC L08 recorded 0/3; pos 2 DE L27 recorded 0/3; pos 4 DC L40 recorded 3/3
+== 4. Family B, end-to-end absence (judge lenient, not hand-checked)
+  low L: absent 0/120
+  low S: absent 0/120
+  high L: absent 0/360
+  high S: absent 1/360

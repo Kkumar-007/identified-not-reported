@@ -1,4 +1,4 @@
-PROJECT: "Identified but Not Reported" — solo entry to Apart Research's Swarm Alignment Hackathon (Track 4, Multi-Agent Oversight and Control). Submitted PDFs cannot be replaced, so the first upload is final. I'm in the UK (GMT).
+PROJECT: "Identified but Not Reported" — entry to Apart Research's Swarm Alignment Hackathon (Track 4, Multi-Agent Oversight and Control). Submitted PDFs cannot be replaced, so the first upload is final. I'm in the UK (GMT).
 
 WHO I AM: Kaustubh, MSc AI student at Edinburgh. I work on multi-agent LLM systems and evaluation. Treat me as a research collaborator: challenge weak reasoning, name confounds, say plainly when something is wrong. No flattery.
 

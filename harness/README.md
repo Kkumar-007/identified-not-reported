@@ -3,8 +3,8 @@
 Apart Research Swarm Alignment Hackathon, Track 4.
 
 **Preexisting material, declared:** `data/problems.csv`, `data/problems_check.csv` and the first draft of
-`data/prompts.md` are preexisting planning material. All code in this folder was written
-after the sprint started. See the root `README.md`.
+`data/prompts.md` are preexisting planning material. Part of the code in this folder predates the first commit and is declared
+preexisting, together with the worker-only runs made with it; see the root `README.md`.
 `data/MbppPlus.jsonl.gz` is MBPP+ v0.2.0 (sha256 pinned in `config.yaml`; MBPP CC-BY-4.0, EvalPlus Apache-2.0).
 `vendor_evalplus.py` is copied verbatim from evalplus 0.3.1 (Apache-2.0).
 

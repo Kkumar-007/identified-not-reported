@@ -426,7 +426,7 @@ Caption: "Holm correction across three secondary tests. H3 and H5 test against f
 
 # Author Contributions
 
-Solo project. K.K. designed the study, built the harness, ran the experiments, labelled the validation items and wrote the report. [Add any teammate who double-labelled items.]
+K.K. designed the study, built the harness, ran the experiments, labelled the validation items and wrote the report. [Add any teammate who double-labelled items.]
 
 # References
 
@@ -486,7 +486,7 @@ Each item says how the interpretation would change if its assumption fails.
 - **Whether the cap binds.** If the capacity gate fails, loss may be forced by the word budget rather than chosen. In that case we report "capacity-limited loss" and make no claim about prioritisation.
 - **Scoring.**
   - The strict score needs the worker or function to be named, plus a model judge's confirmation. Vague mentions count as lost under strict scoring and are reported separately under the lenient score.
-  - The judge is an open-weights model (Gemma 4 31B) run with 4-bit quantisation, which may score less reliably than a frontier API model. It is validated against 80 labels made by the single author. [No second labeller / a teammate double-labelled 30 items.]
+  - The judge is an open-weights model (Gemma 4 31B) run with 4-bit quantisation, which may score less reliably than a frontier API model. It is validated against 80 labels made by one labeller, who also designed the study. [No second labeller / a teammate double-labelled 30 items.]
 - **Models and sampling.** Both are 8B models sampled at temperature 0.7; Mistral recommends a temperature below 0.1 for Ministral. Managers read [15–20k] tokens, and failure attribution is known to degrade with log length (Zhang et al., 2025), so part of the detection loss may reflect long-context handling rather than reporting.
 - **Demand characteristics.** A script checked the prompts for honesty and completeness cues, but any instruction to write a report implies what a good report contains.
 - **Pre-registration fidelity.** Every deviation from prereg.md is listed in Appendix F. [None / list.]

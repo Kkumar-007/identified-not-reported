@@ -647,3 +647,146 @@ Frozen artefacts are unchanged: the prereg, config, prompts and sets hashes all 
 - Sprint start time (the Appendix G placeholder).
 - Template, page recount, links, submission.
 
+
+## Chat 11: Stage 1 review (diagnosis only) · 8 Nov 2026, about 19:00 UK
+**Decisions made:** none. Diagnosis only. No manuscript, prereg, analysis or deviations file was changed.
+
+**Findings (details and reproduction in `review/stage1_diagnosis.md` and `review/stage1_checks.py`):**
+- Every traced report number matches `results.json`, `results/posthoc/`, `cause_result.json` or `deviations.md`. The E1 counts were reproduced from the release.
+- **F1 (post hoc, new).** Family A, one failing worker: 18 of 20 L absences come from failing workers at transcript positions 1–3.
+  - Recorded: 7/39 at positions 1–3, against 34/48 at positions 7–9.
+  - Position 2: 0/24 recorded.
+  - L absence, early minus late: +46.2 pts [+20.5, +71.8].
+  - Position was never counterbalanced.
+- **F2 (post hoc, new).** DE 22/40 and DC 8/40 worker messages say "as instructed" or "as per the instruction". The leak filter misses this phrasing.
+- **F3.** Family B's end-to-end loss is 0/120 in both arms with one failing worker, and it is shown only in E9.
+- **F4.** The Appendix G timing placeholder is still in the PDF.
+- **F8.** Apart allows a replacement upload if it uses the same title.
+
+**Files produced:** `review/stage1_diagnosis.md`, `review/stage1_checks.py`, `review/stage1_checks_output.txt`. A project copy is at `claude/stage1_diagnosis.md`.
+
+**Open issues:**
+- A D-9 entry for the F1/F2 checks.
+- The timing placeholder.
+- Family B in Figure 1b.
+- The DC/DE description.
+- Verify the Snitch link and the Wang et al. EMNLP anthology ID.
+- Push `997d32e`.
+
+**Next chat's first step:** settle three things: whether the PDF has already been submitted (title lock), whether to run the position-reversal experiment, and the go-ahead for Stage 2.
+
+## Chat 12: Stages 2–4 and report v4 · 8 Nov 2026, about 19:15 UK
+**Decisions made:**
+- **Kaustubh's answers to the Stage 1 questions:**
+  - The PDF has not been submitted, and the title stays unchanged.
+  - No position-swap run; F1 is reported post hoc under D-9.
+  - Stage 2 was compressed.
+- **Narrative approved:** (b) is the frame and (a) the headline. The pre-registered answer (forwarding is near-lossless) comes first. The empty ledger follows as the post hoc headline, scoped to family A and transcript positions 2–3; family B lost no lone failure. (d) (each family's ledger as a detector) gets one descriptive sentence. Details: `review/stage23_narrative.md`.
+- **F4 fallback applied.** No start time was given, so the following are declared preexisting in the README, `harness/README.md` and Appendix G:
+  - the harness code before `dff73e2`;
+  - the 5 Nov smoke run and probes, including the C01 coordinator plumbing check;
+  - the 6 Nov stage-A screen.
+- **D-9 added to `deviations.md`:** position, instruction phrasing, family B end-to-end, and the L − S re-expression. No model calls.
+- **Snitch correction.** Its model leads named a reverted edit in only 8 of 142 final reports, so v3's "like Snitch's model lead, the coordinator forwarded nearly every failure" was wrong. It is removed, and the corrected point is in Related Work.
+- **Sprint rules (project copy):** a PDF is **not** replaced by resubmitting with the same title. A change needs a new title or an email to sprints@apartresearch.com. Treat the first upload as final.
+
+**Files produced:**
+- `report/report_v4.{md,docx,pdf}`: 21 pp.; main text ends on p. 8; abstract 248 words.
+- `report/build_v4.py`, `report/fig1_design_v4.png`, `fig2_funnel_v4.png`, `fig3_position_v4.png`, `figE1_detector_v4.png`.
+- `review/`:
+  - `stage23_narrative.md`, `stage4_plan.md`, `change_log_v4.md`;
+  - `stage4_numbers.py` with its output (txt and json);
+  - `figures_v4.py`, `make_report_v4.py`, `v4_main.md`;
+  - `check_numbers_v4.py` with its output.
+- Edited in place (git-tracked, uncommitted): `deviations.md` (D-9), `README.md` (prior work and timing), `harness/README.md` (timing line), `release/README_DATA.md` (title).
+- `report.md` and `report.pdf` are untouched.
+- `_to_delete/` holds a LibreOffice lock file and a temp file. Delete them yourself.
+
+**Open issues:**
+- **Sprint start time.** If you find Apart's confirmation (an email or Discord message), the conservative declaration can be replaced by the time. Change Appendix G (edit G in `review/make_report_v4.py` and rebuild), the README and `harness/README.md`.
+- **Zenodo.** Check that the record's title matches the final title. A metadata-only edit needs no new version. The archive's internal README keeps the working title, which `release/README_DATA.md` now notes.
+- **Template.** v4 was built with LibreOffice and the template styles. If you upload via the Google Docs template, recount the pages there. The slack after Author Contributions on p. 8 is about 2 lines.
+- **Git.** Nothing is committed or pushed, including `997d32e`. The `review/` scripts are cited in the report, so commit and push them with v4 before submitting.
+- **Project docs.** The Project copies of `deviations.md` and `handoff_log.md` predate D-9 and this entry. The folder copies are authoritative.
+
+**Next chat's first step:** read `report/report_v4.pdf` end to end. Then decide whether v4 is the submission, and commit and push everything (including `review/` and `997d32e`). Then upload the PDF to Apart once, before 12:00 UK on 9 Nov.
+
+## Chat 13: parallel v4b, font check, reconciliation with Chat 12 · 8 Nov 2026, about 22:40 UK
+**Decisions made:**
+- **This chat ran in parallel with Chat 12.** Both started from the Chat 11 handoff and followed the same narrative (`review/stage23_narrative.md`, written in this chat at 18:37). Kaustubh approved it here at 21:48, after Chat 12 had finished at about 19:11. Chat 12's files were not modified.
+- **Duplicate D-9 removed.** This chat appended a second D-9 to `deviations.md` at about 22:10 and then removed it. The file is back to Chat 12's state: the D-9 dated 19:30 UK is the only one.
+- **v4b built** under new paths (`report/v4b/`, `review/v4b/`). It uses the same numbers as v4, with different figures and wording (see `review/v4b/changelog_v4b.md`).
+- **Font defect in v4's PDF.** Chat 12's `report/report_v4.pdf` was rendered in DejaVu Serif, because Old Standard TT is not installed on the laptop. The same `report_v4.md` and figures were rebuilt with Old Standard TT as `report/report_v4_oldstandard.pdf`: 20 pp., main text ends on p. 8. Content unchanged.
+- **Snitch.**
+  - 0/160 is verified from the authors' public hand codes (`Lizcanutella/cover-up-collusion`, `lead_arm_vendored_sdk_luna.json`).
+  - **v4's "8 of 142" does not reproduce** from those codes, which give 6/128 for Luna-lead reports naming a reverted edit. Check §4.3 of the Snitch PDF before submitting v4.
+  - v4b uses "usually left it out once reverted", with no count.
+- **Wang et al.** `2026.findings-emnlp.422`, pp. 8877–8899, verified on the ACL Anthology page in the browser.
+- **F1 sharpened.** Transcript order was confirmed on 240 turn-1 prompts (Chat 12 checked 360). The losses centre on positions 2–3. The single position-1 set was recorded 3/3, so the pattern is not a simple start-of-context gradient. With three failing workers, recording was 360/360 in every band.
+- **No model calls.** Only the browser and scripts on the release were used.
+
+**Files produced:**
+- `report/report_v4_oldstandard.pdf`.
+- `report/v4b/`:
+  - `report_v4b.{md,docx,pdf}` (20 pp.; abstract 249 words; main text ends on p. 8);
+  - `build_v4b.py`, `figures_v4b.py`;
+  - `figures/` (fig1_pipeline, fig2_results, figA1–A3).
+- `review/v4b/`:
+  - `stage4_numbers_v4b.py`, with its txt and json output;
+  - `assemble_v4b.py`, `v4b_main.md`;
+  - `stage4_plan_v4b.md`, `changelog_v4b.md`.
+
+**Open issues:**
+- **Pick v4 or v4b.** They rest on the same evidence. The differences:
+  - v4 has three main figures (design, funnel, position) plus a detector figure; v4b has two (pipeline; a 2×2 with position as panel c) plus appendix figures for positions 1–9, failure type and cause flow.
+  - The Snitch count (above).
+  - Appendix G: v4 says Apart confirmed a start time that was not recorded; v4b says only that the start time is not recorded. Both declare the same runs preexisting.
+- **Upload only an Old Standard TT render:** `report/report_v4_oldstandard.pdf` or `report/v4b/report_v4b.pdf`. Do not upload `report/report_v4.pdf`.
+- **If v4b is chosen,** add `review/v4b/stage4_numbers_v4b.py` to the Files line of D-9. Chat 12's README timing edits are consistent with v4b.
+- **Resubmission rule conflict.** Stage 1 F8, from the Apart page, says a same-title resubmission replaces the PDF. Chat 12, from the project's `sprint_rules.md`, says it does not. Treat the first upload as final.
+- **Git.** Nothing is committed or pushed: `997d32e`, Chat 12's edits, `review/`, and `report/v4b/` if chosen. `_to_delete/` still needs deleting by hand.
+- **Project docs.** The Project copies of `deviations.md` and `handoff_log.md` are stale; the folder copies are authoritative.
+
+**Next chat's first step:**
+1. Read `report/report_v4_oldstandard.pdf` and `report/v4b/report_v4b.pdf` side by side (pp. 1–8) and choose one.
+2. If v4, check Snitch "8 of 142".
+3. Commit and push.
+4. Upload the chosen PDF once, before 12:00 UK on 9 Nov.
+- **Addendum, 23:50 UK.** Kaustubh chose **v4** (Chat 12's) and replaced its abstract with his own text, in `report_v4.md` and `review/v4_main.md`. `report_v4.docx`, `report_v4_oldstandard.pdf` and `report_v4.pdf` were rebuilt in Old Standard TT; all three now carry the new abstract. v4b also received this abstract earlier, by mistake, and is no longer the candidate.
+
+## Chat 14: final upload PDF · 9 Nov 2026, about 00:45 UK
+**Decisions made:**
+- **Base:** v4 (Kaustubh's choice at 23:50, with his abstract), rendered in Old Standard TT.
+- **Changes** (`report/make_final.py`, asserted exact replacements on `report_v4.md`):
+  - abstract rewritten for clarity, 244 words: the pre-registered question first, "423 of the 424" instead of "all but one", the position 2–3 scope of the lone-failure losses, and family B's over-listing;
+  - Author Contributions removed;
+  - LLM Usage replaced with Kaustubh's text, verbatim;
+  - Appendix G replaced with Kaustubh's text, plus one added sentence that declares the pre-`dff73e2` harness code and the 5–6 Nov runs (jobs 3700609, 3700646, 3700662, 3700665, 3700718) as preexisting, so G matches the README and the harness logs; spelling aligned to the report (preexisting, pre-registration, post hoc);
+  - Snitch: "always refused (0 of 160)" changed to "never agreed to (0 of 160)". 0/160 is the hand-coded `agrees` count; `refuses` is 131/160.
+- **Justified alignment:** `report/build_final.py` = `build_v4.py` plus justification of body text, list items, captions, the footnote and the references. Reference URLs and DOIs get a zero-width space after each "/" (display text only); the PDF's link targets were checked and are intact.
+- **Snitch "8 of 142" verified** from the public hand codes (`Lizcanutella/cover-up-collusion`, `data/hand_codes/lead_arm_vendored_sdk_luna.json`): of 240 Luna-lead runs, the final report named the edit in 98 of 98 where it was still modified and in 8 of 142 where it was not. Chat 13's 6/128 used the narrower `revert` field. Closed.
+- Built in the cloud container with the same toolchain as `report_v4_oldstandard.pdf` (pandoc 3.1.3, LibreOffice 24.2, Old Standard TT from google/fonts).
+
+**Files produced:** `report/report_final.{md,docx,pdf}`, `report/reference_final.docx`, `report/build_final.py`, `report/make_final.py`. PDF: 20 pp.; main text ends on p. 8; references start on p. 9; all fonts embedded; md5 921207f6b4d784261e8f8daa09df0c73.
+
+**Open issues:**
+- If Kaustubh wants Appendix G exactly as he wrote it, delete the added sentence in `make_final.py` and rebuild: `cd report && python -I make_final.py && python build_final.py` (needs Old Standard TT installed).
+- The new LLM Usage text no longer discloses that the D-8 external review was AI-assisted, or the related-work review; "all claims were verified against raw experimental data" does not cover citations.
+- `README.md` still names `report.md` as the submission source.
+- Git: nothing committed or pushed (`997d32e`, Chat 12's edits, `review/`, the `report/*final*` files). `_to_delete/` still needs deleting by hand.
+
+**Next chat's first step:** upload `report/report_final.pdf` to Apart once, before 12:00 UK on 9 Nov; then commit and push.
+
+## Chat 15: repository update · 9 Nov 2026, 01:45 UK
+**Decisions made:**
+- "Solo entry" / "Solo project" wording is removed from the current files: `README.md`, `project_description_v2.md`, `report_skeleton.md`, `report/report.md`, `report/report_v4.md`, `review/v4_main.md`, and the matching search string in `report/make_final.py`, which still reproduces `report_final.md` byte for byte. `report_final.pdf` never contained it.
+- The v3 build outputs (`report/report.pdf`, `report/report.docx`) are no longer tracked. The v4 PDFs and docx, `report/v4b/`, `Claude outputs/` and `_to_delete/` are ignored.
+- The README now names `report_final.pdf` as the submitted report and lists `review/`.
+- History is not rewritten: the pre-registration commit `dff73e2` and its Wayback timestamp depend on it.
+- The report's single-labeller limitation is unchanged.
+
+**Files produced:** this commit (report v4 and final sources, builds and figures, `review/`, D-9 records, README, `.gitignore`).
+
+**Open issues:** push from PowerShell; upload `report/report_final.pdf` to Apart before 12:00 UK; delete `_to_delete/` by hand.
+
+**Next chat's first step:** confirm the upload and the push.

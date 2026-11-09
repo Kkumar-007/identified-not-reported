@@ -135,7 +135,7 @@ Code (harness, pre-registration, deviations log, analysis, hand labels, post hoc
 
 # Author Contributions {.unnumbered}
 
-Solo project: K.K. designed and ran the study, labelled and hand-checked the validation items and wrote the report.
+K.K. designed and ran the study, labelled and hand-checked the validation items and wrote the report.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

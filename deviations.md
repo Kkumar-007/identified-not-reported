@@ -257,3 +257,51 @@ Record (8 Nov 2026, 02:20 UK, not a change): **E1 outcome (D-8).** The hand code
   - three failing workers: L 0/360, S 18/360 (5.0% [2.2, 8.1]); paired S − L +5.0 pts [+2.2, +8.1].
 - **D-8 headline rule: met.** The title and abstract may state that the ledger step loses lone failures. The result stays post hoc and exploratory, coded by a single coder who is also the designer.
 
+
+## D-9 · 8 Nov 2026 19:30 UK · post hoc exploratory checks from a review of the final draft (transcript position, instruction phrasing, family B end-to-end); all computed and seen before this entry
+**What.** Descriptive checks run during an AI-assisted review of the final draft, after every result was known. None changes a pre-registered outcome, threshold, gate, sample or exclusion, and none decides a hypothesis. No model was called.
+- **Position.** Family A, one failing worker: ledger recording and end-to-end absence (E1 hand codes substituted, as in D-8) by the failing worker's transcript position. worker_k is the k-th transcript: all 360 family-A one-failure L/S coordinator prompts list worker_1 to worker_9 in order. The checks use bands 1–3, 4–6 and 7–9, plus single positions. Intervals are set-cluster bootstraps within band, 2,000 resamples, `random.Random(1)`.
+- **Instruction phrasing.** A regex for "as instructed", "as per the instruction(s)" or "instructed to" (broad version: also "as requested") was run over the 80 accepted DC/DE worker final messages. Acceptance check 6 (`i was (told|instructed|asked) to`) does not catch these phrasings.
+- **Family B end-to-end absence** by arm and load (judge lenient, not hand-checked), and its paired ledger-minus-no-ledger difference. This quantity is not conditioned on B's ledger, so G1/G2 (which concern the ledger as a detection record) do not apply to it. prereg §6 still applies to B's H1–H5.
+- **Re-expression.** The D-8 paired difference is also reported as L − S (the ledger's effect). The bootstrap is the same, so the result is exactly the negation of S − L.
+
+**Forking paths.** The reviewer looked at three moderators after the results were known: instruction phrasing, position, and clustering by set. Position is reported because it was the largest. Position was seeded per set and never counterbalanced (prereg §2), so the pattern is observational. A position-swap rerun was proposed but **not run** (Kaustubh's decision, 8 Nov, about 18:40 UK).
+
+**Results** (outputs: `review/stage1_checks_output.txt`, `review/stage4_numbers_output.txt`):
+- **Position, family A, one failing worker.** By band (recorded / L absent / S absent):
+
+  | Positions | Sets | Recorded | L absent | S absent |
+  |---|---|---|---|---|
+  | 1–3 | 13 | 7/39 | 18/39 | 2/39 |
+  | 4–6 | 11 | 24/33 | 2/33 | 0/33 |
+  | 7–9 | 16 | 34/48 | 0/48 | 0/48 |
+
+  - Position 2: 8 sets, recorded 0/24, L absent 12/24.
+  - Position 3: 4 sets, recorded 4/12, L absent 6/12.
+  - Position 1: 1 set, recorded 3/3.
+  - Early minus late, L absent: +46.2 pts [+20.5, +71.8].
+  - The same function changes with position: P07, P23 and R11 were recorded 0/3 at position 2 and 3/3 at positions 4–8.
+  - 18 of the 20 L absences come from positions 2–3.
+- **Instruction phrasing.**
+  - Strict: DE 22/40, DC 8/40.
+  - Broad: DE 29/40, DC 12/40.
+  - 0 in the other cells.
+  - Family A one-failure DE recording: 3/12 samples with the phrasing vs 7/18 without (small n). Ledger-first report absence in one-failure DC/DE sets: 3/21 samples with the phrasing vs 4/39 without.
+- **Family B end-to-end.**
+  - One failing worker: L 0/120, S 0/120.
+  - Three failing workers: L 0/360, S 1/360.
+  - L − S: +0.0 and −0.3 pts [−0.8, +0.0].
+  - B's ledger had an entry for the failing worker in 120/120 and 360/360 samples.
+- **L − S, family A:** +15.0 pts [+5.8, +25.8] (one failing worker); −5.0 pts [−8.1, −2.2] (three).
+- **Empty ledgers, family A, one failing worker:** 55 of 120 ledgers have no entries. In 35 of those, the report still mentions the failure (5 of the 35 were hand-checked; the rest are judge-lenient calls). In the other 20, the report omits it (all 20 hand-checked). Of the 65 recorded failures, 0 were absent from the report.
+
+**Effect.** None on H1–H5, G1–G3 or any registered number. Report v4 adds:
+- a labelled post hoc paragraph and figure on position;
+- family B's end-to-end counts in the main text;
+- a corrected description of the deviation cells;
+- a limitation line on instruction phrasing.
+
+**Files / hashes.**
+- `review/stage1_checks.py` `842ef7cb…`, `review/stage1_checks_output.txt` `aa421fe1…`
+- `review/stage4_numbers.py` `1d6b87e6…`, `review/stage4_numbers_output.txt` `2a45c1fa…`, `review/stage4_numbers.json` `06f0849f…`
+- Data: `release/ibnr-release-v1.tar.gz` (sha256 `2f8ad0ff…a52d`).
